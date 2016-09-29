@@ -1,0 +1,53 @@
+/* Titles */
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Raleway";
+    font-weight: 300;
+    color: #333;
+}
+
+.title{
+  padding-bottom: 25px;
+}
+
+#app-desc{
+  padding-bottom: 30px;
+}
+
+.list-group{
+  padding-bottom: -10px;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.list-group li:hover{
+  background-color: #a7dce5;
+}
+
+#skillswrap {
+  background: #2c3e50;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  color: white;
+
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+
+  width: 95%;
+  margin: 0 auto;
+  margin-top: -20px;
+
+}
+
+.container{
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  border-spacing: 10px;
+}
+
+.container-c1, .container-c2, .container-c3 {
+  display: table-cell;
+  background-color: red;
+  width: 33%;
+  float: left;
+}
