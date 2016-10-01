@@ -8,9 +8,9 @@ import {Bullets} from 'bullets';
 })
 
 export class BulletComponent{
-	
-	onBulletSelect(bullet:Bullets) {
-		console.log(JSON.stringify(bullet));
-	}
 
+	onBulletSelect(bullet:Bullets) {
+		console.log(bullet.name);
+		this.show = !this.show;
+	}
 }

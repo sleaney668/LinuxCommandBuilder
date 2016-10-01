@@ -23,9 +23,8 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #a7dce5;
 }
 
-#skillswrap {
+.subsection {
   background: #2c3e50;
-  padding-top: 60px;
   padding-bottom: 60px;
   color: white;
 
@@ -35,19 +34,31 @@ h1, h2, h3, h4, h5, h6 {
   width: 95%;
   margin: 0 auto;
   margin-top: -20px;
-
+  min-height: 90%;
 }
 
 .container{
   display: table;
   width: 100%;
+  height: 100%;
   table-layout: fixed;
-  border-spacing: 10px;
 }
 
 .container-c1, .container-c2, .container-c3 {
   display: table-cell;
-  background-color: red;
+  background-color: #7f9093;
   width: 33%;
   float: left;
+  border: solid;
+  border-color: white;
+}
+
+.container-c1, .container-c2, .container-c3 h5 {
+  padding-left: 15px;
+}
+
+
+#subsection h4{
+  color: white;
+  padding: 20px;
 }
