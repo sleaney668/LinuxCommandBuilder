@@ -53,12 +53,33 @@ h1, h2, h3, h4, h5, h6 {
   border-color: white;
 }
 
+.container-c3{
+  padding-bottom: 30px;
+}
+
+.container-c3 code{
+  width: 95%;
+  padding: 10px;
+  margin-left: 12px;
+}
+
+.container-c3 h5{
+  margin-bottom: 40px;
+}
+
 .container-c1, .container-c2, .container-c3 h5 {
   padding-left: 15px;
 }
 
-
 .subsection h4 {
   color: white;
   padding: 20px;
+}
+
+input[type=text] {
+    width: 95%;
+    margin-bottom: 21px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 5px;
 }
