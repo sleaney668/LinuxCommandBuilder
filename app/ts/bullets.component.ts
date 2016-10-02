@@ -1,16 +1,19 @@
-import {Component} from 'angular2/core';
+import {Component, EventEmitter, Input, Output} from 'angular2/core';
 import {Bullets} from 'bullets';
 
 @Component({
 	selector: 'bullets',
 	templateUrl: 'app/html/bullets.component.html',
-	inputs: ['bullets']
+	inputs: ['bullets'],
+	outputs: ['bulletOutput']
 })
 
 export class BulletComponent{
 
-	onBulletSelect(bullet:Bullets) {
-		console.log(bullet.name);
-		this.show = !this.show;
+	bulletOutput = new EventEmitter();
+
+	onBulletSelect(bulletName:string) {
+		this.bulletOutput.emit(bulletName);
 	}
+
 }

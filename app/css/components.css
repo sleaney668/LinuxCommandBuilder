@@ -58,7 +58,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-#subsection h4{
+.subsection h4 {
   color: white;
   padding: 20px;
 }
