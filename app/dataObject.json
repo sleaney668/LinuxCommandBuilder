@@ -1,0 +1,42 @@
+{
+  "add": {
+    "directory": "mkdir",
+    "file": "touch",
+    "user": "useradd",
+    "group": "groupadd"
+  },
+  "delete": {
+    "directory": "rmdir",
+    "application": "n/a",
+    "file": "rm",
+    "user": "n/a"
+  },
+  "modify": {
+    "permissions": {
+      "file": "chmod,chown",
+      "directory": ""
+    },
+    "file": {
+      "name": "rename",
+      "contents": "nano,vi",
+      "date": "n/a"
+    }
+  },
+  "view": {
+    "directory": "ls",
+    "logfile": "tail",
+    "file": "cat",
+    "allprocesses": "top"
+  },
+  "locate/find": {
+    "file": "ps aux | grep",
+    "process": "ps aux | grep",
+    "currentlocation": "pwd",
+    "users": {
+      "currentlyloggedin": "w,who"
+    }
+  },
+  "copy": {
+    "scp": "n/a"
+  }
+}

@@ -7,6 +7,13 @@ import {Bullets} from './bullets';
 
 import {SubsectionComponent} from './subsection.component';
 
+import {Http, Response,HTTP_PROVIDERS} from 'angular2/http';
+import {Observable} from 'rxjs/observable';
+import 'rxjs/Rx';
+import 'rxjs/add/operator/map';
+
+
+
 
 @Component({
     selector: 'my-app',
@@ -19,6 +26,9 @@ export class AppComponent {
 	public showSubsection:string;
 	public bulletName:string;
 	private tmpBulletName:string;
+
+	public data: Object;
+    public loading: boolean;
 
 	mainHeading = Config.MAIN_HEADING;
 
@@ -40,7 +50,7 @@ export class AppComponent {
 		bulletPoint.appendChild(subSectionBullet);	
 	}
 
-	constructor(){
+	constructor(private http: Http){
 
 		this.bullets = [
 			new Bullets("Add"),
@@ -52,5 +62,16 @@ export class AppComponent {
 		]
 
 		this.tmpBulletName = "minimise";
+
+
+		this.http.request('dataObject.json')
+			.subscribe((res: Response) => {
+            	//console.log(res.json()); 
+                this.data = res.json();
+                this.loading = false;
+
+                console.log(this.data);
+        		console.log(this.loading);     
+            });
 	}
 }
