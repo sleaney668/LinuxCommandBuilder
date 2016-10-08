@@ -1,18 +1,25 @@
-import {Http, HTTP_PROVIDERS} from 'angular2/http';
-import {Injectable, Directive} from 'angular2/core';
+import {Injectable} from 'angular2/core';
+import {Component} from 'angular2/core';
+import {Http, Response, HTTP_PROVIDERS} from 'angular2/http';
 import {Observable} from 'rxjs/observable';
 import 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class JSONService{
-	private url = `dataObject.json`;
+	public  url = `dataObject.json`;
+	public data: Object;
+    public loading: boolean;
 
-	constructor(private http: Http){
+	public getJson(http: Http){
+		this.http.request(this.url)
+			.subscribe((res: Response) => {
+            	//console.log(res.json()); 
+                this.data = res.json();
+                this.loading = false;
+
+                console.log(this.data);
+        		console.log(this.loading);     
+        });
 	}
-
-	getJson(){
-		console.log(this.http.request(this.url).map(res => res.json()));
-	}
-
 }
