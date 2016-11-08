@@ -1,5 +1,5 @@
 /* Titles */
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, li {
     font-family: "Raleway";
     font-weight: 300;
     color: #333;
@@ -76,6 +76,14 @@ h1, h2, h3, h4, h5, h6 {
   padding: 20px;
 }
 
+.li-items{
+  margin-right: 35px;
+}
+
+.li-items:hover{
+  color: white;
+}
+
 input[type=text] {
     width: 95%;
     margin-bottom: 21px;
@@ -83,4 +91,5 @@ input[type=text] {
     border-radius: 4px;
     padding: 5px;
 }
+
 

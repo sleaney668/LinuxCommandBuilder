@@ -1,18 +1,18 @@
-<div *ngFor="#b of bullets">
+<div *ngFor="#category of linuxCategories">
 	
-	<div id="subsection-{{b.name}}-Data">
+	<div class="{{category}}" id="subsection-{{category}}-Data">
 
-		<div class="subsection" *ngIf="showSubsection == b.name">
+		<div class="subsection" *ngIf="showSubsection == category">
 			
-			<h4>What do you want to {{b.name}}?</h4>
+			<h4>What do you want to {{category}}?</h4>
 			
 			<div class="container">	
 				<div class="container-c1">
-					<h5>Step 1</h5>
-					<ul>
-		  				<li>File</li>
-		  				<li>Directory</li>
-		  				<li>User</li>
+				<h5>Step 1</h5>
+					<ul class="ul-list" *ngFor="#subSection of subSections; #i = index;">
+		  				<li id="subsection-{{category}}-{{subSection}}-Data" class="li-items" (click)="onSubCategorySelect(subSection)">
+							{{ subSection }}
+						</li>
 					</ul>
 					<br>
 				</div>

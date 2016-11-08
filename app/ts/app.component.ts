@@ -1,75 +1,126 @@
 import {Component, OnInit} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
+
+// Import config
 import {Config} from './config.service';
 
-import {BulletComponent} from './bullets.component';
-import {Bullets} from './bullets';
-
+// Import components
+import {ListComponent} from './list.component';
 import {SubsectionComponent} from './subsection.component';
 
-import {Http, HTTP_PROVIDERS, Response} from 'angular2/http';
-import {Observable} from 'rxjs/observable';
-import 'rxjs/Rx';
-import 'rxjs/add/operator/map';
+// Import services
+import {JSONService} from './json.service';
 
-import {CommandService} from './command.service';
+// Import interfaces
 import {Command} from './command';
 
 @Component({
     selector: 'my-app',
     templateUrl: 'app/html/app.component.html',
-    directives: [BulletComponent, SubsectionComponent, CORE_DIRECTIVES],
-    providers: [CommandService, HTTP_PROVIDERS]
-
+    directives: [ListComponent, SubsectionComponent, CORE_DIRECTIVES],
+    providers: [JSONService]
 })
 
 export class AppComponent implements OnInit {
 
-	public bulletName:string;
-	private tmpBulletName:string;
+	public listItemName:string;
+	private tmplistItemData:string;
 	public showSubsection:string;
 
-    private search: string;
-    public command:Command;
+	public data;
 
+    public search: string;
+    public command:Command;
 
 	mainHeading = Config.MAIN_HEADING;
 
-	bullets:Array<Bullets>;
+	linuxCategories = [];
+	subSections = [];
 
-	onBulletSelect(bulletData){
-		if(bulletData == this.tmpBulletName){
-			this.tmpBulletName = "minimise";
+	onBulletSelect(listItemData){
+		this.appendSearchString(listItemData, 1);
+		console.log(this.search);
+
+		this.loadSubSection(listItemData);
+
+		if(listItemData == this.tmplistItemData){
+			this.tmplistItemData = "minimise";
 			this.showSubsection = "minimise";
 		} else {
-			this.tmpBulletName = bulletData;
-			this.showSubsection = bulletData;
+			this.tmplistItemData = listItemData;
+			this.showSubsection = listItemData;
 		}
-		
-		var bulletPoint = document.getElementById(`subsection-${bulletData}`);
-		var subSectionBullet = document.getElementById(`subsection-${bulletData}-Data`);
-		bulletPoint.appendChild(subSectionBullet);	
+	
+		var listItem = document.getElementById(`subsection-${listItemData}`);
+		var subListItem = document.getElementById(`subsection-${listItemData}-Data`);
+
+		listItem.appendChild(subListItem);	
 	}
 
-	constructor(private _commandService: CommandService){}
+	onSubCategorySelect(subCategoryData){
+		console.log(subCategoryData);
+		alert(subCategoryData);
+	}
 
+	loadSubSection(category){
+		var newCategory = category.toLowerCase();
+		this.subSections = [];
+
+		switch (newCategory) {
+			case "add":
+				this.initialiseSubSection(Config.addSearch.split('.'));
+				break;
+            case "delete":
+              	this.initialiseSubSection(Config.deleteSearch.split('.'));
+              	break;
+            case "modify":
+              	this.initialiseSubSection(Config.modifySearch.split('.'));
+              	break;
+            case "view":
+              	this.initialiseSubSection(Config.viewSearch.split('.'));
+              	break;
+            case "locate":
+              	this.initialiseSubSection(Config.locateSearch.split('.'));
+              	break;
+            case "copy":
+              	this.initialiseSubSection(Config.copySearch.split('.'));
+              	break;
+            default:
+              	return null;
+          }
+	}
+
+	initialiseSubSection(subSectionArr){
+		// Construct the sub section read from the json object stored
+        for(var i in subSectionArr){
+        	this.subSections.push(subSectionArr[i].toString());
+        }
+	}
+
+	appendSearchString(searchItem, appendLevel){
+		if(searchItem.indexOf(searchItem) >= 0 && appendLevel>1){
+			this.search = this.search + searchItem.toLowerCase() + `.`;
+		} else {
+			this.search = searchItem.toLowerCase() + `.`;
+		}
+	}
+
+	constructor(private _jsonService: JSONService){}
 	ngOnInit(){
-		this.search = "add.directory";
 
-		this.bullets = [
-			new Bullets("Add"),
-			new Bullets("Delete"),
-			new Bullets("Modify"),
-			new Bullets("View"),
-			new Bullets("Locate/Find"),
-			new Bullets("Copy")
-		];
+		// Construct the linuxCategories read from the json object stored
+        let linuxCategoriesArr = Config.categoriesSearch.split('.');
+        for(var i in linuxCategoriesArr){
+        	this.linuxCategories.push(linuxCategoriesArr[i].toString());
+        }
 
-		this.tmpBulletName = "minimise";
+		this.tmplistItemData = "minimise";
 
-		//this._commandService.getCommand().subscribe(command => {this.command = command});	
 
-		this._commandService.getResult(this.search);
+		// Use this service for searching over the json (add.directory) etc
+		// this.search = "add.file";
+		// this._jsonService.getLinuxCategories(this.search);
+
 	}
 
 }
