@@ -3,8 +3,19 @@
 <p id="app-desc">The developer of this web app has attempted to provide a comprehensive linux command builder. The aim of this service is help new and exisitng users with issues they may be having. Currently there is no other service like this and with your help we can make this better and better. </p>
 
 <h3>What do you want to do?</h3>
-<list [linuxCategories]="linuxCategories" (listItemOutput)="onBulletSelect($event)"> {{listItemData}} </list>
-<subsection [showSubsection]="showSubsection" [linuxCategories]="linuxCategories" [subSections]="subSections"></subsection>
+
+<list 
+[linuxCategories]="linuxCategories" 
+(listItemOutput)="onBulletSelect($event)"> {{listItemData}} 
+</list>
+
+<subsection 
+[showSubsection]="showSubsection" 
+[linuxCategories]="linuxCategories" 
+[subSections]="subSections" 
+(subCategoryItemOutput)="onSubCategorySelect($event)"> {{subCategoryItemData}}
+[searchResult]="searchResult" 
+</subsection>
 
 
 

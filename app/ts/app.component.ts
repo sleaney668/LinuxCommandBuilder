@@ -23,24 +23,27 @@ import {Command} from './command';
 
 export class AppComponent implements OnInit {
 
-	public listItemName:string;
-	private tmplistItemData:string;
-	public showSubsection:string;
-
+	public listItemName: string;
+	private tmplistItemData: string;
+	public showSubsection: string;
+	public searchResult: string;
 	public data;
-
-    public search: string;
+    public searchString: string;
+    public searchArr = [];
     public command:Command;
 
 	mainHeading = Config.MAIN_HEADING;
-
 	linuxCategories = [];
 	subSections = [];
+	subSectionId = "";
+
 
 	onBulletSelect(listItemData){
-		this.appendSearchString(listItemData, 1);
-		console.log(this.search);
 
+		// Call to append the search string at level 1
+		this.appendSearchString(listItemData, 1);
+
+		// Call to load subsection on category selection
 		this.loadSubSection(listItemData);
 
 		if(listItemData == this.tmplistItemData){
@@ -53,15 +56,10 @@ export class AppComponent implements OnInit {
 	
 		var listItem = document.getElementById(`subsection-${listItemData}`);
 		var subListItem = document.getElementById(`subsection-${listItemData}-Data`);
-
 		listItem.appendChild(subListItem);	
 	}
 
-	onSubCategorySelect(subCategoryData){
-		console.log(subCategoryData);
-		alert(subCategoryData);
-	}
-
+	// Loads child sub section of category selected
 	loadSubSection(category){
 		var newCategory = category.toLowerCase();
 		this.subSections = [];
@@ -90,6 +88,7 @@ export class AppComponent implements OnInit {
           }
 	}
 
+	// Initialises subsection based on category selected
 	initialiseSubSection(subSectionArr){
 		// Construct the sub section read from the json object stored
         for(var i in subSectionArr){
@@ -97,17 +96,48 @@ export class AppComponent implements OnInit {
         }
 	}
 
-	appendSearchString(searchItem, appendLevel){
-		if(searchItem.indexOf(searchItem) >= 0 && appendLevel>1){
-			this.search = this.search + searchItem.toLowerCase() + `.`;
+	onSubCategorySelect(subCategoryData){
+		// Call to append the search string at level 2
+		this.appendSearchString(subCategoryData, 2);
+
+		// Call to search over the JSON stored in the config based on the appended search string
+		this._jsonService.getLinuxCategories(this.searchString);
+
+		// Call to update the search result
+		this.populateSearchResult(this._jsonService.linuxObject);
+
+		var id = "subsection-" + this.showSubsection + "-" + subCategoryData + "-Data";
+		document.getElementById(id).classList.add('li-hover');
+
+		if(this.subSectionId == "") {
+			this.subSectionId = "subsection-" + this.showSubsection + "-" + subCategoryData + "-Data";			
 		} else {
-			this.search = searchItem.toLowerCase() + `.`;
+			document.getElementById(this.subSectionId).classList.remove('li-hover');
+			this.subSectionId = "subsection-" + this.showSubsection + "-" + subCategoryData + "-Data";
 		}
+
 	}
+
+	// Updates the search string based on user entry
+	appendSearchString(searchItem, appendLevel){
+		
+		// If append level is 1 (If main category)
+		if(appendLevel==1)
+			this.searchArr = [];
+			this.searchString = "";
+
+		this.searchArr[appendLevel-1] = searchItem.toLowerCase();
+		this.searchString = this.searchArr.join('.');
+	}
+
+	// Updates the search result based on the user entry.
+	populateSearchResult(searchResultDetail){
+		document.getElementById(`searchResult`).innerHTML = searchResultDetail;
+	}
+
 
 	constructor(private _jsonService: JSONService){}
 	ngOnInit(){
-
 		// Construct the linuxCategories read from the json object stored
         let linuxCategoriesArr = Config.categoriesSearch.split('.');
         for(var i in linuxCategoriesArr){
@@ -115,12 +145,7 @@ export class AppComponent implements OnInit {
         }
 
 		this.tmplistItemData = "minimise";
-
-
-		// Use this service for searching over the json (add.directory) etc
-		// this.search = "add.file";
-		// this._jsonService.getLinuxCategories(this.search);
-
+		this.searchResult = "NaN";
 	}
 
 }

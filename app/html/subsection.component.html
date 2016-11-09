@@ -8,25 +8,27 @@
 			
 			<div class="container">	
 				<div class="container-c1">
-				<h5>Step 1</h5>
-					<ul class="ul-list" *ngFor="#subSection of subSections; #i = index;">
-		  				<li id="subsection-{{category}}-{{subSection}}-Data" class="li-items" (click)="onSubCategorySelect(subSection)">
-							{{ subSection }}
-						</li>
-					</ul>
+				<h5>Step 1 - Select option</h5>
+					<div class="ul-div-list" *ngFor="#subSection of subSections; #i = index;">
+					<!-- id="subsection-{{category}}-{{subSection}}-Data" -->
+		  				<div class="li-div-items" id="subsection-{{category}}-{{subSection}}-Data" (click)="onSubCategorySelect(subSection)"> {{subSection}}
+						</div>
+					</div>
 					<br>
 				</div>
 
 				<div class="container-c2">
-					<h5>Step 2</h5>
-					<h5>Enter Directory Name:</h5>
-					<input type="text" name="enterName">
+					<h5>Step 2 - Enter name</h5>
+					<input [(ngModel)]="model" (ngModelChange)="reSearch($event)" id="textEntry" type="text" name="enterName" placeholder="Enter text..." disabled>
 					<br>
 				</div>
 
 				<div class="container-c3">
-					<h5>Step 3</h5>
-					<code>mkdir {directory name}</code>
+					<h5>Step 3 - Output</h5>
+					<div>
+						<code id="searchResult" placeholder="text">Step 1...</code>
+						<code id="searchInput" placeholder="text">Step 2...</code>
+					</div>
 					<br>
 				</div>
 			</div><!--/.container -->

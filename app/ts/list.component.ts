@@ -3,7 +3,7 @@ import {Component, EventEmitter, Input, Output} from 'angular2/core';
 @Component({
 	selector: 'list',
 	templateUrl: 'app/html/list.component.html',
-	inputs: ['linuxCategories','subSections'],
+	inputs: ['linuxCategories'],
 	outputs: ['listItemOutput']
 })
 

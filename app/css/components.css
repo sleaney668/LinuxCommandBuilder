@@ -48,7 +48,7 @@ h1, h2, h3, h4, h5, h6, li {
   display: table-cell;
   background-color: #7f9093;
   width: 33%;
-  float: left;
+/*  float: left;*/
   border: solid;
   border-color: white;
 }
@@ -76,12 +76,32 @@ h1, h2, h3, h4, h5, h6, li {
   padding: 20px;
 }
 
-.li-items{
+.li-div-items{
   margin-right: 35px;
+  padding-left: 10px;
+  margin-top: 5px;
 }
 
-.li-items:hover{
-  color: white;
+.li-hover{
+  border-radius: 10px;
+  background-color: #2c3e50;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.li-div-items:hover{
+  border-radius: 10px;
+  background-color: #2c3e50;
+  cursor: pointer;
+  cursor: hand;
+}
+
+#searchResult{
+  margin-left: 25px;
+  margin-top: 5%;
+}
+#searchInput{
+  margin-top: 5%;
 }
 
 input[type=text] {
@@ -90,6 +110,8 @@ input[type=text] {
     box-sizing: border-box;
     border-radius: 4px;
     padding: 5px;
+    color: black;
+    margin-top: 5%;
 }
 
 

@@ -1,6 +1,4 @@
 import {Injectable} from 'angular2/core';
-
-// Import config
 import {Config} from './config.service';
 
 @Injectable()
@@ -10,6 +8,7 @@ export class JSONService{
     subCategoryIndexList: string;
     childCategoryIndexList: string;
     jsonObject;
+    linuxObject;
 
     public getLinuxCategories(search){
 
@@ -29,8 +28,8 @@ export class JSONService{
         var categoriesIndex = categoriesIndexArray.indexOf(jsonSearchInput[0]);
         var subCategoryIndex = subCategoryIndexArray.indexOf(jsonSearchInput[1]);
 
-        let linuxObject = linuxArray[categoriesIndex][subCategoryIndex];
-        console.log(linuxObject);
+        this.linuxObject = linuxArray[categoriesIndex][subCategoryIndex];
+        console.log(this.linuxObject);
 
     }
 
