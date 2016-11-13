@@ -7,6 +7,7 @@
 			<h4>What do you want to {{category}}?</h4>
 			
 			<div class="container">	
+
 				<div class="container-c1">
 				<h5>Step 1 - Select option</h5>
 					<div class="ul-div-list" *ngFor="#subSection of subSections; #i = index;">
@@ -19,19 +20,33 @@
 
 				<div class="container-c2">
 					<h5>Step 2 - Enter name</h5>
-					<input [(ngModel)]="model" (ngModelChange)="reSearch($event)" id="textEntry" type="text" name="enterName" placeholder="Enter text..." disabled>
+					<input [(ngModel)]="model" (ngModelChange)="reSearch($event)" id="subsection-{{category}}-text-entry" type="text" name="enterName" placeholder="Enter text..." maxlength="45" disabled>
 					<br>
 				</div>
-
-				<div class="container-c3">
+ 
+				<div class="container-c3" id="Search-Container">
 					<h5>Step 3 - Output</h5>
-					<div>
-						<code id="searchResult" placeholder="text">Step 1...</code>
-						<code id="searchInput" placeholder="text">Step 2...</code>
+					<div id="Search-Result-Div" style="visibility:hidden">
+						<h7 class="Search-h7">1</h7>
+						<code id="searchResult" title="Click for more info" (click)="onSearchResultClick()">Step 1...</code>
+					</div>
+					<div id="Search-Input-Div" style="visibility:hidden">
+						<h7 class="Search-h7">2</h7>
+						<code id="searchInput">Step 2...</code>
 					</div>
 					<br>
+
+					<button class="Copy-To-Clipboard" (click)="copyToClipboard()">Copy Command</button>
 				</div>
+
 			</div><!--/.container -->
+
+
+			<div class="alert alert-info" id="alert-info-id" role="alert" hidden>
+				<span class="glyphicon glyphicon-info-sign">
+					<p id="Info-Text-Area">This is the text here <a href="#" class="alert-link">mkdir</a> </p>
+				</span>
+			</div>
 
 		</div>
 

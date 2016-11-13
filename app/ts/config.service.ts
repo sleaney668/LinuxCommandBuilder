@@ -6,12 +6,12 @@ export class Config{
 
 	static categoriesSearch: string = `Add.Delete.Modify.View.Locate.Copy`;
 	static addSearch: string = `Directory.File.User`;
-	static deleteSearch: string = `directory.application.file.user`;
-	static modifySearch: string = `permissions.file`;
-	static modifyPermissionsSubSearch: string = `file.directory`;
-	static modifyFileSubSearch: string = `name.contents.date`;
-	static viewSearch: string = `directory.logfile.file.allprocesses`;
-	static locateSearch: string = `file.process.currentlocation.users`;
-	static copySearch: string = `scp`;
+	static deleteSearch: string = `Directory.Application.File.User`;
+	static modifySearch: string = `Permissions.File`;
+	static modifyPermissionsSubSearch: string = `File.Directory`;
+	static modifyFileSubSearch: string = `Name.Contents.Date`;
+	static viewSearch: string = `Directory.Logfile.File.Processes`;
+	static locateSearch: string = `File.Process.Self.Users`;
+	static copySearch: string = `SCP`;
 
 }

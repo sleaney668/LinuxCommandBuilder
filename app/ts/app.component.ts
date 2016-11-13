@@ -36,15 +36,22 @@ export class AppComponent implements OnInit {
 	linuxCategories = [];
 	subSections = [];
 	subSectionId = "";
+	tmpSubSectionId = "";
+	
+	categoryChange = "";
+	categoryChangeFlag: boolean;
 
 
 	onBulletSelect(listItemData){
-
 		// Call to append the search string at level 1
 		this.appendSearchString(listItemData, 1);
 
 		// Call to load subsection on category selection
 		this.loadSubSection(listItemData);
+
+		if(this.categoryChange != "")
+			this.categoryChangeFlag = true;
+			this.categoryChange = "";
 
 		if(listItemData == this.tmplistItemData){
 			this.tmplistItemData = "minimise";
@@ -52,6 +59,7 @@ export class AppComponent implements OnInit {
 		} else {
 			this.tmplistItemData = listItemData;
 			this.showSubsection = listItemData;
+			this.categoryChange = listItemData;
 		}
 	
 		var listItem = document.getElementById(`subsection-${listItemData}`);
@@ -109,18 +117,27 @@ export class AppComponent implements OnInit {
 		var id = "subsection-" + this.showSubsection + "-" + subCategoryData + "-Data";
 		document.getElementById(id).classList.add('li-hover');
 
-		if(this.subSectionId == "") {
-			this.subSectionId = "subsection-" + this.showSubsection + "-" + subCategoryData + "-Data";			
-		} else {
-			document.getElementById(this.subSectionId).classList.remove('li-hover');
-			this.subSectionId = "subsection-" + this.showSubsection + "-" + subCategoryData + "-Data";
-		}
+		// Making first step visible
+		this.setDivVisibility('Search-Result-Div', true);
 
+		if(this.categoryChangeFlag){
+			this.categoryChangeFlag = false;
+			this.subSectionId = "subsection-" + this.showSubsection + "-" + subCategoryData + "-Data";
+			document.getElementById("subsection-" + this.showSubsection + "-text-entry").removeAttribute('disabled'); 
+		}else{
+			if(this.subSectionId == "") {
+				this.subSectionId = "subsection-" + this.showSubsection + "-" + subCategoryData + "-Data";
+				document.getElementById("subsection-" + this.showSubsection + "-text-entry").removeAttribute('disabled'); 
+			}else{
+				document.getElementById(this.subSectionId).classList.remove('li-hover');				
+				this.subSectionId = "subsection-" + this.showSubsection + "-" + subCategoryData + "-Data";	
+				this.tmpSubSectionId = this.subSectionId;
+			}	
+		}
 	}
 
 	// Updates the search string based on user entry
 	appendSearchString(searchItem, appendLevel){
-		
 		// If append level is 1 (If main category)
 		if(appendLevel==1)
 			this.searchArr = [];
@@ -135,6 +152,12 @@ export class AppComponent implements OnInit {
 		document.getElementById(`searchResult`).innerHTML = searchResultDetail;
 	}
 
+	setDivVisibility(divId, visibility){
+		if(visibility)
+			document.getElementById(divId).style.visibility = "visible";	
+		else
+			document.getElementById(divId).style.visibility = "hidden";	
+	}
 
 	constructor(private _jsonService: JSONService){}
 	ngOnInit(){

@@ -1,8 +1,8 @@
 /* Titles */
 h1, h2, h3, h4, h5, h6, li {
-    font-family: "Raleway";
-    font-weight: 300;
-    color: #333;
+  font-family: "Raleway";
+  font-weight: 300;
+  color: #333;
 }
 
 .title{
@@ -25,7 +25,7 @@ h1, h2, h3, h4, h5, h6, li {
 
 .subsection {
   background: #2c3e50;
-  padding-bottom: 60px;
+  padding-bottom: 3%;
   color: white;
 
   border-bottom-left-radius: 20px;
@@ -48,13 +48,12 @@ h1, h2, h3, h4, h5, h6, li {
   display: table-cell;
   background-color: #7f9093;
   width: 33%;
-/*  float: left;*/
   border: solid;
   border-color: white;
 }
 
 .container-c3{
-  padding-bottom: 30px;
+  padding-bottom: 20px;
 }
 
 .container-c3 code{
@@ -91,27 +90,69 @@ h1, h2, h3, h4, h5, h6, li {
 
 .li-div-items:hover{
   border-radius: 10px;
-  background-color: #2c3e50;
+  background-color: #a7dce5;
   cursor: pointer;
   cursor: hand;
 }
 
 #searchResult{
-  margin-left: 25px;
   margin-top: 5%;
+}
+#searchResult:hover{
+  box-shadow: 0px 0px 0px 2px #a7dce5;
+  opacity: 0.5;
 }
 #searchInput{
   margin-top: 5%;
 }
 
-input[type=text] {
-    width: 95%;
-    margin-bottom: 21px;
-    box-sizing: border-box;
-    border-radius: 4px;
-    padding: 5px;
-    color: black;
-    margin-top: 5%;
+.Search-h7{
+  position: relative;
+  padding: 8px;
+  left: 10px;
+  background-color: #a7dce5;
+  border-radius: 50%;
 }
 
+#Search-Result-Div{
+  float: left;
+}
+#Search-Input-Div{
+}
 
+.Copy-To-Clipboard{
+  float: right;
+  margin-right: 11px;
+  border-radius: 10px;
+  background-color: #2c3e50;
+  cursor: pointer;
+  cursor: hand;
+}
+
+input[type=text] {
+  width: 95%;
+  margin-bottom: 21px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 5px;
+  color: black;
+  margin-top: 5%;
+  font-family: "Raleway";
+}
+
+#alert-info-id{
+  width: 96.7%;
+  margin: 0 auto;    
+  margin-top: 2%;
+  opacity: 0.5;
+  margin-bottom: -1%;
+}
+
+.glyphicon-info-sign{
+  font-size: 20px;
+}
+
+#Info-Text-Area{
+  display: inline-block;
+  font-family: "Raleway";
+}
