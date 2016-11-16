@@ -41,7 +41,6 @@ export class AppComponent implements OnInit {
 	categoryChange = "";
 	categoryChangeFlag: boolean;
 
-
 	onBulletSelect(listItemData){
 		// Call to append the search string at level 1
 		this.appendSearchString(listItemData, 1);
@@ -104,9 +103,13 @@ export class AppComponent implements OnInit {
         }
 	}
 
-	onSubCategorySelect(subCategoryData){
+	onSubCategorySelect(subCategoryData, category){
 		// Call to append the search string at level 2
-		this.appendSearchString(subCategoryData, 2);
+		if(this.searchString.split('.')[0] == "modify" && this.searchString.split('.').length >= 2){
+			this.appendSearchString(subCategoryData, 3);
+		} else {
+			this.appendSearchString(subCategoryData, 2);
+		}
 
 		// Call to search over the JSON stored in the config based on the appended search string
 		this._jsonService.getLinuxCategories(this.searchString);
@@ -115,7 +118,8 @@ export class AppComponent implements OnInit {
 		this.populateSearchResult(this._jsonService.linuxObject);
 
 		var id = "subsection-" + this.showSubsection + "-" + subCategoryData + "-Data";
-		document.getElementById(id).classList.add('li-hover');
+		alert(id);
+		//document.getElementById(id).classList.add('li-hover');
 
 		// Making first step visible
 		this.setDivVisibility('Search-Result-Div', true);

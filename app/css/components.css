@@ -6,24 +6,56 @@ h1, h2, h3, h4, h5, h6, li {
 }
 
 .title{
-  padding-bottom: 25px;
+  padding-bottom: 20px;
+  padding-top: 25px;
+  padding-left: 30px;
+  margin-top: 0;
+}
+
+#main-h1-title{
+  font-family: "Raleway";
+  font-weight: 300;
+  color: #a7dce5;
+}
+
+.Title-Div {
+  background-color: #2c3e50;
+  margin: 0;
+  padding: 0;
+}
+
+.container-fluid{
+  padding-left: 0;
+  padding-right: 0;
 }
 
 #app-desc{
-  padding-bottom: 30px;
+  padding-top: 5px;
+  padding-bottom: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+  font-family: "Raleway";
+}
+
+#list-group-headings{
+  padding-left: 30px;
 }
 
 .list-group{
   padding-bottom: -10px;
   cursor: pointer;
   cursor: hand;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .list-group li:hover{
   background-color: #a7dce5;
 }
 
-.subsection {
+.subsection{
   background: #2c3e50;
   padding-bottom: 3%;
   color: white;
@@ -37,6 +69,16 @@ h1, h2, h3, h4, h5, h6, li {
   min-height: 90%;
 }
 
+.subection-header{
+  color: white;
+  padding-top: 30px;
+  padding-left: 30px;
+  padding-bottom: 10px;
+
+  font-family: "Raleway";
+  font-weight: 300;
+}
+
 .container{
   display: table;
   width: 100%;
@@ -48,59 +90,67 @@ h1, h2, h3, h4, h5, h6, li {
   display: table-cell;
   background-color: #7f9093;
   width: 33%;
-  border: solid;
+
   border-color: white;
+
+  border-left: solid;
+  border-top: solid;
+  border-bottom: solid;
 }
 
 .container-c3{
   padding-bottom: 20px;
+  border-right: solid;
 }
 
 .container-c3 code{
   width: 95%;
   padding: 10px;
-  margin-left: 12px;
+  margin-left: 3px;
 }
 
-.container-c3 h5{
-  margin-bottom: 40px;
+#container-c1-header{
+  padding-bottom: 6px;
 }
 
-.container-c1, .container-c2, .container-c3 h5 {
+#container-c2-header{
+  padding-bottom: 25px;
+}
+
+#container-c3-header{
+  padding-bottom: 32px;
+}
+
+.container-headers{
   padding-left: 15px;
 }
 
-.subsection h4 {
-  color: white;
-  padding: 20px;
-}
-
 .li-div-items{
-  margin-right: 35px;
-  padding-left: 10px;
-  margin-top: 5px;
+  padding-left: 17px;
+  width: 95%;
+  margin: 0 auto;
+  margin-bottom: 5px;
+  font-family: "Raleway";
 }
 
 .li-hover{
-  border-radius: 10px;
+  border-radius: 4px;
   background-color: #2c3e50;
   cursor: pointer;
   cursor: hand;
+  margin-bottom: 5px;
 }
 
 .li-div-items:hover{
-  border-radius: 10px;
+  border-radius: 4px;
   background-color: #a7dce5;
   cursor: pointer;
   cursor: hand;
 }
 
-#searchResult{
-  margin-top: 5%;
-}
 #searchResult:hover{
   box-shadow: 0px 0px 0px 2px #a7dce5;
-  opacity: 0.5;
+
 }
 #searchInput{
   margin-top: 5%;
@@ -108,10 +158,10 @@ h1, h2, h3, h4, h5, h6, li {
 
 .Search-h7{
   position: relative;
-  padding: 8px;
+  padding: 9px;
   left: 10px;
+  padding-bottom: 9.8px;
   background-color: #a7dce5;
-  border-radius: 50%;
 }
 
 #Search-Result-Div{
@@ -122,30 +172,49 @@ h1, h2, h3, h4, h5, h6, li {
 
 .Copy-To-Clipboard{
   float: right;
-  margin-right: 11px;
-  border-radius: 10px;
+
+  margin-left: 10px;
+  margin-right: 10px;
+
+  border-radius: 7px;
   background-color: #2c3e50;
   cursor: pointer;
-  cursor: hand;
+  font-family: "Raleway";
+
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.Copy-To-Clipboard:hover{
+  background-color: #a7dce5;
+}
+.Copy-To-Clipboard-Click{
+  background-color: #a7dce5;
+  opacity: 0.8;
+  pointer-events: none;
 }
 
 input[type=text] {
   width: 95%;
   margin-bottom: 21px;
   box-sizing: border-box;
-  border-radius: 4px;
+  border-radius: 3px;
   padding: 5px;
   color: black;
   margin-top: 5%;
   font-family: "Raleway";
+  position: relative;
+  display: block;
+  margin : 0 auto;
 }
 
 #alert-info-id{
-  width: 96.7%;
-  margin: 0 auto;    
-  margin-top: 2%;
+  width: 99%;
+  margin: 0 auto;
+  margin-top: 3%;
   opacity: 0.5;
-  margin-bottom: -1%;
 }
 
 .glyphicon-info-sign{

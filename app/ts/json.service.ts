@@ -12,24 +12,53 @@ export class JSONService{
 
     public getLinuxCategories(search){
 
+        alert(search);
+
         this.jsonObject = Config.dataObject;
         let linuxArray = this.jsonObject.linuxCategories;
-        
+
         let jsonSearchInput = search.split('.');
-        this.categoriesIndexList = Config.categoriesSearch.toLowerCase();
-        this.subCategoryIndexList = this.populateCategoriesIndexList(jsonSearchInput[0]);
 
-        console.log(this.categoriesIndexList);
-        console.log(this.subCategoryIndexList);
+        if(linuxArray != null){       
 
-        let categoriesIndexArray = this.categoriesIndexList.split('.');
-        let subCategoryIndexArray = this.subCategoryIndexList.split('.');
+          this.categoriesIndexList = Config.categoriesSearch.toLowerCase();
+          this.subCategoryIndexList = this.populateCategoriesIndexList(jsonSearchInput[0]);
+          this.childCategoryIndexList = this.populateChildCategoriesIndexList(jsonSearchInput[1]);
 
-        var categoriesIndex = categoriesIndexArray.indexOf(jsonSearchInput[0]);
-        var subCategoryIndex = subCategoryIndexArray.indexOf(jsonSearchInput[1]);
+    
+          console.log("categoriesIndexList: " + this.categoriesIndexList);
+          console.log("subCategoryIndexList: " + this.subCategoryIndexList);
 
-        this.linuxObject = linuxArray[categoriesIndex][subCategoryIndex];
-        console.log(this.linuxObject);
+          let categoriesIndexArray = this.categoriesIndexList.split('.');
+          let subCategoryIndexArray = this.subCategoryIndexList.split('.');
+
+
+          var childCategoryIndex = -1;
+          if(this.childCategoryIndexList != null){
+            let childCategoryIndexArray = this.childCategoryIndexList.split('.');
+            childCategoryIndex = childCategoryIndexArray.indexOf(jsonSearchInput[2]);
+          }
+
+          var categoriesIndex = categoriesIndexArray.indexOf(jsonSearchInput[0]);
+          var subCategoryIndex = subCategoryIndexArray.indexOf(jsonSearchInput[1]);
+
+          console.log("categoriesIndexList Index: " + categoriesIndex);
+          console.log("subCategoryIndexList Index: " + subCategoryIndex);
+          console.log("subCategoryIndexList search: " + linuxArray[categoriesIndex][subCategoryIndex][childCategoryIndex]);
+
+          // var childCategoryIndex = childCategoryIndexArray.indexOf(jsonSearchInput[2]);
+          // if(childCategoryIndex != null){
+          //   this.linuxObject = linuxArray[categoriesIndex][subCategoryIndex][childCategoryIndex];
+          // }
+          
+          this.linuxObject = "";
+          if(childCategoryIndex >= 0)
+            this.linuxObject = linuxArray[categoriesIndex][subCategoryIndex][childCategoryIndex];
+          else
+            this.linuxObject = linuxArray[categoriesIndex][subCategoryIndex];
+    
+          console.log(this.linuxObject);
+      }
 
     }
 
@@ -50,5 +79,22 @@ export class JSONService{
             default:
               return null;
           }
+    }
+
+    private populateChildCategoriesIndexList(jsonSearch){
+      switch (jsonSearch) {
+        case "file":
+          return Config.modifyFileSubSearch.toLowerCase();
+        case "directory":
+          return Config.modifyDirectorySubSearch.toLowerCase();
+        case "user":
+          return Config.modifyUserSubSearch.toLowerCase();
+        case "permissions":
+          return Config.modifyPermissionsSubSearch.toLowerCase();
+        case "ownership":
+          return Config.modifyOwnershipSubSearch.toLowerCase();
+        default:
+          return null;
+        }
     }
 }
