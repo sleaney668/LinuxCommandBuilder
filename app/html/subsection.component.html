@@ -9,7 +9,7 @@
 			<div class="container">	
 
 				<div class="container-c1">
-				<h5 class="container-headers" id="container-c1-header">Step 1 - Select option</h5>
+					<h5 class="container-headers" id="container-c1-header">Step 1 - Select option</h5>
 					<div class="ul-div-list" *ngFor="#subSection of subSections; #i = index;">
 					
 						<!-- IF Modify then display another subsection, this will lengthen the search-->
@@ -18,6 +18,9 @@
 
 					</div>
 					<br>
+					<div id="modify-back-button" style="visibility:hidden" (click)="onBackButtonSelect()">Step 1 
+						<span class="glyphicon glyphicon-circle-arrow-left"></span>
+					</div>
 				</div>
 
 				<div class="container-c2">

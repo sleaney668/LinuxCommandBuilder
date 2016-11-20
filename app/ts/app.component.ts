@@ -103,38 +103,50 @@ export class AppComponent implements OnInit {
         }
 	}
 
-	onSubCategorySelect(subCategoryData, category){
-		// Call to append the search string at level 2
-		if(this.searchString.split('.')[0] == "modify" && this.searchString.split('.').length >= 2){
+	onSubCategorySelect(subCategoryData){
+		if(this.searchString.split('.')[0] == "modify" && subCategoryData[subCategoryData.length-1] != '.'){
+			// Modify level 2, just append the search string
+			this.appendSearchString(subCategoryData, 2);
+		} else if(this.searchString.split('.')[0] == "modify" && subCategoryData[subCategoryData.length-1] == '.'){
+			// Append level 3 contains a full stop at the end
 			this.appendSearchString(subCategoryData, 3);
+			this.performFullSearch(subCategoryData);
 		} else {
 			this.appendSearchString(subCategoryData, 2);
+			this.performFullSearch(subCategoryData);
 		}
+	}
 
+	performFullSearch(subCategoryData){		
 		// Call to search over the JSON stored in the config based on the appended search string
 		this._jsonService.getLinuxCategories(this.searchString);
 
 		// Call to update the search result
 		this.populateSearchResult(this._jsonService.linuxObject);
 
+		if(subCategoryData[subCategoryData.length-1] == '.')
+			subCategoryData = subCategoryData.substr(0, subCategoryData.length-1);
+
 		var id = "subsection-" + this.showSubsection + "-" + subCategoryData + "-Data";
-		alert(id);
-		//document.getElementById(id).classList.add('li-hover');
 
 		// Making first step visible
 		this.setDivVisibility('Search-Result-Div', true);
 
 		if(this.categoryChangeFlag){
+			//document.getElementById(this.tmpSubSectionId).classList.remove('li-hover');
 			this.categoryChangeFlag = false;
 			this.subSectionId = "subsection-" + this.showSubsection + "-" + subCategoryData + "-Data";
+			document.getElementById(this.subSectionId).classList.add('li-hover');
 			document.getElementById("subsection-" + this.showSubsection + "-text-entry").removeAttribute('disabled'); 
-		}else{
+		} else {
 			if(this.subSectionId == "") {
 				this.subSectionId = "subsection-" + this.showSubsection + "-" + subCategoryData + "-Data";
+				document.getElementById(this.subSectionId).classList.add('li-hover');
 				document.getElementById("subsection-" + this.showSubsection + "-text-entry").removeAttribute('disabled'); 
-			}else{
+			} else {
 				document.getElementById(this.subSectionId).classList.remove('li-hover');				
-				this.subSectionId = "subsection-" + this.showSubsection + "-" + subCategoryData + "-Data";	
+				this.subSectionId = "subsection-" + this.showSubsection + "-" + subCategoryData + "-Data";		
+				document.getElementById(this.subSectionId).classList.add('li-hover');
 				this.tmpSubSectionId = this.subSectionId;
 			}	
 		}
@@ -142,11 +154,6 @@ export class AppComponent implements OnInit {
 
 	// Updates the search string based on user entry
 	appendSearchString(searchItem, appendLevel){
-		// If append level is 1 (If main category)
-		if(appendLevel==1)
-			this.searchArr = [];
-			this.searchString = "";
-
 		this.searchArr[appendLevel-1] = searchItem.toLowerCase();
 		this.searchString = this.searchArr.join('.');
 	}

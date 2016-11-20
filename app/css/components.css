@@ -96,6 +96,8 @@ h1, h2, h3, h4, h5, h6, li {
   border-left: solid;
   border-top: solid;
   border-bottom: solid;
+
+  height: 100%;
 }
 
 .container-c3{
@@ -111,6 +113,7 @@ h1, h2, h3, h4, h5, h6, li {
 
 #container-c1-header{
   padding-bottom: 6px;
+
 }
 
 #container-c2-header{
@@ -224,4 +227,15 @@ input[type=text] {
 #Info-Text-Area{
   display: inline-block;
   font-family: "Raleway";
+}
+
+#modify-back-button{
+  float: right;
+  margin-right: 10px;
+  padding-bottom: 10px;
+}
+#modify-back-button:hover{
+  color: #a7dce5;
+  cursor: pointer;
+  cursor: hand;
 }

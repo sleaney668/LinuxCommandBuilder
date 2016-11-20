@@ -11,27 +11,17 @@ export class JSONService{
     linuxObject;
 
     public getLinuxCategories(search){
-
-        alert(search);
-
         this.jsonObject = Config.dataObject;
         let linuxArray = this.jsonObject.linuxCategories;
-
         let jsonSearchInput = search.split('.');
 
         if(linuxArray != null){       
-
           this.categoriesIndexList = Config.categoriesSearch.toLowerCase();
           this.subCategoryIndexList = this.populateCategoriesIndexList(jsonSearchInput[0]);
           this.childCategoryIndexList = this.populateChildCategoriesIndexList(jsonSearchInput[1]);
 
-    
-          console.log("categoriesIndexList: " + this.categoriesIndexList);
-          console.log("subCategoryIndexList: " + this.subCategoryIndexList);
-
           let categoriesIndexArray = this.categoriesIndexList.split('.');
           let subCategoryIndexArray = this.subCategoryIndexList.split('.');
-
 
           var childCategoryIndex = -1;
           if(this.childCategoryIndexList != null){
@@ -42,15 +32,6 @@ export class JSONService{
           var categoriesIndex = categoriesIndexArray.indexOf(jsonSearchInput[0]);
           var subCategoryIndex = subCategoryIndexArray.indexOf(jsonSearchInput[1]);
 
-          console.log("categoriesIndexList Index: " + categoriesIndex);
-          console.log("subCategoryIndexList Index: " + subCategoryIndex);
-          console.log("subCategoryIndexList search: " + linuxArray[categoriesIndex][subCategoryIndex][childCategoryIndex]);
-
-          // var childCategoryIndex = childCategoryIndexArray.indexOf(jsonSearchInput[2]);
-          // if(childCategoryIndex != null){
-          //   this.linuxObject = linuxArray[categoriesIndex][subCategoryIndex][childCategoryIndex];
-          // }
-          
           this.linuxObject = "";
           if(childCategoryIndex >= 0)
             this.linuxObject = linuxArray[categoriesIndex][subCategoryIndex][childCategoryIndex];
@@ -58,7 +39,7 @@ export class JSONService{
             this.linuxObject = linuxArray[categoriesIndex][subCategoryIndex];
     
           console.log(this.linuxObject);
-      }
+        }
 
     }
 

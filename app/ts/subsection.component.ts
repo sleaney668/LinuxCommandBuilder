@@ -8,7 +8,7 @@ import {Config} from './config.service';
 	selector: 'subsection',
 	templateUrl: 'app/html/subsection.component.html',
 	inputs: ['showSubsection','linuxCategories','subSections','searchResult'],
-	outputs:['subCategoryItemOutput','categoryItemOutput']
+	outputs:['subCategoryItemOutput']
 })
 
 export class SubsectionComponent{
@@ -19,18 +19,26 @@ export class SubsectionComponent{
 	searchText;
 	tmpSearchText;
 
-	categoryItemOutput = new EventEmitter();
+	//categoryItemOutput = new EventEmitter();
 	subCategoryItemOutput = new EventEmitter();
 
-	onSubCategorySelect(subCategoryItemData:string, category:string) {
+	onSubCategorySelect(subCategoryItemData:string, category:string) {	
 		
+		if(this.modifyCount == 1){
+			subCategoryItemData = subCategoryItemData + "."
+		}
+
 		if(category == "Modify" && this.modifyCount == 0){
 			this.loadSubSection(subCategoryItemData);
+
+			// Changing data in div
+			document.getElementById('container-c1-header').innerHTML = "Step 1.1 - Select option";
+			document.getElementById('modify-back-button').style.visibility = "visible";
+
 			this.modifyCount++;
 		}
 
 		this.subCategoryItemOutput.emit(subCategoryItemData);
-
 		document.getElementsByClassName('Copy-To-Clipboard')[0].classList.remove('Copy-To-Clipboard-Click');
 	}
 
@@ -55,6 +63,9 @@ export class SubsectionComponent{
             case "ownership":
               	this.initialiseSubSection(Config.modifyOwnershipSubSearch.split('.'));
               	break;
+            case "main":
+				this.initialiseSubSection(Config.modifySearch.split('.'));
+				break;
             default:
               	return null;
           }
@@ -86,9 +97,6 @@ export class SubsectionComponent{
 	}
 
 	copyToClipboard(){
-		//alert(document.getElementById('searchResult').innerHTML + document.getElementById('searchInput').innerHTML);
-		//Copy-To-Clipboard
-
 		document.getElementsByClassName('Copy-To-Clipboard')[0].classList.add('Copy-To-Clipboard-Click');
 
   		var aux = document.createElement("input");
@@ -113,6 +121,16 @@ export class SubsectionComponent{
 	onHrefClick(){
 		// Google search for search result 
  		window.open('https://www.google.com/?#q='+document.getElementById('searchResult').innerHTML + " linux command");
+	}
+
+	onBackButtonSelect(){
+		this.loadSubSection('main');
+
+		// Changing data in div
+		document.getElementById('container-c1-header').innerHTML = "Step 1 - Select option";
+		document.getElementById('modify-back-button').style.visibility = "hidden";
+
+		this.modifyCount--;
 	}
 
 }
