@@ -107,6 +107,7 @@ export class AppComponent implements OnInit {
 		if(this.searchString.split('.')[0] == "modify" && subCategoryData[subCategoryData.length-1] != '.'){
 			// Modify level 2, just append the search string
 			this.appendSearchString(subCategoryData, 2);
+			this.tmpSubSectionId = "";
 		} else if(this.searchString.split('.')[0] == "modify" && subCategoryData[subCategoryData.length-1] == '.'){
 			// Append level 3 contains a full stop at the end
 			this.appendSearchString(subCategoryData, 3);
@@ -117,7 +118,7 @@ export class AppComponent implements OnInit {
 		}
 	}
 
-	performFullSearch(subCategoryData){		
+	performFullSearch(subCategoryData){	
 		// Call to search over the JSON stored in the config based on the appended search string
 		this._jsonService.getLinuxCategories(this.searchString);
 
@@ -127,29 +128,28 @@ export class AppComponent implements OnInit {
 		if(subCategoryData[subCategoryData.length-1] == '.')
 			subCategoryData = subCategoryData.substr(0, subCategoryData.length-1);
 
-		var id = "subsection-" + this.showSubsection + "-" + subCategoryData + "-Data";
-
 		// Making first step visible
 		this.setDivVisibility('Search-Result-Div', true);
 
 		if(this.categoryChangeFlag){
-			//document.getElementById(this.tmpSubSectionId).classList.remove('li-hover');
 			this.categoryChangeFlag = false;
 			this.subSectionId = "subsection-" + this.showSubsection + "-" + subCategoryData + "-Data";
 			document.getElementById(this.subSectionId).classList.add('li-hover');
 			document.getElementById("subsection-" + this.showSubsection + "-text-entry").removeAttribute('disabled'); 
 		} else {
+			if(this.tmpSubSectionId != ""){
+				document.getElementById(this.tmpSubSectionId).classList.remove('li-hover');
+			}	
 			if(this.subSectionId == "") {
 				this.subSectionId = "subsection-" + this.showSubsection + "-" + subCategoryData + "-Data";
 				document.getElementById(this.subSectionId).classList.add('li-hover');
 				document.getElementById("subsection-" + this.showSubsection + "-text-entry").removeAttribute('disabled'); 
-			} else {
-				document.getElementById(this.subSectionId).classList.remove('li-hover');				
-				this.subSectionId = "subsection-" + this.showSubsection + "-" + subCategoryData + "-Data";		
+			} else {					
+				this.subSectionId = "subsection-" + this.showSubsection + "-" + subCategoryData + "-Data";
 				document.getElementById(this.subSectionId).classList.add('li-hover');
-				this.tmpSubSectionId = this.subSectionId;
-			}	
+			}
 		}
+		this.tmpSubSectionId = this.subSectionId;
 	}
 
 	// Updates the search string based on user entry
@@ -168,6 +168,10 @@ export class AppComponent implements OnInit {
 			document.getElementById(divId).style.visibility = "visible";	
 		else
 			document.getElementById(divId).style.visibility = "hidden";	
+	}
+
+	inputChanged(event: Event){
+		this._jsonService.chmodBuilder(event);
 	}
 
 	constructor(private _jsonService: JSONService){}

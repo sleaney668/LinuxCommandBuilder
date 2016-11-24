@@ -19,7 +19,6 @@ export class SubsectionComponent{
 	searchText;
 	tmpSearchText;
 
-	//categoryItemOutput = new EventEmitter();
 	subCategoryItemOutput = new EventEmitter();
 
 	onSubCategorySelect(subCategoryItemData:string, category:string) {	
@@ -36,9 +35,11 @@ export class SubsectionComponent{
 			document.getElementById('modify-back-button').style.visibility = "visible";
 
 			this.modifyCount++;
-		}
-
+		} 
+		
 		this.subCategoryItemOutput.emit(subCategoryItemData);
+		
+		//this.subCategoryItemOutput.emit(subCategoryItemData);
 		document.getElementsByClassName('Copy-To-Clipboard')[0].classList.remove('Copy-To-Clipboard-Click');
 	}
 
@@ -82,7 +83,6 @@ export class SubsectionComponent{
 	reSearch(event: Event){	
 		this.searchArr[0] = event;
 		document.getElementById(`searchInput`).innerHTML = this.searchArr.toString();
-
 		document.getElementById('Search-Input-Div').style.visibility = "visible";
 
 		// id search box grows over 34 characters (combined 37 characters)
@@ -113,7 +113,6 @@ export class SubsectionComponent{
 			document.getElementById('alert-info-id').setAttribute('hidden','hidden');
 		}else{
 			// Populate the info box from detail stored in config or even perform a google search
-
 			document.getElementById('alert-info-id').removeAttribute('hidden');
 		}
 	}

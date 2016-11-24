@@ -113,7 +113,6 @@ h1, h2, h3, h4, h5, h6, li {
 
 #container-c1-header{
   padding-bottom: 6px;
-
 }
 
 #container-c2-header{
@@ -189,7 +188,6 @@ h1, h2, h3, h4, h5, h6, li {
   padding-left: 5px;
   padding-right: 5px;
 }
-
 .Copy-To-Clipboard:hover{
   background-color: #a7dce5;
 }
@@ -239,3 +237,33 @@ input[type=text] {
   cursor: pointer;
   cursor: hand;
 }
+
+#table-id{
+  background-color: #a7dce5;
+  opacity: 0.8;
+  text-align: center;
+  max-width: 26%;
+}
+/*#table-id tbody tr{
+  width: 10px;
+}
+#table-id tbody th{
+  width: 10px;
+}
+#table-id tbody tr td {
+  width: 10px;
+}
+#table-id thead tr th {
+  color: red;
+}*/
+
+.table-head-header{
+  width: 20%;
+  text-align: center;
+}
+.table-body-header{
+  width: 10px;
+  text-align: center;
+}
+
+
