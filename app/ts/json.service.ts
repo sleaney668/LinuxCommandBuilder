@@ -10,12 +10,6 @@ export class JSONService{
     jsonObject;
     linuxObject;
 
-    binaryArr = [4,2,1];
-    myArr = [[0,0,0],
-             [0,0,0],
-             [0,0,0]];
-
-
     public getLinuxCategories(search){
         this.jsonObject = Config.dataObject;
         let linuxArray = this.jsonObject.linuxCategories;
@@ -46,7 +40,6 @@ export class JSONService{
     
           console.log(this.linuxObject);
         }
-
     }
 
     private populateCategoriesIndexList(jsonSearch){
@@ -83,50 +76,5 @@ export class JSONService{
         default:
           return null;
         }
-    }
-
-    chmodBuilder(event: Event){
-
-      this.eventRendering(event);
-      this.binaryTranslation();
-
-      console.log("User:  " + this.myArr[0][0] + " " + this.myArr[0][1] + " " + this.myArr[0][2]);
-      console.log("Group: " + this.myArr[1][0] + " " + this.myArr[1][1] + " " + this.myArr[1][2]);
-      console.log("Other: " + this.myArr[2][0] + " " + this.myArr[2][1] + " " + this.myArr[2][2]);
-    }
-
-    eventRendering(event: Event){
-
-      this.myArr[0][0] = document.getElementById('checkbox-0.0').checked == true ? 1 : 0;
-      this.myArr[0][1] = document.getElementById('checkbox-0.1').checked == true ? 1 : 0;
-      this.myArr[0][2] = document.getElementById('checkbox-0.2').checked == true ? 1 : 0;
-
-      this.myArr[1][0] = document.getElementById('checkbox-1.0').checked == true ? 1 : 0;
-      this.myArr[1][1] = document.getElementById('checkbox-1.1').checked == true ? 1 : 0;
-      this.myArr[1][2] = document.getElementById('checkbox-1.2').checked == true ? 1 : 0;
-
-      this.myArr[2][0] = document.getElementById('checkbox-2.0').checked == true ? 1 : 0;
-      this.myArr[2][1] = document.getElementById('checkbox-2.1').checked == true ? 1 : 0;
-      this.myArr[2][2] = document.getElementById('checkbox-2.2').checked == true ? 1 : 0;
-    }
-
-    binaryTranslation(){
-      // r  w  x
-      // 4  2  1 
-
-      var userTotal  = (this.myArr[0][0] == 1 ? this.binaryArr[0] : 0) + 
-                       (this.myArr[0][1] == 1 ? this.binaryArr[1] : 0) + 
-                       (this.myArr[0][2] == 1 ? this.binaryArr[2] : 0);
-
-      var groupTotal  = (this.myArr[1][0] == 1 ? this.binaryArr[0] : 0) + 
-                        (this.myArr[1][1] == 1 ? this.binaryArr[1] : 0) + 
-                        (this.myArr[1][2] == 1 ? this.binaryArr[2] : 0);
-
-      var otherTotal  = (this.myArr[2][0] == 1 ? this.binaryArr[0] : 0) + 
-                        (this.myArr[2][1] == 1 ? this.binaryArr[1] : 0) + 
-                        (this.myArr[2][2] == 1 ? this.binaryArr[2] : 0);
-
-      alert("Command: " + userTotal + groupTotal + otherTotal);
-
     }
 }

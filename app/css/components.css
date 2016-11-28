@@ -107,7 +107,7 @@ h1, h2, h3, h4, h5, h6, li {
 
 .container-c3 code{
   width: 95%;
-  padding: 10px;
+  padding: 9px;
   margin-left: 3px;
 }
 
@@ -159,17 +159,27 @@ h1, h2, h3, h4, h5, h6, li {
 }
 
 .Search-h7{
-  position: relative;
-  padding: 9px;
-  left: 10px;
-  padding-bottom: 9.8px;
   background-color: #a7dce5;
+  margin-left: 10px;
+  margin-right: -9px;
+  padding-top: 7px;
+  padding-bottom: 8px;
+  padding-right: 10px;
+  padding-left: 5px;
+  border-radius: 1px;
 }
 
 #Search-Result-Div{
-  float: left;
+/*  float: left;*/
 }
 #Search-Input-Div{
+}
+
+#search-h7-div{
+  float: left;
+}
+#search-result-div{
+
 }
 
 .Copy-To-Clipboard{
@@ -215,7 +225,7 @@ input[type=text] {
   width: 99%;
   margin: 0 auto;
   margin-top: 3%;
-  opacity: 0.5;
+  background-color: #8295a3;
 }
 
 .glyphicon-info-sign{
@@ -266,4 +276,14 @@ input[type=text] {
   text-align: center;
 }
 
+#data-div-h5{
+  font-family: "Raleway";
+  font-weight: 300;
+  color: white;
+}
+
+#data-div-h4{
+  float: left;
+  padding-right: 6px;
+}
 

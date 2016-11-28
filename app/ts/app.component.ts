@@ -10,6 +10,7 @@ import {SubsectionComponent} from './subsection.component';
 
 // Import services
 import {JSONService} from './json.service';
+import {CHMODService} from './chmod.service';
 
 // Import interfaces
 import {Command} from './command';
@@ -18,7 +19,7 @@ import {Command} from './command';
     selector: 'my-app',
     templateUrl: 'app/html/app.component.html',
     directives: [ListComponent, SubsectionComponent, CORE_DIRECTIVES],
-    providers: [JSONService]
+    providers: [JSONService, CHMODService]
 })
 
 export class AppComponent implements OnInit {
@@ -170,11 +171,7 @@ export class AppComponent implements OnInit {
 			document.getElementById(divId).style.visibility = "hidden";	
 	}
 
-	inputChanged(event: Event){
-		this._jsonService.chmodBuilder(event);
-	}
-
-	constructor(private _jsonService: JSONService){}
+	constructor(private _jsonService: JSONService, private _chmodService: CHMODService){}
 	ngOnInit(){
 		// Construct the linuxCategories read from the json object stored
         let linuxCategoriesArr = Config.categoriesSearch.split('.');

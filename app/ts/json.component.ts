@@ -7,8 +7,4 @@ import {Component, EventEmitter, Input, Output} from 'angular2/core';
 	outputs: ['listItemOutput']
 })
 
-export class ListComponent{
-
-
-
-}
+export class ListComponent{}

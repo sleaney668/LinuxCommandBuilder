@@ -32,8 +32,12 @@
 				<div class="container-c3" id="Search-Container">
 					<h5 class="container-headers" id="container-c3-header">Step 3 - Output</h5>
 					<div id="Search-Result-Div" style="visibility:hidden">
-						<h7 class="Search-h7">1</h7>
-						<code id="searchResult" title="Click for more info" (click)="onSearchResultClick()"></code>
+						<div id="search-h7-div">
+							<h7 class="Search-h7">1</h7>
+						</div>
+						<div id="search-result-div">
+							<code id="searchResult" title="Click for more info" (click)="onSearchResultClick()"></code>
+						</div>
 					</div>
 					<div id="Search-Input-Div" style="visibility:hidden">
 						<h7 class="Search-h7">2</h7>
@@ -48,12 +52,10 @@
 
 			<div class="container">
 				<div class="alert alert-info" id="alert-info-id" role="alert" hidden>
-					<p><a class="alert-link" (click)="onHrefClick()">mkdir</a> linux command</p>
-					<ul>
-						<li>The mkdir command is is used to create new directories.</li>
-						<li>A directory, referred to as a folder in some operating systems.</li>
-						<li>It appears to the user as a container for other directories and files.</li>
-					</ul>
+				<!-- Insert in here data div based on command -->
+				<h4 id="data-div-h4"></h4>				<h4 id="data-div-h4-href" class="alert-link" (click)="onHrefClick()">		
+					</h4>	
+				<data></data>	
 				</div>
 			</div>
 

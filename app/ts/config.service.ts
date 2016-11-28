@@ -26,4 +26,11 @@ export class Config{
 	
 	static copySearch: string = `File/Directory`;
 
+	static commandDict = {
+	    "mkdir": "Make directory",
+	    "touch": "Make file",
+	    "useradd": "Add user",
+	    "groupadd": "Add group",
+	    "chmod":"Change mode"
+	}
 }

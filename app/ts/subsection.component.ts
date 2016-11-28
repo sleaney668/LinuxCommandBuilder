@@ -1,12 +1,17 @@
 import {Component, EventEmitter, Input, Output} from 'angular2/core';
 import {AppComponent} from './app.component';
+import {DataComponent} from './data.component';
 
 // Import config
 import {Config} from './config.service';
 
+// Import services
+import {CHMODService} from './chmod.service';
+
 @Component({
 	selector: 'subsection',
 	templateUrl: 'app/html/subsection.component.html',
+	directives: [DataComponent],
 	inputs: ['showSubsection','linuxCategories','subSections','searchResult'],
 	outputs:['subCategoryItemOutput']
 })
@@ -114,6 +119,13 @@ export class SubsectionComponent{
 		}else{
 			// Populate the info box from detail stored in config or even perform a google search
 			document.getElementById('alert-info-id').removeAttribute('hidden');
+
+			// We want to take in a keyword and render new html from another component
+			document.getElementById('data-div-h4').innerHTML = Config.commandDict[document.getElementById('searchResult').innerHTML] + ` | `;
+			document.getElementById('data-div-h4-href').innerHTML = document.getElementById('searchResult').innerHTML;
+
+			var dataDiv = document.getElementById('searchResult').innerHTML + '-data';
+			document.getElementById(dataDiv).style.display = "block";
 		}
 	}
 
@@ -130,6 +142,10 @@ export class SubsectionComponent{
 		document.getElementById('modify-back-button').style.visibility = "hidden";
 
 		this.modifyCount--;
+	}
+
+	constructor(){}
+	ngOnInit(){
 	}
 
 }
