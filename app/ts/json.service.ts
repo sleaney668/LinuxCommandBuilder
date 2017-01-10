@@ -38,7 +38,7 @@ export class JSONService{
           else
             this.linuxObject = linuxArray[categoriesIndex][subCategoryIndex];
     
-          console.log(this.linuxObject);
+          // console.log(this.linuxObject);
         }
     }
 
@@ -77,4 +77,21 @@ export class JSONService{
           return null;
         }
     }
+
+    mkdirTreeParse(){
+
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

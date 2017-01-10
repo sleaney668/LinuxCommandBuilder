@@ -31,6 +31,22 @@ export class Config{
 	    "touch": "Make file",
 	    "useradd": "Add user",
 	    "groupadd": "Add group",
+
+	   	"rm":"Delete file",
+	   	"rmdir":"Delete directory",
+	   	"userdel":"Delete user",
+	   	"groupdel":"Delete group",
+	   	"rm -r":"Delete application",
+
+		"mv":"Modify name",
+		"nano":"Modify contents",
+		"touch -a --date":"Modify last accessed",
+		"touch -m --date":"Modify last modified",
+
 	    "chmod":"Change mode"
 	}
+
+	static mkdirTreeValues = "tmdir/{branches/sources/{includes,docs}branches,tags}";
+	// Value before first index of / is li #1
+	// after is new ul, if next char is { then 
 }

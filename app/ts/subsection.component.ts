@@ -26,10 +26,9 @@ export class SubsectionComponent{
 
 	subCategoryItemOutput = new EventEmitter();
 
-	onSubCategorySelect(subCategoryItemData:string, category:string) {	
-		
+	onSubCategorySelect(subCategoryItemData:string, category:string) {			
 		if(this.modifyCount == 1){
-			subCategoryItemData = subCategoryItemData + "."
+			subCategoryItemData = subCategoryItemData + ".";
 		}
 
 		if(category == "Modify" && this.modifyCount == 0){
@@ -40,12 +39,16 @@ export class SubsectionComponent{
 			document.getElementById('modify-back-button').style.visibility = "visible";
 
 			this.modifyCount++;
+
+			// Disable all other subsections
+			this.toggleListItemDisabled(true);
 		} 
 		
 		this.subCategoryItemOutput.emit(subCategoryItemData);
 		
-		//this.subCategoryItemOutput.emit(subCategoryItemData);
 		document.getElementsByClassName('Copy-To-Clipboard')[0].classList.remove('Copy-To-Clipboard-Click');
+
+		this.resetDataComponent(subCategoryItemData);
 	}
 
 		// Loads child sub section of category selected
@@ -90,12 +93,12 @@ export class SubsectionComponent{
 		document.getElementById(`searchInput`).innerHTML = this.searchArr.toString();
 		document.getElementById('Search-Input-Div').style.visibility = "visible";
 
-		// id search box grows over 34 characters (combined 37 characters)
-		var combinedLength = document.getElementById(`searchResult`).innerHTML.length + document.getElementById(`searchInput`).innerHTML.length
-		if(combinedLength >= 37){
-			document.getElementById('Search-Input-Div').style.paddingTop = "45px";
-		} else {
-			document.getElementById('Search-Input-Div').style.paddingTop = "";
+		// id search box grows over 34 characters (combined 40 characters)
+		var combinedLength = document.getElementById(`searchResult`).innerHTML.length + document.getElementById(`searchInput`).innerHTML.length;
+		if(combinedLength >= 40){
+			// update max length to searchInput Length
+			document.getElementById(document.getElementsByClassName('subsection-text-entry')[0].id).setAttribute("maxlength", document.getElementById(`searchInput`).innerHTML.length.toString());
+			
 		}
 
 		document.getElementsByClassName('Copy-To-Clipboard')[0].classList.remove('Copy-To-Clipboard-Click');
@@ -129,9 +132,20 @@ export class SubsectionComponent{
 		}
 	}
 
+	onSearchResultChange(){
+		// We want to take in a keyword and render new html from another component
+		document.getElementById('alert-info-id').setAttribute('hidden','hidden');
+
+		var dataDiv = document.getElementById('searchResult').innerHTML;
+		if(dataDiv != ""){
+			dataDiv = dataDiv + '-data';
+			document.getElementById(dataDiv).style.display = "none";
+		}
+	}
+
 	onHrefClick(){
 		// Google search for search result 
- 		window.open('https://www.google.com/?#q='+document.getElementById('searchResult').innerHTML + " linux command");
+ 		window.open('https://www.google.com/?#q=' + document.getElementById('searchResult').innerHTML + " linux command");
 	}
 
 	onBackButtonSelect(){
@@ -142,6 +156,40 @@ export class SubsectionComponent{
 		document.getElementById('modify-back-button').style.visibility = "hidden";
 
 		this.modifyCount--;
+
+		// Enable all toher subsections
+		this.toggleListItemDisabled(false);
+	}
+
+	toggleListItemDisabled(diabledFlag){
+		var listGroupItem = 'list-group-item-';
+
+		var linuxCategoriesArr = Config.categoriesSearch.split('.');
+		//linuxCategoriesArr.splice(linuxCategoriesArr.indexOf(`Modify`),1);
+
+	    for(var i in linuxCategoriesArr){
+	    	var listGroupItemCategory = listGroupItem + linuxCategoriesArr[i];
+	    	if(diabledFlag){
+	    		document.getElementById(listGroupItemCategory).classList.add('list-group-disabled');    	
+	    	} else {
+	    		document.getElementById(listGroupItemCategory).classList.remove('list-group-disabled'); 
+	    	}   	
+	     }
+	}
+
+	resetDataComponent(category){
+
+		// Clear this text box
+		// subsection-{{category}}-text-entry
+		document.getElementById('subsection-form').reset();
+
+		// Remove this from the output
+		// Search-Input-Div
+		document.getElementById('Search-Input-Div').style.visibility = "hidden";
+
+		// Change the information here
+		// alert-info-id
+		this.onSearchResultChange();
 	}
 
 	constructor(){}

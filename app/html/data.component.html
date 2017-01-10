@@ -1,11 +1,140 @@
-<!-- Make Directory data -->
-<div class="data-div" id="mkdir-data" style="display:none">
-	<ul>
-		<li>The mkdir command is is used to create new directories.</li>
-		<li>A directory, referred to as a folder in some operating systems.</li>
-		<li>It appears to the user as a container for other directories and files.</li>
-	</ul>
-</div>
+<!-- ADD SUBSECTION DATA-->
+	<!-- Make Directory data -->
+	<div class="data-div" id="mkdir-data" style="display:none">
+		<ul class="data-ul">
+			<li>The mkdir command is is used to create new directories.</li>
+			<li>A directory, referred to as a folder in some operating systems.</li>
+			<li>It appears to the user as a container for other directories and files.</li>
+		</ul>
+	</div>
+
+	<!-- Create file data -->
+	<div class="data-div" id="touch-data" style="display:none">
+		<ul>
+			<li>The touch command is commonly used to create new empty files.</li>
+			<li>It can also be used to update a files modification and/or accessed date, seen in Modify > File > Modified/Accessed.</li>
+		</ul>
+	</div>
+
+	<!-- Create user data -->
+	<div class="data-div" id="useradd-data" style="display:none">
+		<ul>
+			<li>The useradd command is a low-level utility.</li>
+			<li>It is used for creating user accounts in Linux.</li>
+			<li>adduser can also be used, it is a symbolic link to useradd.</li>
+		</ul>
+
+		<div class="data-note-div">
+			<h5><b>Note</b></h5>
+			<ul>
+				<li>&nbsp;</li>
+				<li>useradd -d home/directory username will create a user with a home/directory.</li>
+				<li>useradd -g groupname username will create a new user and assign them a group.</li>
+				<li>&nbsp;</li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- Create group data -->
+	<div class="data-div" id="groupadd-data" style="display:none">
+		<ul>
+			<li>The groupadd command is used in Linux to add user groups to a system.</li>
+		</ul>
+
+		<div class="data-note-div">
+			<h5><b>Note</b></h5>
+			<ul>
+				<li><i>groupadd command exits with the following value</i></li>
+				<li>&nbsp;</li>
+				<li>0 &nbsp; - &nbsp; Success</li>
+				<li>2 &nbsp; - &nbsp; Invalid command syntax</li>
+				<li>3 &nbsp; - &nbsp; Invalid argument to option</li>
+				<li>4 &nbsp; - &nbsp; GID not unique</li>
+				<li>9 &nbsp; - &nbsp; Group name not unique</li>
+				<li>10 &nbsp; - &nbsp; Can't update group file</li>
+			</ul>
+		</div>
+	</div>
+<!-- END ADD SUBSECTION DATA-->
+
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+<!-- DELETE SUBSECTION DATA-->
+	<!-- Make Directory data -->
+	<div class="data-div" id="rm-data" style="display:none">
+		<ul class="data-ul">
+			<li>The rm command can be used to delete files.</li>
+			<li>It can also be used for deletion needs, see below.</li>
+		</ul>
+
+		<div class="data-note-div">
+			<h5><b>Note</b></h5>
+			<ul>
+				<li><i>USE WITH CAUTION</i></li>
+				<li>&nbsp;</li>
+				<li>rm -f will forcefully remove file.</li>
+				<li>rm -r will recursively remove files in the working directory.</li>
+				<li>rm -rf will remove the specified directory and all files and subdirectories from within.</li>
+				<li>rm -i will request confirmation for the deletion.</li>
+				
+			</ul>
+		</div>
+	</div>
+
+	<!-- Create file data -->
+	<div class="data-div" id="touch-data" style="display:none">
+		<ul>
+			<li>The touch command is commonly used to create new empty files.</li>
+			<li>It can also be used to update a files modification and/or accessed date, seen in Modify > File > Modified/Accessed.</li>
+		</ul>
+	</div>
+
+	<!-- Create user data -->
+	<div class="data-div" id="useradd-data" style="display:none">
+		<ul>
+			<li>The useradd command is a low-level utility.</li>
+			<li>It is used for creating user accounts in Linux.</li>
+			<li>adduser can also be used, it is a symbolic link to useradd.</li>
+		</ul>
+
+		<div class="data-note-div">
+			<h5><b>Note</b></h5>
+			<ul>
+				<li>&nbsp;</li>
+				<li>useradd -d home/directory username will create a user with a home/directory.</li>
+				<li>useradd -g groupname username will create a new user and assign them a group.</li>
+				<li>&nbsp;</li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- Create group data -->
+	<div class="data-div" id="groupadd-data" style="display:none">
+		<ul>
+			<li>The groupadd command is used in Linux to add user groups to a system.</li>
+		</ul>
+
+		<div class="data-note-div">
+			<h5><b>Note</b></h5>
+			<ul>
+				<li><i>groupadd command exits with the following value</i></li>
+				<li>&nbsp;</li>
+				<li>0 &nbsp; - &nbsp; Success</li>
+				<li>2 &nbsp; - &nbsp; Invalid command syntax</li>
+				<li>3 &nbsp; - &nbsp; Invalid argument to option</li>
+				<li>4 &nbsp; - &nbsp; GID not unique</li>
+				<li>9 &nbsp; - &nbsp; Group name not unique</li>
+				<li>10 &nbsp; - &nbsp; Can't update group file</li>
+				<li>&nbsp;</li>
+			</ul>
+		</div>
+	</div>
+<!-- END DELETE SUBSECTION DATA-->
+
+
+
+
+
 
 <!-- chmod data-->	
 <div class="data-div" id="chmod-data" style="display:none">
@@ -59,3 +188,4 @@
 		</tbody>
 	</table>
 </div>
+

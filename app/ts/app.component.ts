@@ -43,6 +43,7 @@ export class AppComponent implements OnInit {
 	categoryChangeFlag: boolean;
 
 	onBulletSelect(listItemData){
+
 		// Call to append the search string at level 1
 		this.appendSearchString(listItemData, 1);
 
@@ -65,6 +66,7 @@ export class AppComponent implements OnInit {
 		var listItem = document.getElementById(`subsection-${listItemData}`);
 		var subListItem = document.getElementById(`subsection-${listItemData}-Data`);
 		listItem.appendChild(subListItem);	
+
 	}
 
 	// Loads child sub section of category selected
@@ -155,8 +157,17 @@ export class AppComponent implements OnInit {
 
 	// Updates the search string based on user entry
 	appendSearchString(searchItem, appendLevel){
+
+		if(appendLevel == 1) {
+			this.searchArr.splice(0, this.searchArr.length);
+			this.searchString = "";
+		} else {
+			this.searchArr.splice(appendLevel, 1);
+		}
+
 		this.searchArr[appendLevel-1] = searchItem.toLowerCase();
 		this.searchString = this.searchArr.join('.');
+
 	}
 
 	// Updates the search result based on the user entry.
@@ -181,6 +192,7 @@ export class AppComponent implements OnInit {
 
 		this.tmplistItemData = "minimise";
 		this.searchResult = "NaN";
+
 	}
 
 }
