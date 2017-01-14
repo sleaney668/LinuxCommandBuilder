@@ -161,50 +161,10 @@ h1, h2, h3, h4, h5, h6, li {
   cursor: hand;
 }
 
-#searchResult:hover{
-  box-shadow: 0px 0px 0px 2px #a7dce5;
-
-}
-#searchInput{
-
-}
-
-.Search-h7{
-  background-color: #a7dce5;
-  margin-left: 10px;
-  margin-right: -9px;
-  padding-top: 7px;
-  padding-bottom: 8px;
-  padding-right: 10px;
-  padding-left: 5px;
-  border-radius: 1px;
-}
-
-
-#Code-Container-Div{
-    margin: auto;
-}
-
-@media screen and (max-width: 1398px) { 
-/*  #searchInput{
-    float: none;
-    margin-right:0;
-    width:auto;
-    border:0;
-    border-bottom:2px solid #000;  
-  }*/
-}
-
-#Search-Result-Div{
-  float: left;
-}
-#Search-Input-Div{
-  float: left;
-}
 
 .Copy-To-Clipboard{
   float: right;
-  margin-right: 21px;
+  margin-right: 1.7%;
   border-bottom-left-radius: 7px;
   background-color: #abb8c5;
   cursor: pointer;
@@ -335,8 +295,58 @@ input[type=text] {
 }
 
 
+/* SECTION 3 CSS */
+#Code-Container-Div{
+    margin: auto;
+}
 
+.outer-container{
 
+}
+
+.searchTag{
+  float: left;
+  padding: 5px;
+  background-color: #a7dce5;
+
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+#Search-Result-Div, #Search-Input-Div{
+  margin-left: 10px;
+  border-radius: 2px;
+  float: left;
+}
+#searchResult, #searchInput{
+  font-family: Monaco;
+  margin-left: 17px;
+  padding: 5px;
+  background-color: #f9f2f4;
+  color: #c7264f;
+
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+#Search-Result-Div:hover .searchTag{
+  background-color: #2c3e50;
+}
+#Search-Result-Div:hover #searchResult {
+  opacity: 0.8;
+}
+
+form#subsection-form{
+  padding-top: 4px;
+}
+
+@media screen and (max-width: 1398px) { 
+/*  #searchInput{   
+    overflow: hidden;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+  }  */
+}
 
 
 

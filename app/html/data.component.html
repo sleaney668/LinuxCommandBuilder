@@ -2,8 +2,8 @@
 	<!-- Make Directory data -->
 	<div class="data-div" id="mkdir-data" style="display:none">
 		<ul class="data-ul">
-			<li>The mkdir command is is used to create new directories.</li>
-			<li>A directory, referred to as a folder in some operating systems.</li>
+			<li>The <b><i>mkdir</i></b> command is is used to create new directories.</li>
+			<li>A directory is referred to as a folder in some operating systems.</li>
 			<li>It appears to the user as a container for other directories and files.</li>
 		</ul>
 	</div>
@@ -11,25 +11,27 @@
 	<!-- Create file data -->
 	<div class="data-div" id="touch-data" style="display:none">
 		<ul>
-			<li>The touch command is commonly used to create new empty files.</li>
-			<li>It can also be used to update a files modification and/or accessed date, seen in Modify > File > Modified/Accessed.</li>
+			<li>The <b><i>touch</i></b> command is commonly used to create new empty files.</li>
+			<li>It can also be used to update a files lasr modification or accessed date, please see:</li>
+			<ul><li>Modify > File > Modified/Accessed.</li></ul>
+			
 		</ul>
 	</div>
 
 	<!-- Create user data -->
 	<div class="data-div" id="useradd-data" style="display:none">
 		<ul>
-			<li>The useradd command is a low-level utility.</li>
+			<li>The <b><i>useradd</i></b> command is a low-level utility.</li>
 			<li>It is used for creating user accounts in Linux.</li>
-			<li>adduser can also be used, it is a symbolic link to useradd.</li>
+			<li>The <b><i>adduser</i></b> command can also be used, it is a symbolic link to useradd.</li>
 		</ul>
 
 		<div class="data-note-div">
 			<h5><b>Note</b></h5>
 			<ul>
 				<li>&nbsp;</li>
-				<li>useradd -d home/directory username will create a user with a home/directory.</li>
-				<li>useradd -g groupname username will create a new user and assign them a group.</li>
+				<li><i>useradd -d home/directory username</i> will create a user with a home/directory.</li>
+				<li><i>useradd -g groupname username</i> will create a new user and assign them a group.</li>
 				<li>&nbsp;</li>
 			</ul>
 		</div>
@@ -38,13 +40,13 @@
 	<!-- Create group data -->
 	<div class="data-div" id="groupadd-data" style="display:none">
 		<ul>
-			<li>The groupadd command is used in Linux to add user groups to a system.</li>
+			<li>The <b><i>groupadd</i></b> command is used in Linux to add user groups to a system.</li>
 		</ul>
 
 		<div class="data-note-div">
 			<h5><b>Note</b></h5>
 			<ul>
-				<li><i>groupadd command exits with the following value</i></li>
+				<li><i>groupadd exits with the following value</i></li>
 				<li>&nbsp;</li>
 				<li>0 &nbsp; - &nbsp; Success</li>
 				<li>2 &nbsp; - &nbsp; Invalid command syntax</li>
@@ -60,10 +62,10 @@
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
 <!-- DELETE SUBSECTION DATA-->
-	<!-- Make Directory data -->
+	<!-- Delete data -->
 	<div class="data-div" id="rm-data" style="display:none">
 		<ul class="data-ul">
-			<li>The rm command can be used to delete files.</li>
+			<li>The <b><i>rm</i></b> command can be used to delete files.</li>
 			<li>It can also be used for deletion needs, see below.</li>
 		</ul>
 
@@ -72,66 +74,120 @@
 			<ul>
 				<li><i>USE WITH CAUTION</i></li>
 				<li>&nbsp;</li>
-				<li>rm -f will forcefully remove file.</li>
-				<li>rm -r will recursively remove files in the working directory.</li>
-				<li>rm -rf will remove the specified directory and all files and subdirectories from within.</li>
-				<li>rm -i will request confirmation for the deletion.</li>
+				<li><i>rm -f</i> will forcefully remove file.</li>
+				<li><i>rm -r</i> will recursively remove files in the working directory.</li>
+				<li><i>rm -rf</i> will remove the specified directory and all files and subdirectories from within.</li>
+				<li><i>rm -i</i> will request confirmation for the deletion.</li>
 				
 			</ul>
 		</div>
 	</div>
 
-	<!-- Create file data -->
-	<div class="data-div" id="touch-data" style="display:none">
+	<!-- Delete directory data -->
+	<div class="data-div" id="rmdir-data" style="display:none">
 		<ul>
-			<li>The touch command is commonly used to create new empty files.</li>
-			<li>It can also be used to update a files modification and/or accessed date, seen in Modify > File > Modified/Accessed.</li>
+			<li>The <b><i>rmdir</i></b> command is used to delete empty directories.</li>
 		</ul>
-	</div>
-
-	<!-- Create user data -->
-	<div class="data-div" id="useradd-data" style="display:none">
-		<ul>
-			<li>The useradd command is a low-level utility.</li>
-			<li>It is used for creating user accounts in Linux.</li>
-			<li>adduser can also be used, it is a symbolic link to useradd.</li>
-		</ul>
-
 		<div class="data-note-div">
 			<h5><b>Note</b></h5>
 			<ul>
 				<li>&nbsp;</li>
-				<li>useradd -d home/directory username will create a user with a home/directory.</li>
-				<li>useradd -g groupname username will create a new user and assign them a group.</li>
+				<li>To delete non-empty directories use <b><i>rm -r</i></b>.</li>
 				<li>&nbsp;</li>
 			</ul>
 		</div>
 	</div>
 
-	<!-- Create group data -->
-	<div class="data-div" id="groupadd-data" style="display:none">
+	<!-- Delete user data -->
+	<div class="data-div" id="userdel-data" style="display:none">
 		<ul>
-			<li>The groupadd command is used in Linux to add user groups to a system.</li>
+			<li>The userdel command is a low-level utility.</li>
+			<li>It is used for deleting user accounts in Linux.</li>
 		</ul>
+	</div>
 
-		<div class="data-note-div">
-			<h5><b>Note</b></h5>
-			<ul>
-				<li><i>groupadd command exits with the following value</i></li>
-				<li>&nbsp;</li>
-				<li>0 &nbsp; - &nbsp; Success</li>
-				<li>2 &nbsp; - &nbsp; Invalid command syntax</li>
-				<li>3 &nbsp; - &nbsp; Invalid argument to option</li>
-				<li>4 &nbsp; - &nbsp; GID not unique</li>
-				<li>9 &nbsp; - &nbsp; Group name not unique</li>
-				<li>10 &nbsp; - &nbsp; Can't update group file</li>
-				<li>&nbsp;</li>
-			</ul>
-		</div>
+	<!-- Delete group data -->
+	<div class="data-div" id="groupdel-data" style="display:none">
+		<ul>
+			<li>The groupdel command modifies the system account files.</li>
+			<li>Deleting all entries that refer to the group.</li>
+			<li>The named group must exist</li>
+		</ul>
 	</div>
 <!-- END DELETE SUBSECTION DATA-->
 
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
+<!-- MODIFY > FILE SUBSECTION DATA-->
+	<!-- Modify directory/file location/name data -->
+	<div class="data-div" id="mv-data" style="display:none">
+		<ul>
+			<li>The <b><i>mv</i></b> command is used to move or rename files.</li>
+		</ul>
+		<div class="data-note-div">
+			<h5><b>Note</b></h5>
+			<ul>
+				<li><i>mv &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; old-filename/source &nbsp; new-filename/dest</i>
+				&nbsp;&nbsp;&nbsp;&nbsp;[Standard file rename]</li>
+				<li><i>mv -v &nbsp; old-filename/source &nbsp; new-filename/dest</i>
+				&nbsp;&nbsp;&nbsp;&nbsp;[Verbose output]</li>
+				<li><i>mv -i &nbsp;&nbsp; old-filename/source &nbsp; new-filename/dest</i>
+				&nbsp;&nbsp;&nbsp;&nbsp;[Interactive pass, user prompt]</li>
+				<li><i>mv -f &nbsp; old-filename/source &nbsp; new-filename/dest</i>
+				&nbsp;&nbsp;&nbsp;&nbsp;[Force]</li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- Modify file data -->
+	<div class="data-div" id="vi-data" style="display:none">
+		<ul>
+			<li>The <b><i>vi</i></b> command is used to edit the contents of files.</li>
+			<li>It is short for "vi"sual editor.</li>
+			<li>It has two modes COMMAND and INSERT mode:</li>
+			<ul>
+				<li>Command mode: letters you type perform functions.</li>
+				<li>Insert mode: letters you type form words and sentences.</li>
+			</ul>
+			<li>A more feature rich version of vi is vim, it stands for vi improved.</li>
+			<li>An easier alternative to vi or vim is nano, man nano.</li>
+			<br>
+			<li>vi will start in command mode, to enter insert mode type 'i'.</li>
+			<li>To quit insert mode type Ctrl+c or press the Esc key.</li>	
+			<li>To undo any changes enter command mode and type 'u', to undo all changes type 'U'.</li>	
+		</ul>
+
+		<div class="data-note-div">
+			<h5><b>Note</b></h5>
+			<ul>
+				<li>&nbsp;</li>
+				<li><b><u>Exit</u></b></li>
+				<li> <b>:x</b>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Exits vi, saving changes.</li>
+				<li> <b>:q</b>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Quits vi as long as no changes have been made, add ! to override.</li>
+				<li> <b>:q!</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Quits vi and ignores any changes.</li>
+				<li> <b>:wq</b> &nbsp;&nbsp;&nbsp; Writes changes and quits vi.</li>
+				<li> <b>ZZ</b>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Exits vi, saving changes.</li>
+				<li>&nbsp;</li>
+				<li><b><u>Navigation</u></b></li>
+				<li> <b> Arrow key </b> or <b> h </b> &nbsp;&nbsp;&nbsp; Navigate left.</li>
+				<li> <b> Arrow key </b> or <b> l </b> &nbsp;&nbsp;&nbsp;&nbsp; Navigate right.</li>
+				<li> <b> Arrow key </b> or <b> k </b> &nbsp;&nbsp;&nbsp; Navigate up.</li>
+				<li> <b> Arrow key </b> or <b> j </b> &nbsp;&nbsp;&nbsp;&nbsp; Navigate down.</li>
+				<li> <b> H </b> &nbsp;&nbsp;&nbsp; Jump to top.</li>
+				<li> <b> L </b> &nbsp;&nbsp;&nbsp; Jump to bottom.</li>
+				<li> <b> / </b> &nbsp;&nbsp;&nbsp; Starts search, provide keyword. Use n to navigate through matches.</li>
+				<li>&nbsp;</li>
+			</ul>
+		</div>
+	</div>
+
+<!-- END MODIFY > FILE SUBSECTION DATA-->
+
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+<!-- MODIFY SUBSECTION DATA-->
+
+<!-- END MODIFY SUBSECTION DATA-->
 
 
 

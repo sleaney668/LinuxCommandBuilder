@@ -43,7 +43,6 @@ export class AppComponent implements OnInit {
 	categoryChangeFlag: boolean;
 
 	onBulletSelect(listItemData){
-
 		// Call to append the search string at level 1
 		this.appendSearchString(listItemData, 1);
 
@@ -66,7 +65,6 @@ export class AppComponent implements OnInit {
 		var listItem = document.getElementById(`subsection-${listItemData}`);
 		var subListItem = document.getElementById(`subsection-${listItemData}-Data`);
 		listItem.appendChild(subListItem);	
-
 	}
 
 	// Loads child sub section of category selected
