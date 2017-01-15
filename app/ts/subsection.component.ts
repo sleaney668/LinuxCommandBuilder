@@ -119,7 +119,13 @@ export class SubsectionComponent{
 	onSearchResultClick(){
 		if(!document.getElementById('alert-info-id').hasAttribute('hidden')){
 			document.getElementById('alert-info-id').setAttribute('hidden','hidden');
+
+			document.getElementById('searchResult').classList.remove('searchResultSelected');
+			document.getElementsByClassName('searchTag')[0].classList.remove('searchTagSelected');
 		}else{
+			document.getElementById('searchResult').classList.add('searchResultSelected');
+			document.getElementsByClassName('searchTag')[0].classList.add('searchTagSelected');
+
 			// Populate the info box from detail stored in config or even perform a google search
 			document.getElementById('alert-info-id').removeAttribute('hidden');
 
@@ -180,15 +186,12 @@ export class SubsectionComponent{
 	resetDataComponent(category){
 
 		// Clear this text box
-		// subsection-{{category}}-text-entry
 		document.getElementById('subsection-form').reset();
 
 		// Remove this from the output
-		// Search-Input-Div
 		document.getElementById('Search-Input-Div').style.visibility = "hidden";
 
 		// Change the information here
-		// alert-info-id
 		this.onSearchResultChange();
 	}
 

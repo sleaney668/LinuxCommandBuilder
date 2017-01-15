@@ -335,6 +335,13 @@ input[type=text] {
 #Search-Result-Div:hover #searchResult {
   opacity: 0.8;
 }
+.searchResultSelected{
+  opacity: 0.8;
+}
+.searchTagSelected{
+  background-color: #2c3e50;
+}
+
 
 form#subsection-form{
   padding-top: 4px;

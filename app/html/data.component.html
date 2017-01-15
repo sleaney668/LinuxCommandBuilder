@@ -134,7 +134,7 @@
 				<li><i>mv -i &nbsp;&nbsp; old-filename/source &nbsp; new-filename/dest</i>
 				&nbsp;&nbsp;&nbsp;&nbsp;[Interactive pass, user prompt]</li>
 				<li><i>mv -f &nbsp; old-filename/source &nbsp; new-filename/dest</i>
-				&nbsp;&nbsp;&nbsp;&nbsp;[Force]</li>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Force]</li>
 			</ul>
 		</div>
 	</div>
@@ -181,7 +181,101 @@
 		</div>
 	</div>
 
+	<!-- Modify directory/file accessed data -->
+	<div class="data-div" id="touch -a-data" style="display:none">
+		<ul>
+			<li>We changed the accessed time of a file using the <b><i>touch</i></b> command paired with the option -a.</li>
+			<li>By default this will take the current system time and update the accessed time field.</li>
+		</ul>
+		<div class="data-note-div">
+			<h5><b>Note</b></h5>
+			<ul>
+				<li>&nbsp;</li>
+				<li><i>You can explicitly specify the time using -t and -d options</i>i</li>
+				<li>&nbsp;</li>
+				<li>The format for specifying -t is [[CC]YY]MMDDhhmm[.SS]</li>
+				<li>The format for specifying -d is "2017-01-14 12:12:12.000000000 _0530"</li>
+				<li>&nbsp;</li>
+				<li>CC &nbsp; - &nbsp; Specifies the first two digits of the year.</li>
+				<li>YY &nbsp; - &nbsp; Specifies the last two digits of the year.</li>
+				<li>MM &nbsp; - &nbsp; Specifies the month.</li>
+				<li>DD &nbsp; - &nbsp; Specifies the day.</li>
+				<li>hh &nbsp; - &nbsp; Specifies the hour.</li>
+				<li>mm &nbsp; - &nbsp; Specifies the minute.</li>
+				<li>SS &nbsp; - &nbsp; Specifies the seconds.</li>
+				<li>&nbsp;</li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- Modify directory/file modified data -->
+	<div class="data-div" id="touch -m-data" style="display:none">
+		<ul>
+			<li>We changed the modification time of a file using the <b><i>touch</i></b> command paired with the option -m.</li>
+			<li>By default this will take the current system time and update the modified time field.</li>
+		</ul>
+		<div class="data-note-div">
+			<h5><b>Note</b></h5>
+			<ul>
+				<li>&nbsp;</li>
+				<li><i>You can explicitly specify the time using -t and -d options</i>i</li>
+				<li>&nbsp;</li>
+				<li>The format for specifying -t is [[CC]YY]MMDDhhmm[.SS]</li>
+				<li>The format for specifying -d is "2017-01-14 12:12:12.000000000 +0530"</li>
+				<li>&nbsp;</li>
+				<li>CC &nbsp; - &nbsp; Specifies the first two digits of the year.</li>
+				<li>YY &nbsp; - &nbsp; Specifies the last two digits of the year.</li>
+				<li>MM &nbsp; - &nbsp; Specifies the month.</li>
+				<li>DD &nbsp; - &nbsp; Specifies the day.</li>
+				<li>hh &nbsp; - &nbsp; Specifies the hour.</li>
+				<li>mm &nbsp; - &nbsp; Specifies the minute.</li>
+				<li>SS &nbsp; - &nbsp; Specifies the seconds.</li>
+				<li>&nbsp;</li>
+			</ul>
+		</div>
+	</div>
 <!-- END MODIFY > FILE SUBSECTION DATA-->
+
+<!-- MODIFY > USER SUBSECTION DATA-->
+
+	<!-- Modify username data -->
+	<div class="data-div" id="usermod -l-data" style="display:none">
+		<ul>
+			<li>The <b><i>usermod -l</i></b> command is used to rename a user's name in linux.</li>
+			<li>To verify rename is successful: <b>id newUsername</b></li>
+		</ul>
+	</div>
+
+	<!-- Modify password data -->
+	<div class="data-div" id="passwd-data" style="display:none">
+		<ul>
+			<li>The <b><i>passwd</i></b> command is used to reset the password of a users account in linux.</li>
+		</ul>
+
+		<div class="data-note-div">
+			<h5><b>Note</b></h5>
+			<ul>
+				<li>The following commands will change the way the passwd command operates.</li>
+				<li>&nbsp;</li>
+				<li> <b>-d username</b>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Deletes a users password, this is a quick way to disable logins for an account (without disabling the account itself).</li>
+				<li> <b>-e username</b>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Immediately expire an accounts password, this forces a user to change their password the next time they login.</li>
+				<li> <b>-h</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display information about how to use the passwd command.</li>
+				<li> <b>-i x username</b> &nbsp;&nbsp;&nbsp;&nbsp; This option is used to disable an account after the password has been expired for (x) number of days.</li>
+				<li> <b>-l username</b>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Lock the password of the named account, meaning they are not allowed to change their password.</li>
+
+				<li> <b>-n x username</b>  &nbsp;&nbsp;&nbsp; Set the minimum number of days (x) between password changes, 0 means the user may change their password at any time.</li>
+				<li> <b>-q username</b>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Quiet mode, will operate without displaying any output.</li>
+				<li> <b>-S username</b>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays account status information, specifying -a in addition to -S will display password status for all users.</li>
+				<li> <b>-u username</b>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Unlock the password of the named account.</li>
+				<li> <b>-w x username</b>  &nbsp;&nbsp;&nbsp; Set the number of days (x) of warning before a password change is required.</li>
+				<li> <b>-x x username</b>  &nbsp;&nbsp;&nbsp;&nbsp; Set the maximum number of days (x) a password remains valid</li>
+				<li>&nbsp;</li>
+			</ul>
+		</div>
+	</div>
+
+<!-- END MODIFY > END USER SUBSECTION DATA-->
+
 
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 

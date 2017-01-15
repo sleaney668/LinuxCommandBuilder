@@ -2,7 +2,7 @@ export class Config{
 	static MAIN_HEADING: string = " | Linux Command Builder | "
 	//static dataObject: Object = {"linuxCategories":[{"add":[{"directory":"mkdir"},{"directory1":"mkdir"},{"directory2":"mkdir"}]},{"delete":"object"},{"modify":"object"},{"view":"object"},{"locate":"object"},{"copy":"object"}]};
 
-	static dataObject: Object = {"linuxCategories":[["mkdir","touch","useradd","groupadd"],["rm","rmdir","userdel","groupdel","rm -r"],[["mv","vi","touch -a --date","touch -m --date"],["mv","?"],["usermod -l","passwd"],["chmod"],["chown"]],["cat","stat","ls","tail","top","lsof -i :","ps -eaf"],["ps aux","?","pwd","?","w || who"],["cp","cp"]]};
+	static dataObject: Object = {"linuxCategories":[["mkdir","touch","useradd","groupadd"],["rm","rmdir","userdel","groupdel","rm -r"],[["mv","vi","touch -a","touch -m"],["mv","touch -a","touch -m"],["usermod -l","passwd"],["chmod"],["chown"]],["cat","stat","ls","tail","top","lsof -i :","ps -eaf"],["ps aux","?","pwd","?","w || who"],["cp","cp"]]};
 
 	static categoriesSearch: string = `Add.Delete.Modify.View.Locate.Copy`;
 
@@ -10,11 +10,11 @@ export class Config{
 
 	static deleteSearch: string = `File.Directory.User.Group.Application`;
 
-	static modifySearch: string = `File.User.Permissions.Ownership`;
+	static modifySearch: string = `File.Directory.User.Permissions.Ownership`;
 
 	// Added space to sub searches so as they are not euqal to their parent div
 	static modifyFileSubSearch: string = ` Name/Location. Contents. Accessed. Modified`;
-	//static modifyDirectorySubSearch: string = ` Name. Accessed`;
+	static modifyDirectorySubSearch: string = ` Name. Accessed. Modified`;
 	static modifyUserSubSearch: string = ` Name. Password`;
 	static modifyPermissionsSubSearch: string = ` File. Directory`;
 	static modifyOwnershipSubSearch: string = ` File. Directory`;
@@ -40,8 +40,11 @@ export class Config{
 
 		"mv":"Modify name/location",
 		"vi":"Modify contents",
-		"touch -a --date":"Modify last accessed",
-		"touch -m --date":"Modify last modified",
+		"touch -a":"Modify last accessed",
+		"touch -m":"Modify last modified",
+
+		"usermod -l":"Modify username",
+		"passwd":"Modify password",
 
 	    "chmod":"Change mode"
 	}
