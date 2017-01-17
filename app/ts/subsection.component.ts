@@ -143,9 +143,10 @@ export class SubsectionComponent{
 		document.getElementById('alert-info-id').setAttribute('hidden','hidden');
 
 		var dataDiv = document.getElementById('searchResult').innerHTML;
-		if(dataDiv != ""){
+		if(dataDiv != null || dataDiv != ""){
 			dataDiv = dataDiv + '-data';
-			document.getElementById(dataDiv).style.display = "none";
+			if(document.getElementById(dataDiv) != null)
+				document.getElementById(dataDiv).style.display = "none";
 		}
 	}
 

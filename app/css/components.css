@@ -5,6 +5,14 @@ h1, h2, h3, h4, h5, h6, li {
   color: #333;
 }
 
+.codeFormatLi span{
+  font-family: Monaco;
+}
+.commandFormatLi span{
+  font-weight: bold;
+/*  font-style: italic;*/
+}
+
 .title{
   padding-bottom: 20px;
   padding-top: 25px;

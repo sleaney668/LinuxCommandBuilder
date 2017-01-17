@@ -56,6 +56,8 @@ export class JSONService{
               return Config.locateSearch.toLowerCase();
             case "copy":
               return Config.copySearch.toLowerCase();
+            case "misc":
+              return Config.miscSearch.toLowerCase();
             default:
               return null;
           }

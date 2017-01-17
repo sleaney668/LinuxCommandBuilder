@@ -1,119 +1,178 @@
 <!-- ADD SUBSECTION DATA-->
-	<!-- Make Directory data -->
+
+	<!-- Create file -->
+	<div class="data-div" id="touch-data" style="display:none">
+		<ul>
+			<li class="commandFormatLi">The <span>touch</span> command is commonly used to create new empty files.</li>
+			<li>It can also be used to update a files last modification or accessed date, please see:</li>
+			<ul>
+				<li>Modify > File > Modified/Accessed.</li></ul>
+				<li>The nano command can also be used to create new files e.g.</li>
+			<ul>
+			<li class="codeFormatLi"><span>nano newFile.txt</span></li>
+			<li>Then enter the desired text and save. (Hint, Ctrl+x)</li></ul>
+		</ul>
+	</div>
+
+	<!-- Make Directory -->
 	<div class="data-div" id="mkdir-data" style="display:none">
 		<ul class="data-ul">
-			<li>The <b><i>mkdir</i></b> command is is used to create new directories.</li>
-			<li>A directory is referred to as a folder in some operating systems.</li>
+			<li class="commandFormatLi">The <span>mkdir</span> command is used to create new directories.</li>
+			<li>A directory, referred to as a folder in some operating systems.</li>
 			<li>It appears to the user as a container for other directories and files.</li>
 		</ul>
 	</div>
 
-	<!-- Create file data -->
-	<div class="data-div" id="touch-data" style="display:none">
-		<ul>
-			<li>The <b><i>touch</i></b> command is commonly used to create new empty files.</li>
-			<li>It can also be used to update a files lasr modification or accessed date, please see:</li>
-			<ul><li>Modify > File > Modified/Accessed.</li></ul>
-			
-		</ul>
-	</div>
-
-	<!-- Create user data -->
+	<!-- Add user -->
 	<div class="data-div" id="useradd-data" style="display:none">
 		<ul>
-			<li>The <b><i>useradd</i></b> command is a low-level utility.</li>
+			<li class="commandFormatLi">The <span>useradd</span> command is a low-level utility.</li>
 			<li>It is used for creating user accounts in Linux.</li>
-			<li>The <b><i>adduser</i></b> command can also be used, it is a symbolic link to useradd.</li>
+			<li>The <i>adduser</i> command can also be used, it is a symbolic link to useradd.</li>
 		</ul>
 
 		<div class="data-note-div">
 			<h5><b>Note</b></h5>
 			<ul>
 				<li>&nbsp;</li>
-				<li><i>useradd -d home/directory username</i> will create a user with a home/directory.</li>
-				<li><i>useradd -g groupname username</i> will create a new user and assign them a group.</li>
+				<li class="codeFormatLi"><span>useradd -d home/directory username</span> &nbsp;&nbsp;&nbsp; will create a user with a home/directory.</li>
+				<li class="codeFormatLi"><span>useradd -g groupname username</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; will create a new user and assign them a group.</li>
 				<li>&nbsp;</li>
 			</ul>
 		</div>
 	</div>
 
-	<!-- Create group data -->
+	<!-- Add group -->
 	<div class="data-div" id="groupadd-data" style="display:none">
 		<ul>
-			<li>The <b><i>groupadd</i></b> command is used in Linux to add user groups to a system.</li>
+			<li class="commandFormatLi">The <span>groupadd</span> command is used to add user groups to a linux system.</li>
 		</ul>
 
 		<div class="data-note-div">
 			<h5><b>Note</b></h5>
 			<ul>
+				<li>&nbsp;</li>
 				<li><i>groupadd exits with the following value</i></li>
 				<li>&nbsp;</li>
-				<li>0 &nbsp; - &nbsp; Success</li>
-				<li>2 &nbsp; - &nbsp; Invalid command syntax</li>
-				<li>3 &nbsp; - &nbsp; Invalid argument to option</li>
-				<li>4 &nbsp; - &nbsp; GID not unique</li>
-				<li>9 &nbsp; - &nbsp; Group name not unique</li>
-				<li>10 &nbsp; - &nbsp; Can't update group file</li>
+				<li>0 &nbsp;&nbsp;&nbsp; - &nbsp; Success</li>
+				<li>2 &nbsp;&nbsp;&nbsp; - &nbsp; Invalid command syntax</li>
+				<li>3 &nbsp;&nbsp;&nbsp; - &nbsp; Invalid argument to option</li>
+				<li>4 &nbsp;&nbsp;&nbsp; - &nbsp; GID not unique</li>
+				<li>9 &nbsp;&nbsp;&nbsp; - &nbsp; Group name not unique</li>
+				<li>10 &nbsp;&nbsp;- &nbsp; Can't update group file</li>
+				<li>&nbsp;</li>
 			</ul>
 		</div>
 	</div>
+
+	<!-- Create link -->
+	<div class="data-div" id="ln-data" style="display:none">
+		<ul>
+			<li class="commandFormatLi">The <span>ln</span> utility is used to create a new directory entry/linked file.</li>
+			<li>This is useful for maintaining multiple copies of a file in many places at once without using up storage.</li>
+			<li>There are two types of links known as <b>HARD</b> link and <b>SYMBOLIC</b> link.</li>
+			<li>By default, the ln command creates a hard link, you will need to apply the option -s to create a symbolic link.</li>
+		</ul>
+
+		<div class="data-note-div">
+			<h5><b>Note</b></h5>
+			<ul>
+				<li>&nbsp;</li>
+				<li><i>Hard link vs symbolic link</i></li>
+				<li>&nbsp;</li>
+				<li>An inode is a data structure in a linux file system which describes a filesystem object such as a file or directory.</li>
+				<li>A file will hold a link an inode.</li>
+				<li>A hard link will hold a link to the same inode as the file.</li>
+				<li>A symbolic link will hold a link to the file that holds a link to the inode.</li>
+				<li>&nbsp;</li>
+			</ul>
+		</div>
+	</div>
+
 <!-- END ADD SUBSECTION DATA-->
 
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
 <!-- DELETE SUBSECTION DATA-->
-	<!-- Delete data -->
+
+	<!-- Remove -->
 	<div class="data-div" id="rm-data" style="display:none">
 		<ul class="data-ul">
-			<li>The <b><i>rm</i></b> command can be used to delete files.</li>
-			<li>It can also be used for deletion needs, see below.</li>
+			<li class="commandFormatLi">The <span>rm</span> command is commonly used to delete files.</li>
+			<li>It can also be used for a variety of other deletion needs, such as links see below.</li>
 		</ul>
 
 		<div class="data-note-div">
 			<h5><b>Note</b></h5>
 			<ul>
+				<li>&nbsp;</li>
 				<li><i>USE WITH CAUTION</i></li>
 				<li>&nbsp;</li>
-				<li><i>rm -f</i> will forcefully remove file.</li>
-				<li><i>rm -r</i> will recursively remove files in the working directory.</li>
-				<li><i>rm -rf</i> will remove the specified directory and all files and subdirectories from within.</li>
-				<li><i>rm -i</i> will request confirmation for the deletion.</li>
-				
+				<li class="codeFormatLi"><span>rm -f filename/linkname</span> &nbsp;&nbsp;&nbsp; will forcefully remove the file/link.</li>
+				<li class="codeFormatLi"><span>rm -r directoryName</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; will recursively remove files in the working directory.</li>
+				<li class="codeFormatLi"><span>rm -rf directoryName</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; will remove the specified directory and all files and subdirectories from within.</li>
+				<li class="codeFormatLi"><span>rm -i filename</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; will request confirmation prior to deletion.</li>
+				<li>&nbsp;</li>	
 			</ul>
 		</div>
 	</div>
 
-	<!-- Delete directory data -->
+	<!-- Remove directory -->
 	<div class="data-div" id="rmdir-data" style="display:none">
 		<ul>
-			<li>The <b><i>rmdir</i></b> command is used to delete empty directories.</li>
+			<li class="commandFormatLi">The <span>rmdir</span> command is used to delete empty directories.</li>
 		</ul>
+
 		<div class="data-note-div">
 			<h5><b>Note</b></h5>
 			<ul>
 				<li>&nbsp;</li>
-				<li>To delete non-empty directories use <b><i>rm -r</i></b>.</li>
+				<li class="codeFormatLi">Please use the <span>rm -rf directoryName</span> command to delete non-empty directories.</li>
 				<li>&nbsp;</li>
 			</ul>
 		</div>
 	</div>
 
-	<!-- Delete user data -->
+	<!-- Delete user -->
 	<div class="data-div" id="userdel-data" style="display:none">
 		<ul>
-			<li>The userdel command is a low-level utility.</li>
-			<li>It is used for deleting user accounts in Linux.</li>
+			<li class="commandFormatLi">The <span>userdel</span> command is used to delete user accounts from linux systems.</li>
 		</ul>
+
+		<div class="data-note-div">
+			<h5><b>Note</b></h5>
+			<ul>
+				<li>&nbsp;</li>
+				<li class="codeFormatLi">The addition of the option <span>-r</span> on <span>userdel</span> will cause all files in the user's home directory will be removed along with home directory itself and the user's mail spool.<p>Files located in other file systems will have to be searched for and deleted manually.</p></li>
+				<li>&nbsp;</li>
+			</ul>
+		</div>
 	</div>
 
-	<!-- Delete group data -->
+	<!-- Delete group -->
 	<div class="data-div" id="groupdel-data" style="display:none">
 		<ul>
-			<li>The groupdel command modifies the system account files.</li>
-			<li>Deleting all entries that refer to the group.</li>
-			<li>The named group must exist</li>
+			<li class="commandFormatLi">The <span>groupdel</span> command is used to delete groups from linux systems.</li>
+			<li>Used by root to remove a group.</li>
+			<li>You may not remove the primary group of any existing user, you must remove the user before you remove that user's primary group.</li>
 		</ul>
+
+		<div class="data-note-div">
+			<h5><b>Note</b></h5>
+			<ul>
+				<li>&nbsp;</li>
+				<li><i>groupdel exits with the following value</i></li>
+				<li>&nbsp;</li>
+				<li>0 &nbsp;&nbsp;&nbsp; - &nbsp; Success</li>
+				<li>3 &nbsp;&nbsp;&nbsp; - &nbsp; Invalid command syntax</li>
+				<li>6 &nbsp;&nbsp;&nbsp; - &nbsp; Specified group doesn't exist</li>
+				<li>8 &nbsp;&nbsp;&nbsp; - &nbsp; Can't remove user's primary group</li>
+				<li>10 &nbsp;&nbsp;- &nbsp; Can't update group file</li>
+				<li>&nbsp;</li>
+			</ul>
+		</div>
 	</div>
+
 <!-- END DELETE SUBSECTION DATA-->
 
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->

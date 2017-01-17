@@ -91,6 +91,9 @@ export class AppComponent implements OnInit {
             case "copy":
               	this.initialiseSubSection(Config.copySearch.split('.'));
               	break;
+            case "misc":
+              	this.initialiseSubSection(Config.miscSearch.split('.'));
+              	break;
             default:
               	return null;
           }
