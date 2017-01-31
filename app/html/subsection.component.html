@@ -37,12 +37,103 @@
 					<div id="Code-Container-Div">
 
 						<div id="Search-Result-Div" style="visibility:hidden">
-							<div class="searchTag">1</div>
+							<div id= "Search-Result-Div-searchTag" class="searchTag">1</div>
 							<div id="searchResult" title="Click for more info" (click)="onSearchResultClick()"></div>
 						</div>
 
-						<div id="Search-Input-Div" style="visibility:hidden">
+						<div id="Search-Option-Div" data-toggle="modal" data-target="#modal-1" style="display:none">
+							<div id= "Search-Option-Div-searchTag" class="searchTag"></div>
+							<div id="searchOption">777</div>
+						</div>
+
+						<div class="modal" id="modal-1" >
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+										<h3 class="modal-title">CHMOD Calculator</h3>
+									</div>
+
+									<div class="modal-body" id="chmod-modal-container-div">
+
+										<div id="chmod-modal-left-div">
+											<table class="table table-bordered table-inverse" id="chmod-table">
+												<thead>
+													<tr>
+														<th class="table-body-header"></th>
+														<th class="table-head-header">Read</th>
+														<th class="table-head-header">Write</th>
+														<th class="table-head-header">Execute</th>
+													</tr>
+												</thead>
+
+												<tbody>
+													<tr>
+														<th scope="row" class="table-body-header">User</th>
+														<td>
+															<input [(ngModel)]="model1" (ngModelChange)="inputChanged($event)" id="checkbox-0.0" type="checkbox" checked>
+														</td>
+														<td>
+															<input [(ngModel)]="model2" (ngModelChange)="inputChanged($event)" id="checkbox-0.1" type="checkbox" checked>
+														</td>
+														<td>
+															<input [(ngModel)]="model3" (ngModelChange)="inputChanged($event)" id="checkbox-0.2" type="checkbox" checked>
+														</td>
+													</tr>
+													<tr>
+														<th scope="row" class="table-body-header">Group</th>
+														<td>				      	
+															<input [(ngModel)]="model4" (ngModelChange)="inputChanged($event)" id="checkbox-1.0" type="checkbox" checked>
+														</td>
+														<td>				      	
+															<input [(ngModel)]="model5" (ngModelChange)="inputChanged($event)" id="checkbox-1.1" type="checkbox" checked>
+														</td>
+														<td>				      	
+															<input [(ngModel)]="model6" (ngModelChange)="inputChanged($event)" id="checkbox-1.2" type="checkbox" checked>
+														</td>
+													</tr>
+													<tr>
+														<th scope="row" class="table-body-header">Other</th>
+														<td>				      	
+															<input [(ngModel)]="model7" (ngModelChange)="inputChanged($event)" id="checkbox-2.0" type="checkbox" checked>
+														</td>
+														<td>				      	
+															<input [(ngModel)]="model8" (ngModelChange)="inputChanged($event)" id="checkbox-2.1" type="checkbox" checked>
+														</td>
+														<td>				      	
+															<input [(ngModel)]="model9" (ngModelChange)="inputChanged($event)" id="checkbox-2.2" type="checkbox" checked>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+
+
+										<div id="chmod-modal-right-div">
+											<br>
+											<h5><b>Visualise:</b></h5> 	<h5 id="Visualise"></h5>
+											<h5><b>Command:</b></h5> 	<h5 id="Command"></h5>
+											<br>
+										</div>		
+
+									</div>	
+
+								</div>
+							</div>
+						</div>
+
+
+<!-- 						<div id="Search-Option-Div">
 							<div class="searchTag">2</div>
+							<div id="searchOption">
+								<select id="tt" name="Expiration Month">
+								<option class="dd" value="January">January</option>
+								</select>
+							</div>
+						</div> -->
+
+						<div id="Search-Input-Div" style="visibility:hidden">
+							<div id= "Search-Input-Div-searchTag" class="searchTag">2</div>
 							<div id="searchInput"></div>
 						</div>
 

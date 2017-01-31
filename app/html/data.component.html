@@ -54,12 +54,12 @@
 				<li>&nbsp;</li>
 				<li><i>groupadd exits with the following value</i></li>
 				<li>&nbsp;</li>
-				<li>0 &nbsp;&nbsp;&nbsp; - &nbsp; Success</li>
-				<li>2 &nbsp;&nbsp;&nbsp; - &nbsp; Invalid command syntax</li>
-				<li>3 &nbsp;&nbsp;&nbsp; - &nbsp; Invalid argument to option</li>
-				<li>4 &nbsp;&nbsp;&nbsp; - &nbsp; GID not unique</li>
-				<li>9 &nbsp;&nbsp;&nbsp; - &nbsp; Group name not unique</li>
-				<li>10 &nbsp;&nbsp;- &nbsp; Can't update group file</li>
+				<li class="codeFormatLi"><span>0</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Success</li>
+				<li class="codeFormatLi"><span>2</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Invalid command syntax</li>
+				<li class="codeFormatLi"><span>3</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Invalid argument to option</li>
+				<li class="codeFormatLi"><span>4</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; GID not unique</li>
+				<li class="codeFormatLi"><span>9</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Group name not unique</li>
+				<li class="codeFormatLi"><span>10</span>  &nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Can't update group file</li>
 				<li>&nbsp;</li>
 			</ul>
 		</div>
@@ -163,11 +163,11 @@
 				<li>&nbsp;</li>
 				<li><i>groupdel exits with the following value</i></li>
 				<li>&nbsp;</li>
-				<li>0 &nbsp;&nbsp;&nbsp; - &nbsp; Success</li>
-				<li>3 &nbsp;&nbsp;&nbsp; - &nbsp; Invalid command syntax</li>
-				<li>6 &nbsp;&nbsp;&nbsp; - &nbsp; Specified group doesn't exist</li>
-				<li>8 &nbsp;&nbsp;&nbsp; - &nbsp; Can't remove user's primary group</li>
-				<li>10 &nbsp;&nbsp;- &nbsp; Can't update group file</li>
+				<li class="codeFormatLi"><span>0</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Success</li>
+				<li class="codeFormatLi"><span>3</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Invalid command syntax</li>
+				<li class="codeFormatLi"><span>6</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Specified group doesn't exist</li>
+				<li class="codeFormatLi"><span>8</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Can't remove user's primary group</li>
+				<li class="codeFormatLi"><span>10</span>  &nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Can't update group file</li>
 				<li>&nbsp;</li>
 			</ul>
 		</div>
@@ -178,42 +178,45 @@
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
 <!-- MODIFY > FILE SUBSECTION DATA-->
-	<!-- Modify directory/file location/name data -->
+
+	<!-- Move/Rename -->
 	<div class="data-div" id="mv-data" style="display:none">
 		<ul>
-			<li>The <b><i>mv</i></b> command is used to move or rename files.</li>
+			<li class="commandFormatLi">The <span>mv</span> command is commonly used to move or rename files and directories in a linux system.</li>
 		</ul>
 		<div class="data-note-div">
 			<h5><b>Note</b></h5>
 			<ul>
-				<li><i>mv &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; old-filename/source &nbsp; new-filename/dest</i>
+				<li class="codeFormatLi"><span>mv &nbsp;&nbsp;&nbsp;&nbsp; {oldFilename/source} &nbsp; {newFilename/dest}</span>
 				&nbsp;&nbsp;&nbsp;&nbsp;[Standard file rename]</li>
-				<li><i>mv -v &nbsp; old-filename/source &nbsp; new-filename/dest</i>
+				<li class="codeFormatLi"><span>mv -v &nbsp; {oldFilename/source} &nbsp; {newFilename/dest}</span>
 				&nbsp;&nbsp;&nbsp;&nbsp;[Verbose output]</li>
-				<li><i>mv -i &nbsp;&nbsp; old-filename/source &nbsp; new-filename/dest</i>
+				<li class="codeFormatLi"><span>mv -i &nbsp; {oldFilename/source} &nbsp; {newFilename/dest}</span>
 				&nbsp;&nbsp;&nbsp;&nbsp;[Interactive pass, user prompt]</li>
-				<li><i>mv -f &nbsp; old-filename/source &nbsp; new-filename/dest</i>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Force]</li>
+				<li class="codeFormatLi"><span>mv -f &nbsp; {oldFilename/source} &nbsp; {newFilename/dest}</span>
+				&nbsp;&nbsp;&nbsp;&nbsp;[Force]</li>
 			</ul>
 		</div>
 	</div>
 
-	<!-- Modify file data -->
+	<!-- Text editor -->
 	<div class="data-div" id="vi-data" style="display:none">
 		<ul>
-			<li>The <b><i>vi</i></b> command is used to edit the contents of files.</li>
+			<li class="commandFormatLi">The <span>vi</span> command is used to edit the contents of files in a linux system.</li>
 			<li>It is short for "vi"sual editor.</li>
-			<li>It has two modes COMMAND and INSERT mode:</li>
+			<li>It has two modes <b>COMMAND</b> and <b>INSERT</b> mode</li>
 			<ul>
-				<li>Command mode: letters you type perform functions.</li>
-				<li>Insert mode: letters you type form words and sentences.</li>
+				<li>Command mode, letters you type perform functions.</li>
+				<li>Insert mode, letters you type forms words and sentences.</li>
+				<li>To exit insert mode press the Esc key.</li>
 			</ul>
-			<li>A more feature rich version of vi is vim, it stands for vi improved.</li>
-			<li>An easier alternative to vi or vim is nano, man nano.</li>
+			<li>A more feature rich version of vi is vim, it stands for vi improved..</li>
+			<li>An easier alternative to vi or vim is nano.</li>
+			<li>Enter command man nano to see how to use this editor.</li>
 			<br>
-			<li>vi will start in command mode, to enter insert mode type 'i'.</li>
+			<li class="codeFormatLi"><span>vi filename</span> will start the vi editor in command mode, to enter insert mode type 'i'.</li>
 			<li>To quit insert mode type Ctrl+c or press the Esc key.</li>	
-			<li>To undo any changes enter command mode and type 'u', to undo all changes type 'U'.</li>	
+			<li>To undo any changes type 'u' when in command mode, to undo all changes type 'U'.</li>	
 		</ul>
 
 		<div class="data-note-div">
@@ -240,59 +243,70 @@
 		</div>
 	</div>
 
-	<!-- Modify directory/file accessed data -->
+	<!-- Changed accessed time -->
 	<div class="data-div" id="touch -a-data" style="display:none">
 		<ul>
-			<li>We changed the accessed time of a file using the <b><i>touch</i></b> command paired with the option -a.</li>
-			<li>By default this will take the current system time and update the accessed time field.</li>
+			<li class="commandFormatLi">The <span>touch</span> command paired with the option <span>-a</span> is used to change file/directory accessed times.</li>
+			<li class="codeFormatLi">By default <span>touch -a fileName/directoryName</span> will use the current system time.</li>
 		</ul>
+
 		<div class="data-note-div">
 			<h5><b>Note</b></h5>
 			<ul>
 				<li>&nbsp;</li>
-				<li><i>You can explicitly specify the time using -t and -d options</i>i</li>
+				<li>You can explicitly specify the time using options -t or -d, see below:</li>
 				<li>&nbsp;</li>
 				<li>The format for specifying -t is [[CC]YY]MMDDhhmm[.SS]</li>
-				<li>The format for specifying -d is "2017-01-14 12:12:12.000000000 _0530"</li>
+				<li>The format for specifying -d is '2017-01-14 12:12:12.000000000 +0530'</li>
 				<li>&nbsp;</li>
-				<li>CC &nbsp; - &nbsp; Specifies the first two digits of the year.</li>
-				<li>YY &nbsp; - &nbsp; Specifies the last two digits of the year.</li>
-				<li>MM &nbsp; - &nbsp; Specifies the month.</li>
-				<li>DD &nbsp; - &nbsp; Specifies the day.</li>
-				<li>hh &nbsp; - &nbsp; Specifies the hour.</li>
-				<li>mm &nbsp; - &nbsp; Specifies the minute.</li>
-				<li>SS &nbsp; - &nbsp; Specifies the seconds.</li>
+				<li class="codeFormatLi"><span>CC</span>  &nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;&nbsp; Specifies the first two digits of the year (the century)</li>
+				<li class="codeFormatLi"><span>YY</span>  &nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;&nbsp; Specifies the last two digits of the year.</li>
+				<li class="codeFormatLi"><span>MM</span>  &nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;&nbsp; Specifies the month, from 01 to 12</li>
+				<li class="codeFormatLi"><span>DD</span>  &nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;&nbsp; Specifies the day, from 01 to 31</li>
+				<li class="codeFormatLi"><span>hh</span>  &nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;&nbsp; Specifies the hour, from 00 to 23</li>
+				<li class="codeFormatLi"><span>mm</span>  &nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;&nbsp; Specifies the minute, from 00 to 59</li>
+				<li class="codeFormatLi"><span>SS</span>  &nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;&nbsp; Specifies the seconds, from 00 to 61</li>
 				<li>&nbsp;</li>
+				<li>If the <b>CC</b> and <b>YY</b>  letter pairs are not specified, the value defaults to the current year.</li>
+				<li>If the <b>SS</b>  letter pair is not specified, the value defaults to 0.</li>
+				<li>&nbsp;</li>
+				<li class="codeFormatLi">You can also copy the timestamp from another file/directory using the command: <span>touch {source:fileName/directoryName} -r {dest:fileName/directoryName}</span></li>
 			</ul>
 		</div>
 	</div>
 
-	<!-- Modify directory/file modified data -->
+	<!-- Changed modified time  -->
 	<div class="data-div" id="touch -m-data" style="display:none">
 		<ul>
-			<li>We changed the modification time of a file using the <b><i>touch</i></b> command paired with the option -m.</li>
-			<li>By default this will take the current system time and update the modified time field.</li>
+			<li class="commandFormatLi">The <span>touch</span> command paired with the option <span>-m</span> is used to change file/directory modified times.</li>
+			<li class="codeFormatLi">By default <span>touch -m fileName/directoryName</span> will use the current system time.</li>
 		</ul>
+
 		<div class="data-note-div">
 			<h5><b>Note</b></h5>
 			<ul>
 				<li>&nbsp;</li>
-				<li><i>You can explicitly specify the time using -t and -d options</i>i</li>
+				<li>You can explicitly specify the time using options -t or -d, see below:</li>
 				<li>&nbsp;</li>
 				<li>The format for specifying -t is [[CC]YY]MMDDhhmm[.SS]</li>
-				<li>The format for specifying -d is "2017-01-14 12:12:12.000000000 +0530"</li>
+				<li>The format for specifying -d is '2017-01-14 12:12:12.000000000 +0530'</li>
 				<li>&nbsp;</li>
-				<li>CC &nbsp; - &nbsp; Specifies the first two digits of the year.</li>
-				<li>YY &nbsp; - &nbsp; Specifies the last two digits of the year.</li>
-				<li>MM &nbsp; - &nbsp; Specifies the month.</li>
-				<li>DD &nbsp; - &nbsp; Specifies the day.</li>
-				<li>hh &nbsp; - &nbsp; Specifies the hour.</li>
-				<li>mm &nbsp; - &nbsp; Specifies the minute.</li>
-				<li>SS &nbsp; - &nbsp; Specifies the seconds.</li>
+				<li class="codeFormatLi"><span>CC</span>  &nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;&nbsp; Specifies the first two digits of the year (the century)</li>
+				<li class="codeFormatLi"><span>YY</span>  &nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;&nbsp; Specifies the last two digits of the year.</li>
+				<li class="codeFormatLi"><span>MM</span>  &nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;&nbsp; Specifies the month, from 01 to 12</li>
+				<li class="codeFormatLi"><span>DD</span>  &nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;&nbsp; Specifies the day, from 01 to 31</li>
+				<li class="codeFormatLi"><span>hh</span>  &nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;&nbsp; Specifies the hour, from 00 to 23</li>
+				<li class="codeFormatLi"><span>mm</span>  &nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;&nbsp; Specifies the minute, from 00 to 59</li>
+				<li class="codeFormatLi"><span>SS</span>  &nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;&nbsp; Specifies the seconds, from 00 to 61</li>
 				<li>&nbsp;</li>
+				<li>If the <b>CC</b> and <b>YY</b>  letter pairs are not specified, the value defaults to the current year.</li>
+				<li>If the <b>SS</b>  letter pair is not specified, the value defaults to 0.</li>
+				<li>&nbsp;</li>
+				<li class="codeFormatLi">You can also copy the timestamp from another file/directory using the command: <span>touch {source:fileName/directoryName} -r {dest:fileName/directoryName}</span></li>
 			</ul>
 		</div>
 	</div>
+	
 <!-- END MODIFY > FILE SUBSECTION DATA-->
 
 <!-- MODIFY > USER SUBSECTION DATA-->
@@ -300,40 +314,149 @@
 	<!-- Modify username data -->
 	<div class="data-div" id="usermod -l-data" style="display:none">
 		<ul>
-			<li>The <b><i>usermod -l</i></b> command is used to rename a user's name in linux.</li>
-			<li>To verify rename is successful: <b>id newUsername</b></li>
-		</ul>
-	</div>
-
-	<!-- Modify password data -->
-	<div class="data-div" id="passwd-data" style="display:none">
-		<ul>
-			<li>The <b><i>passwd</i></b> command is used to reset the password of a users account in linux.</li>
+			<li class="commandFormatLi">The <span>usermod</span> command paired with the option <span>-l</span> is used to rename linux user accounts.</li>
+			<li class="codeFormatLi">Use <span>id newLoginName</span> command in order to verify the rename has been successful.</li>
 		</ul>
 
 		<div class="data-note-div">
 			<h5><b>Note</b></h5>
 			<ul>
-				<li>The following commands will change the way the passwd command operates.</li>
 				<li>&nbsp;</li>
-				<li> <b>-d username</b>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Deletes a users password, this is a quick way to disable logins for an account (without disabling the account itself).</li>
-				<li> <b>-e username</b>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Immediately expire an accounts password, this forces a user to change their password the next time they login.</li>
-				<li> <b>-h</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display information about how to use the passwd command.</li>
-				<li> <b>-i x username</b> &nbsp;&nbsp;&nbsp;&nbsp; This option is used to disable an account after the password has been expired for (x) number of days.</li>
-				<li> <b>-l username</b>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Lock the password of the named account, meaning they are not allowed to change their password.</li>
-
-				<li> <b>-n x username</b>  &nbsp;&nbsp;&nbsp; Set the minimum number of days (x) between password changes, 0 means the user may change their password at any time.</li>
-				<li> <b>-q username</b>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Quiet mode, will operate without displaying any output.</li>
-				<li> <b>-S username</b>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays account status information, specifying -a in addition to -S will display password status for all users.</li>
-				<li> <b>-u username</b>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Unlock the password of the named account.</li>
-				<li> <b>-w x username</b>  &nbsp;&nbsp;&nbsp; Set the number of days (x) of warning before a password change is required.</li>
-				<li> <b>-x x username</b>  &nbsp;&nbsp;&nbsp;&nbsp; Set the maximum number of days (x) a password remains valid</li>
+				<li>The usermod command will not allow you to change the name of a user who is logged in.</li>
+				<li>You must make sure that the named use is not executing any processes when this command is executed.</li>
+				<li>You must change the owner of any crontab file manually.</li>
 				<li>&nbsp;</li>
 			</ul>
 		</div>
 	</div>
 
-<!-- END MODIFY > END USER SUBSECTION DATA-->
+	<!-- Modify password data -->
+	<div class="data-div" id="passwd-data" style="display:none">
+		<ul>
+			<li class="commandFormatLi">The <span>passwd</span> command is used to reset the password of a users account in linux.</li>
+		</ul>
+
+		<div class="data-note-div">
+			<h5><b>Note</b></h5>
+			<ul>
+				<li>&nbsp;</li>
+				<li>The passwd command is used to reset the password of user accounts in linux.</li>
+				<li>The following options will change the way the passwd command operates, see below:</li>
+				<li>&nbsp;</li>
+				<li class="codeFormatLi"><span>-d username</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Deletes a users password, this is a quick way to disable logins for an account (without disabling the account itself)</li>
+				<li class="codeFormatLi"><span>-e username</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Immediately expire an accounts password, this forces a user to change their password the next time they login.</li>
+				<li class="codeFormatLi"><span>-i X username</span>&nbsp;&nbsp;&nbsp; This option is used to disable an account after the password has been expired for X number of days.</li>
+				<li class="codeFormatLi"><span>-l username</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Lock the password of the named account, meaning they are not allowed to change their password.</li>
+				<li class="codeFormatLi"><span>-n X username</span>&nbsp;&nbsp;&nbsp; Set the minimum number of days X between password changes, 0 means the user may change their password at any time.</li>
+				<li class="codeFormatLi"><span>-q username</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Quiet mode, will operate without displaying any output.</li>
+				<li class="codeFormatLi"><span>-S username</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays account status information. Specifying the option -a in addition to -S will display password status for all users.</li>
+				<li class="codeFormatLi"><span>-u username</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Unlock the password of the named account.</li>
+				<li class="codeFormatLi"><span>-w X username</span>&nbsp;&nbsp;&nbsp; Set the number of days X of warning, before a password change is required.</li>
+				<li class="codeFormatLi"><span>-x X username</span>&nbsp;&nbsp;&nbsp; Set the maximum number of days X a password remains valid</li>
+				<li>&nbsp;</li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- Modify user ID -->
+	<div class="data-div" id="usermod -u-data" style="display:none">
+		<ul>
+			<li class="commandFormatLi">The <span>usermod</span> command paired with the option <span>-u</span> is used to assign a new UID to linux user accounts.</li>
+			<li class="codeFormatLi">Use <span>id loginName</span> command in order to verify the new UID has been successfully assigned.</li>
+		</ul>
+	</div>
+
+<!-- END MODIFY > USER SUBSECTION DATA-->
+
+<!-- MODIFY > GROUP SUBSECTION DATA-->
+
+	<!-- Modify group name -->
+	<div class="data-div" id="groupmod -n-data" style="display:none">
+		<ul>
+			<li class="commandFormatLi">The <span>groupmod</span> command paired with the option <span>-n</span> is used to rename a linux group.</li>
+			<li>For this command to work you must have superuser rights or be logged in as root.</li>
+			<li class="codeFormatLi">Use <span>grep newGroupName /etc/group</span> command in order to verify the rename has been successful.</li>
+		</ul>
+
+		<div class="data-note-div">
+			<h5><b>Note</b></h5>
+			<ul>
+				<li>&nbsp;</li>
+				<li>groupmod command exits with the following value:</li>
+				<li>&nbsp;</li>
+				<li class="codeFormatLi"><span>0</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Success</li>
+				<li class="codeFormatLi"><span>2</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Invalid command syntax</li>
+				<li class="codeFormatLi"><span>3</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Invalid argument to option</li>
+				<li class="codeFormatLi"><span>4</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Specified group doesn't exist</li>
+				<li class="codeFormatLi"><span>6</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Specified group doesn't exist</li>
+				<li class="codeFormatLi"><span>9</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Group name already in use</li>
+				<li class="codeFormatLi"><span>10</span>  &nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Can't update group file</li>
+				<li>&nbsp;</li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- Modify group ID -->
+	<div class="data-div" id="groupmod -g-data" style="display:none">
+		<ul>
+			<li class="commandFormatLi">The <span>groupmod</span> command paired with the option <span>-g</span> is used to change the ID of a linux group.</li>
+			<li>For this command to work you must have superuser rights or be logged in as root.</li>
+			<li class="codeFormatLi">Use <span>grep groupName /etc/group</span> command in order to verify the change ID has been successful.</li>
+		</ul>
+
+		<div class="data-note-div">
+			<h5><b>Note</b></h5>
+			<ul>
+				<li>&nbsp;</li>
+				<li>groupmod command exits with the following value:</li>
+				<li>&nbsp;</li>
+				<li class="codeFormatLi"><span>0</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Success</li>
+				<li class="codeFormatLi"><span>2</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Invalid command syntax</li>
+				<li class="codeFormatLi"><span>3</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Invalid argument to option</li>
+				<li class="codeFormatLi"><span>4</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Specified group doesn't exist</li>
+				<li class="codeFormatLi"><span>6</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Specified group doesn't exist</li>
+				<li class="codeFormatLi"><span>9</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Group name already in use</li>
+				<li class="codeFormatLi"><span>10</span>  &nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Can't update group file</li>
+				<li>&nbsp;</li>
+			</ul>
+		</div>
+	</div>
+
+<!-- END MODIFY > GROUP SUBSECTION DATA-->
+
+<!-- MODIFY > LINK SUBSECTION DATA-->
+
+	<!-- Modify link -->
+	<div class="data-div" id="ln -sf-data" style="display:none">
+		<ul>
+			<li>When you want to forcibly replace a symbolic link in linux you can do it manually by removing the link and recreating it.</li>
+			<li class="codeFormatLi">Or you can provide the <span>-f</span> argument to <span>ln</span> to have it replace the existing symbolic link automatically: 
+			<span>ln -sf newTarget pathToSymlink.</span>
+			</li>
+		</ul>
+	</div>
+
+<!-- END MODIFY > LINK SUBSECTION DATA-->
+
+<!-- MODIFY > PERMISSIONS SUBSECTION DATA-->
+
+	<!-- Modify link -->
+	<div class="data-div" id="chmod-data" style="display:none">
+		<ul>
+			<br>
+			<li>chmod is a linux command for setting file or directory permissions.</li>
+			<li>The name is an abbreviation of <i>change mode</i>.</li>
+			<li>Usual implemented options include:</li>
+			<ul>
+				<li class="codeFormatLi"><span>-R</span> recursive i.e. include objects in subdirectories</li>
+				<li class="codeFormatLi"><span>-f</span> force permissions change</li>
+				<li class="codeFormatLi"><span>-R</span> verbose, shows objects processed</li>
+			</ul>
+		</ul>
+	</div>
+
+<!-- END MODIFY > PERMISSIONS SUBSECTION DATA-->
+
 
 
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
@@ -343,58 +466,4 @@
 <!-- END MODIFY SUBSECTION DATA-->
 
 
-
-
-<!-- chmod data-->	
-<div class="data-div" id="chmod-data" style="display:none">
-	<table class="table table-bordered table-inverse" id="table-id">
-		<thead>
-			<tr>
-				<th class="table-body-header"></th>
-				<th class="table-head-header">Read</th>
-				<th class="table-head-header">Write</th>
-				<th class="table-head-header">Execute</th>
-			</tr>
-		</thead>
-
-		<tbody>
-			<tr>
-				<th scope="row" class="table-body-header">User</th>
-				<td>
-					<input [(ngModel)]="model1" (ngModelChange)="inputChanged($event)" id="checkbox-0.0" type="checkbox" checked>
-				</td>
-				<td>
-					<input [(ngModel)]="model2" (ngModelChange)="inputChanged($event)" id="checkbox-0.1" type="checkbox" checked>
-				</td>
-				<td>
-					<input [(ngModel)]="model3" (ngModelChange)="inputChanged($event)" id="checkbox-0.2" type="checkbox" checked>
-				</td>
-			</tr>
-			<tr>
-				<th scope="row" class="table-body-header">Group</th>
-				<td>				      	
-					<input [(ngModel)]="model4" (ngModelChange)="inputChanged($event)" id="checkbox-1.0" type="checkbox" checked>
-				</td>
-				<td>				      	
-					<input [(ngModel)]="model5" (ngModelChange)="inputChanged($event)" id="checkbox-1.1" type="checkbox" checked>
-				</td>
-				<td>				      	
-					<input [(ngModel)]="model6" (ngModelChange)="inputChanged($event)" id="checkbox-1.2" type="checkbox" checked>
-				</td>
-			</tr>
-			<tr>
-				<th scope="row" class="table-body-header">Other</th>
-				<td>				      	
-					<input [(ngModel)]="model7" (ngModelChange)="inputChanged($event)" id="checkbox-2.0" type="checkbox" checked>
-				</td>
-				<td>				      	
-					<input [(ngModel)]="model8" (ngModelChange)="inputChanged($event)" id="checkbox-2.1" type="checkbox" checked>
-				</td>
-				<td>				      	
-					<input [(ngModel)]="model9" (ngModelChange)="inputChanged($event)" id="checkbox-2.2" type="checkbox" checked>
-				</td>
-			</tr>
-		</tbody>
-	</table>
-</div>
 

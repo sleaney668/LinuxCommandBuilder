@@ -13,11 +13,7 @@ import {CHMODService} from './chmod.service';
 
 export class DataComponent{
 	
-	inputChanged(event: Event){
-		this._chmodService.chmodBuilder(event);
-	}
-
-	constructor(private _chmodService: CHMODService){}
+	constructor(){}
 	ngOnInit(){
 	}
 }

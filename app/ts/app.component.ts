@@ -123,6 +123,11 @@ export class AppComponent implements OnInit {
 	}
 
 	performFullSearch(subCategoryData){	
+		console.log(subCategoryData);
+		if(subCategoryData == " Permissions."){
+			this.setupStepThreeChmod();
+		}
+
 		// Call to search over the JSON stored in the config based on the appended search string
 		this._jsonService.getLinuxCategories(this.searchString);
 
@@ -181,6 +186,12 @@ export class AppComponent implements OnInit {
 			document.getElementById(divId).style.visibility = "visible";	
 		else
 			document.getElementById(divId).style.visibility = "hidden";	
+	}
+
+	setupStepThreeChmod(){
+		document.getElementById("Search-Option-Div").style.display = "block";
+		document.getElementById("Search-Option-Div-searchTag").innerHTML= "2";
+		document.getElementById("Search-Input-Div-searchTag").innerHTML = "3";
 	}
 
 	constructor(private _jsonService: JSONService, private _chmodService: CHMODService){}

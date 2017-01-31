@@ -19,20 +19,21 @@ export class CHMODService{
       	console.log("User:  " + this.myArr[0][0] + " " + this.myArr[0][1] + " " + this.myArr[0][2]);
       	console.log("Group: " + this.myArr[1][0] + " " + this.myArr[1][1] + " " + this.myArr[1][2]);
       	console.log("Other: " + this.myArr[2][0] + " " + this.myArr[2][1] + " " + this.myArr[2][2]);
+
     }
 
     eventRendering(event: Event){
-      	this.myArr[0][0] = document.getElementById('checkbox-0.0').checked == true ? 1 : 0;
-      	this.myArr[0][1] = document.getElementById('checkbox-0.1').checked == true ? 1 : 0;
-      	this.myArr[0][2] = document.getElementById('checkbox-0.2').checked == true ? 1 : 0;
+      	this.myArr[0][0] = (<HTMLInputElement>document.getElementById('checkbox-0.0')).checked == true ? 1 : 0;
+      	this.myArr[0][1] = (<HTMLInputElement>document.getElementById('checkbox-0.1')).checked == true ? 1 : 0;
+      	this.myArr[0][2] = (<HTMLInputElement>document.getElementById('checkbox-0.2')).checked == true ? 1 : 0;
 
-      	this.myArr[1][0] = document.getElementById('checkbox-1.0').checked == true ? 1 : 0;
-      	this.myArr[1][1] = document.getElementById('checkbox-1.1').checked == true ? 1 : 0;
-      	this.myArr[1][2] = document.getElementById('checkbox-1.2').checked == true ? 1 : 0;
+      	this.myArr[1][0] = (<HTMLInputElement>document.getElementById('checkbox-1.0')).checked == true ? 1 : 0;
+      	this.myArr[1][1] = (<HTMLInputElement>document.getElementById('checkbox-1.1')).checked == true ? 1 : 0;
+      	this.myArr[1][2] = (<HTMLInputElement>document.getElementById('checkbox-1.2')).checked == true ? 1 : 0;
 
-      	this.myArr[2][0] = document.getElementById('checkbox-2.0').checked == true ? 1 : 0;
-      	this.myArr[2][1] = document.getElementById('checkbox-2.1').checked == true ? 1 : 0;
-      	this.myArr[2][2] = document.getElementById('checkbox-2.2').checked == true ? 1 : 0;
+      	this.myArr[2][0] = (<HTMLInputElement>document.getElementById('checkbox-2.0')).checked == true ? 1 : 0;
+      	this.myArr[2][1] = (<HTMLInputElement>document.getElementById('checkbox-2.1')).checked == true ? 1 : 0;
+      	this.myArr[2][2] = (<HTMLInputElement>document.getElementById('checkbox-2.2')).checked == true ? 1 : 0;
     }
 
     binaryTranslation(){
@@ -49,8 +50,11 @@ export class CHMODService{
       	var otherTotal  = (this.myArr[2][0] == 1 ? this.binaryArr[0] : 0) + 
                         	(this.myArr[2][1] == 1 ? this.binaryArr[1] : 0) + 
                         	(this.myArr[2][2] == 1 ? this.binaryArr[2] : 0);
-
+                          
+        document.getElementById('searchOption').innerHTML = '' + userTotal + groupTotal + otherTotal + '';
+        document.getElementById('Command').innerHTML = '' + userTotal + groupTotal + otherTotal + '';
       	console.log("Command: " + userTotal + groupTotal + otherTotal);
+
     }
 
     visualTranslation(){
@@ -66,6 +70,7 @@ export class CHMODService{
                         	(this.myArr[2][1] == 1 ? this.visualArr[1] : '-') + 
                         	(this.myArr[2][2] == 1 ? this.visualArr[2] : '-');
 
+        document.getElementById('Visualise').innerHTML = '' + userTotal + groupTotal + otherTotal + '';
       	console.log("Visualise: " + userTotal + groupTotal + otherTotal);
     }
 

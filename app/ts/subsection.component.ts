@@ -66,11 +66,11 @@ export class SubsectionComponent{
             case "user":
               	this.initialiseSubSection(Config.modifyUserSubSearch.split('.'));
               	break;
-            case "permissions":
-              	this.initialiseSubSection(Config.modifyPermissionsSubSearch.split('.'));
+            case "group":
+              	this.initialiseSubSection(Config.modifyGroupSubSearch.split('.'));
               	break;
-            case "ownership":
-              	this.initialiseSubSection(Config.modifyOwnershipSubSearch.split('.'));
+            case "link":
+              	this.initialiseSubSection(Config.modifyLinkSubSearch.split('.'));
               	break;
             case "main":
 				this.initialiseSubSection(Config.modifySearch.split('.'));
@@ -161,6 +161,7 @@ export class SubsectionComponent{
 		// Changing data in div
 		document.getElementById('container-c1-header').innerHTML = "Step 1 - Select option";
 		document.getElementById('modify-back-button').style.visibility = "hidden";
+		document.getElementById("Search-Option-Div").style.display = "none";
 
 		this.modifyCount--;
 
@@ -196,7 +197,11 @@ export class SubsectionComponent{
 		this.onSearchResultChange();
 	}
 
-	constructor(){}
+	inputChanged(event: Event){
+		this._chmodService.chmodBuilder(event);
+	}
+
+	constructor(private _chmodService: CHMODService){}
 	ngOnInit(){
 	}
 

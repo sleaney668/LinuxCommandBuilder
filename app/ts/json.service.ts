@@ -71,10 +71,10 @@ export class JSONService{
           return Config.modifyDirectorySubSearch.toLowerCase();
         case "user":
           return Config.modifyUserSubSearch.toLowerCase();
-        case "permissions":
-          return Config.modifyPermissionsSubSearch.toLowerCase();
-        case "ownership":
-          return Config.modifyOwnershipSubSearch.toLowerCase();
+        case "group":
+          return Config.modifyGroupSubSearch.toLowerCase();
+        case "link":
+          return Config.modifyLinkSubSearch.toLowerCase();
         default:
           return null;
         }
