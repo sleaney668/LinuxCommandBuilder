@@ -70,7 +70,7 @@ export class CHMODService{
                         	(this.myArr[2][1] == 1 ? this.visualArr[1] : '-') + 
                         	(this.myArr[2][2] == 1 ? this.visualArr[2] : '-');
 
-        document.getElementById('Visualise').innerHTML = '' + userTotal + groupTotal + otherTotal + '';
+        document.getElementById('Visualise').innerHTML = '-' + userTotal + groupTotal + otherTotal + '';
       	console.log("Visualise: " + userTotal + groupTotal + otherTotal);
     }
 

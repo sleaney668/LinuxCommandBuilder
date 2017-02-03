@@ -124,6 +124,7 @@ export class AppComponent implements OnInit {
 
 	performFullSearch(subCategoryData){	
 		console.log(subCategoryData);
+		this.setupStepTwo(subCategoryData);
 		if(subCategoryData == " Permissions."){
 			this.setupStepThreeChmod();
 		}
@@ -186,6 +187,16 @@ export class AppComponent implements OnInit {
 			document.getElementById(divId).style.visibility = "visible";	
 		else
 			document.getElementById(divId).style.visibility = "hidden";	
+	}
+
+	setupStepTwo(subCategoryData){
+
+		document.getElementById(`container-c2-header`).innerHTML = 'Step 2 - Enter ' + subCategoryData + ' name';
+
+		var subsectionTextEntry = <HTMLInputElement>document.getElementsByClassName("subsection-text-entry")[0];
+		subsectionTextEntry.placeholder='Enter text...';
+		subsectionTextEntry.style.opacity = "1";
+
 	}
 
 	setupStepThreeChmod(){

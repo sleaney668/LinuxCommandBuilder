@@ -6,7 +6,7 @@
 			
 			<h4 class="subection-header">What do you want to {{category}}?</h4>
 			
-			<div class="container">	
+			<div class="container" id="subsection-container">	
 
 				<div class="container-c1">
 					<h5 class="container-headers" id="container-c1-header">Step 1 - Select option</h5>
@@ -18,15 +18,16 @@
 
 					</div>
 					
-					<div id="modify-back-button" style="visibility:hidden" (click)="onBackButtonSelect()">Step 1 
-						<span class="glyphicon glyphicon-circle-arrow-left"></span>
+					<div id="modify-back-button" style="visibility:hidden" (click)="onBackButtonSelect()">
+						Step 1
+						<span id="modify-back-button-glyph" class="glyphicon glyphicon-circle-arrow-left"></span>
 					</div>
 				</div>
 
 				<div class="container-c2">
 					<h5 class="container-headers" id="container-c2-header">Step 2 - Enter name</h5>
 					<form id="subsection-form">
-						<input [(ngModel)]="model" (ngModelChange)="reSearch($event)" id="subsection-{{category}}-text-entry" class="subsection-text-entry" type="text" name="enterName" placeholder="Enter text..." maxlength="45" disabled>
+						<input [(ngModel)]="model" (ngModelChange)="reSearch($event)" id="subsection-{{category}}-text-entry" class="subsection-text-entry" type="text" name="enterName" placeholder="Select option..." maxlength="45" disabled>
 					</form>
 				</div>
  
@@ -110,10 +111,8 @@
 
 
 										<div id="chmod-modal-right-div">
-											<br>
-											<h5><b>Visualise:</b></h5> 	<h5 id="Visualise"></h5>
-											<h5><b>Command:</b></h5> 	<h5 id="Command"></h5>
-											<br>
+											<h5><b>Visualise:</b></h5> 	<h4 id="Visualise">----------</h4>
+											<h5><b>Command:</b></h5> 	<h4 id="Command">000</h4>
 										</div>		
 
 									</div>	
@@ -122,28 +121,18 @@
 							</div>
 						</div>
 
-
-<!-- 						<div id="Search-Option-Div">
-							<div class="searchTag">2</div>
-							<div id="searchOption">
-								<select id="tt" name="Expiration Month">
-								<option class="dd" value="January">January</option>
-								</select>
-							</div>
-						</div> -->
-
 						<div id="Search-Input-Div" style="visibility:hidden">
 							<div id= "Search-Input-Div-searchTag" class="searchTag">2</div>
 							<div id="searchInput"></div>
 						</div>
 
 					</div>
+
+					<div class="Copy-To-Clipboard" (click)="copyToClipboard()">Copy Command</div>
+					
 				</div>
-
-
 			</div><!--/.container -->
 
-			<div class="Copy-To-Clipboard" (click)="copyToClipboard()">Copy Command</div>
 
 			<div class="container">
 				<div class="alert" id="alert-info-id" role="alert" hidden>

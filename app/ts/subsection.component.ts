@@ -35,8 +35,10 @@ export class SubsectionComponent{
 			this.loadSubSection(subCategoryItemData);
 
 			// Changing data in div
-			document.getElementById('container-c1-header').innerHTML = "Step 1.1 - Select option";
+			document.getElementById('container-c1-header').innerHTML = "Step 1.1 - Select (sub) option";
 			document.getElementById('modify-back-button').style.visibility = "visible";
+			var subsectionTextEntry = <HTMLInputElement>document.getElementsByClassName("subsection-text-entry")[0];
+			subsectionTextEntry.placeholder='Select (sub) option...';
 
 			this.modifyCount++;
 
@@ -161,7 +163,20 @@ export class SubsectionComponent{
 		// Changing data in div
 		document.getElementById('container-c1-header').innerHTML = "Step 1 - Select option";
 		document.getElementById('modify-back-button').style.visibility = "hidden";
-		document.getElementById("Search-Option-Div").style.display = "none";
+
+		// document.getElementById("Search-Result-Div").style.visibility = "hidden";
+
+		// document.getElementById("Search-Option-Div").style.visibility = "hidden";
+
+		// document.getElementById("Search-Input-Div").style.visibility = "hidden";
+
+
+		var subsectionTextEntry = <HTMLInputElement>document.getElementsByClassName("subsection-text-entry")[0];
+		subsectionTextEntry.value = "";
+		subsectionTextEntry.placeholder='Select option...';
+		// subsectionTextEntry.disabled = true;
+		// subsectionTextEntry.style.opacity = '0.7';
+
 
 		this.modifyCount--;
 
