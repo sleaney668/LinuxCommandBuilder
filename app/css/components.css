@@ -406,3 +406,8 @@ form#subsection-form{
 
 select { font-size:13px; }
 
+#option-drop-down{
+  border: none;
+  font-size: 0.99em;
+}
+

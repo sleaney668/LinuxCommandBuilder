@@ -109,7 +109,6 @@
 											</table>
 										</div>
 
-
 										<div id="chmod-modal-right-div">
 											<h5><b>Visualise:</b></h5> 	<h4 id="Visualise">----------</h4>
 											<h5><b>Command:</b></h5> 	<h4 id="Command">000</h4>
@@ -120,6 +119,38 @@
 								</div>
 							</div>
 						</div>
+
+						<div id="Search-Option-Div" data-toggle="modal" data-target="#modal-2" (click)="loadOptionBuilder()">
+							<div id= "Search-Option-Div-searchTag" class="searchTag">2</div>
+							<div id="searchOption">e</div>
+						</div>
+
+						<div class="modal" id="modal-2">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+										<h3 class="modal-title">Option builder</h3>
+									</div>
+
+									<div class="modal-body" id="chmod-modal-container-div">
+										<div id="searchResult" title="Click for more info">ps</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+
+						<!-- <div id="Search-Option-Div">
+							<div class="searchTag">3</div>
+							<div id="searchResult"></div>
+						</div> -->
+
+						<!-- <select id="option-drop-down" name="option">
+									<option class="e" value="e">e</option>
+									<option class="ef" value="ef">ef</option>
+									<option class="eaf" value="eaf">eaf</option>
+						</select> -->
 
 						<div id="Search-Input-Div" style="visibility:hidden">
 							<div id= "Search-Input-Div-searchTag" class="searchTag">2</div>

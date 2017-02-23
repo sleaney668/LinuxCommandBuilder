@@ -108,11 +108,14 @@ export class AppComponent implements OnInit {
 	}
 
 	onSubCategorySelect(subCategoryData){
-		if(this.searchString.split('.')[0] == "modify" && subCategoryData[subCategoryData.length-1] != '.'){
+		//alert("2");
+		// If non 2 step process then change to 2 step
+
+		if((this.searchString.split('.')[0] == "modify" || this.searchString.split('.')[0] == "view") && subCategoryData[subCategoryData.length-1] != '.'){
 			// Modify level 2, just append the search string
 			this.appendSearchString(subCategoryData, 2);
 			this.tmpSubSectionId = "";
-		} else if(this.searchString.split('.')[0] == "modify" && subCategoryData[subCategoryData.length-1] == '.'){
+		} else if((this.searchString.split('.')[0] == "modify" || this.searchString.split('.')[0] == "view") && subCategoryData[subCategoryData.length-1] == '.'){
 			// Append level 3 contains a full stop at the end
 			this.appendSearchString(subCategoryData, 3);
 			this.performFullSearch(subCategoryData);
@@ -123,7 +126,6 @@ export class AppComponent implements OnInit {
 	}
 
 	performFullSearch(subCategoryData){	
-		console.log(subCategoryData);
 		this.setupStepTwo(subCategoryData);
 		if(subCategoryData == " Permissions."){
 			this.setupStepThreeChmod();
@@ -164,7 +166,6 @@ export class AppComponent implements OnInit {
 
 	// Updates the search string based on user entry
 	appendSearchString(searchItem, appendLevel){
-
 		if(appendLevel == 1) {
 			this.searchArr.splice(0, this.searchArr.length);
 			this.searchString = "";
@@ -174,7 +175,6 @@ export class AppComponent implements OnInit {
 
 		this.searchArr[appendLevel-1] = searchItem.toLowerCase();
 		this.searchString = this.searchArr.join('.');
-
 	}
 
 	// Updates the search result based on the user entry.

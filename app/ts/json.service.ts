@@ -18,7 +18,9 @@ export class JSONService{
         if(linuxArray != null){       
           this.categoriesIndexList = Config.categoriesSearch.toLowerCase();
           this.subCategoryIndexList = this.populateCategoriesIndexList(jsonSearchInput[0]);
-          this.childCategoryIndexList = this.populateChildCategoriesIndexList(jsonSearchInput[1]);
+          if(jsonSearchInput[0] == "modify" || jsonSearchInput[0] == "view"){
+            this.childCategoryIndexList = this.populateChildCategoriesIndexList(jsonSearchInput[0], jsonSearchInput[1]);
+          }
 
           let categoriesIndexArray = this.categoriesIndexList.split('.');
           let subCategoryIndexArray = this.subCategoryIndexList.split('.');
@@ -38,7 +40,6 @@ export class JSONService{
           else
             this.linuxObject = linuxArray[categoriesIndex][subCategoryIndex];
     
-          // console.log(this.linuxObject);
         }
     }
 
@@ -63,25 +64,38 @@ export class JSONService{
           }
     }
 
-    private populateChildCategoriesIndexList(jsonSearch){
-      switch (jsonSearch) {
-        case "file":
-          return Config.modifyFileSubSearch.toLowerCase();
-        case "directory":
-          return Config.modifyDirectorySubSearch.toLowerCase();
-        case "user":
-          return Config.modifyUserSubSearch.toLowerCase();
-        case "group":
-          return Config.modifyGroupSubSearch.toLowerCase();
-        case "link":
-          return Config.modifyLinkSubSearch.toLowerCase();
-        default:
-          return null;
-        }
-    }
+    private populateChildCategoriesIndexList(jsonSearch, jsonChildSearch){      
+      if(jsonSearch == "modify"){
+        switch (jsonChildSearch) {
+          case "file":
+            return Config.modifyFileSubSearch.toLowerCase();
+          case "directory":
+            return Config.modifyDirectorySubSearch.toLowerCase();
+          case "user":
+            return Config.modifyUserSubSearch.toLowerCase();
+          case "group":
+            return Config.modifyGroupSubSearch.toLowerCase();
+          case "link":
+            return Config.modifyLinkSubSearch.toLowerCase();
+          default:
+            return null;
+          }
+      }
 
-    mkdirTreeParse(){
-
+      if(jsonSearch == "view"){
+        switch (jsonChildSearch) {
+          case "file":
+            return Config.viewFileSubSearch.toLowerCase();
+          case "directory":
+            return Config.viewDirectorySubSearch.toLowerCase();
+          case "group":
+            return Config.viewGroupSubSearch.toLowerCase();
+          case "processes":
+            return Config.viewProcessesSubSearch.toLowerCase();
+          default:
+            return null;
+          }
+      }
     }
 }
 

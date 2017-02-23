@@ -25,14 +25,14 @@ export class SubsectionComponent{
 	tmpSearchText;
 
 	subCategoryItemOutput = new EventEmitter();
-
-	onSubCategorySelect(subCategoryItemData:string, category:string) {			
+ 
+	onSubCategorySelect(subCategoryItemData:string, category:string) {	
 		if(this.modifyCount == 1){
 			subCategoryItemData = subCategoryItemData + ".";
 		}
 
-		if(category == "Modify" && this.modifyCount == 0){
-			this.loadSubSection(subCategoryItemData);
+		if((category == "Modify" || category == "View") && this.modifyCount == 0){
+			this.loadSubSection(category, subCategoryItemData);
 
 			// Changing data in div
 			document.getElementById('container-c1-header').innerHTML = "Step 1.1 - Select (sub) option";
@@ -54,32 +54,57 @@ export class SubsectionComponent{
 	}
 
 		// Loads child sub section of category selected
-	loadSubSection(category){
-		var newCategory = category.toLowerCase();
+	loadSubSection(category, subCategoryItemData){
+		var newCategory = subCategoryItemData.toLowerCase();
 		this.subSections = [];
 
-		switch (newCategory) {
-			case "file":
-				this.initialiseSubSection(Config.modifyFileSubSearch.split('.'));
-				break;
-            case "directory":
-              	this.initialiseSubSection(Config.modifyDirectorySubSearch.split('.'));
-              	break;
-            case "user":
-              	this.initialiseSubSection(Config.modifyUserSubSearch.split('.'));
-              	break;
-            case "group":
-              	this.initialiseSubSection(Config.modifyGroupSubSearch.split('.'));
-              	break;
-            case "link":
-              	this.initialiseSubSection(Config.modifyLinkSubSearch.split('.'));
-              	break;
-            case "main":
-				this.initialiseSubSection(Config.modifySearch.split('.'));
-				break;
-            default:
-              	return null;
-          }
+		if(category == "Modify"){
+			switch (newCategory) {
+				case "file":
+					this.initialiseSubSection(Config.modifyFileSubSearch.split('.'));
+					break;
+	            case "directory":
+	              	this.initialiseSubSection(Config.modifyDirectorySubSearch.split('.'));
+	              	break;
+	            case "user":
+	              	this.initialiseSubSection(Config.modifyUserSubSearch.split('.'));
+	              	break;
+	            case "group":
+	              	this.initialiseSubSection(Config.modifyGroupSubSearch.split('.'));
+	              	break;
+	            case "link":
+	              	this.initialiseSubSection(Config.modifyLinkSubSearch.split('.'));
+	              	break;
+	            case "main":
+					this.initialiseSubSection(Config.modifySearch.split('.'));
+					break;
+	            default:
+	              	return null;
+	        }
+	    }
+
+	    if(category == "View"){
+	    	switch (newCategory) {
+				case "file":
+					this.initialiseSubSection(Config.viewFileSubSearch.split('.'));
+					break;
+	            case "directory":
+	              	this.initialiseSubSection(Config.viewDirectorySubSearch.split('.'));
+	              	break;
+	            case "group":
+	              	this.initialiseSubSection(Config.viewGroupSubSearch.split('.'));
+	              	break;
+	            case "processes":
+	              	this.initialiseSubSection(Config.viewProcessesSubSearch.split('.'));
+	              	break;
+	            case "main":
+					this.initialiseSubSection(Config.viewSearch.split('.'));
+					break;
+	            default:
+	              	return null;
+	        }
+	    }
+
 	}
 
 	// Initialises subsection based on category selected
@@ -158,8 +183,10 @@ export class SubsectionComponent{
 	}
 
 	onBackButtonSelect(){
-		this.loadSubSection('main');
-
+		var mainSection = document.getElementById('container-c1-header').parentElement.parentElement.parentElement.parentElement.id;
+		mainSection = mainSection.substring(mainSection.indexOf('-')+1, mainSection.lastIndexOf('-'));
+		this.loadSubSection(mainSection,'main');
+        
 		// Changing data in div
 		document.getElementById('container-c1-header').innerHTML = "Step 1 - Select option";
 		document.getElementById('modify-back-button').style.visibility = "hidden";
@@ -180,7 +207,7 @@ export class SubsectionComponent{
 
 		this.modifyCount--;
 
-		// Enable all toher subsections
+		// Enable all other subsections
 		this.toggleListItemDisabled(false);
 	}
 
@@ -214,6 +241,12 @@ export class SubsectionComponent{
 
 	inputChanged(event: Event){
 		this._chmodService.chmodBuilder(event);
+	}
+
+	loadOptionBuilder(){
+		alert("HERE");
+		var searchResult = document.getElementById('searchResult').innerHTML;
+		alert(searchResult);
 	}
 
 	constructor(private _chmodService: CHMODService){}
