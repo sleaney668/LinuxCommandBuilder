@@ -406,8 +406,44 @@ form#subsection-form{
 
 select { font-size:13px; }
 
-#option-drop-down{
-  border: none;
-  font-size: 0.99em;
+.option-builder-code{
+  font-family: Monaco;
+  margin-left: 19px;
+  padding: 6px;
+  background-color: #f9f2f4;
+  color: #c7264f;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  margin-bottom: 13%;
 }
+
+#option-modal-container-div{
+  display: inline-block;
+  width: 100%;
+}
+#option-builder-search-result{
+  float: left;
+  padding: 5px;
+  margin-right: -5%;
+}
+#option-builder-drop-down{
+  height: 30px;
+  padding-left: 35px;
+}
+
+#option-modal-container-div-left{
+  float: left;
+  margin-right: 12%;
+}
+#option-modal-container-div-right{
+  float: left;
+  color: black;
+}
+.option-modal-container-div-right-title{
+  font-family: "Raleway";
+  text-decoration: underline;
+  font-weight: 200;
+}
+
+
 

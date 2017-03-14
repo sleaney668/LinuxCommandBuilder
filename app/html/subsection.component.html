@@ -128,13 +128,39 @@
 						<div class="modal" id="modal-2">
 							<div class="modal-dialog">
 								<div class="modal-content">
+
 									<div class="modal-header">
 										<button type="button" class="close" data-dismiss="modal">&times;</button>
 										<h3 class="modal-title">Option builder</h3>
 									</div>
 
-									<div class="modal-body" id="chmod-modal-container-div">
-										<div id="searchResult" title="Click for more info">ps</div>
+									<div class="modal-body" id="option-modal-container-div">
+										
+										<!--
+										1. Need to load in searchResult content 
+										2. Need to do a look up based on that command to load the options in for selection
+										3. On selection of an option there needs to be a lookup perforned to get option information
+										-->
+										<div id="option-modal-container-div-left">
+											<div class="option-builder-code" id="option-builder-search-result">ps</div>
+
+											<select class="option-builder-code" id="option-builder-drop-down" title="Click for more info">
+												<option class="e" value="e">-e</option>
+												<option class="ef" value="ef">-ef</option>
+												<option class="eaf" value="eaf">-eaf</option>
+											</select>
+										</div>
+
+										<div id="option-modal-container-div-right">
+											<div class="option-modal-container-div-right-title">Option -(e)</div>
+											<i>The minus (-) on a command infers the use of an option.</i>
+											<ul>
+												<li class="codeFormatLi"><span>e</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Select all processes, identical to -A</li>
+												<li class="codeFormatLi"><span>a</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Select all processes except session leaders</li>
+												<li class="codeFormatLi"><span>f</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Does full-format listing</li>
+											</ul>
+										</div>
+	
 									</div>
 
 								</div>
