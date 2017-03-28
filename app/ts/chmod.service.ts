@@ -51,7 +51,7 @@ export class CHMODService{
                         	(this.myArr[2][1] == 1 ? this.binaryArr[1] : 0) + 
                         	(this.myArr[2][2] == 1 ? this.binaryArr[2] : 0);
                           
-        document.getElementById('searchOption').innerHTML = '' + userTotal + groupTotal + otherTotal + '';
+        document.getElementById('searchChmodOption').innerHTML = '' + userTotal + groupTotal + otherTotal + '';
         document.getElementById('Command').innerHTML = '' + userTotal + groupTotal + otherTotal + '';
       	console.log("Command: " + userTotal + groupTotal + otherTotal);
 

@@ -11,6 +11,7 @@ import {SubsectionComponent} from './subsection.component';
 // Import services
 import {JSONService} from './json.service';
 import {CHMODService} from './chmod.service';
+import {OptionBuilderService} from './optionBuilder.service';
 
 // Import interfaces
 import {Command} from './command';
@@ -19,7 +20,7 @@ import {Command} from './command';
     selector: 'my-app',
     templateUrl: 'app/html/app.component.html',
     directives: [ListComponent, SubsectionComponent, CORE_DIRECTIVES],
-    providers: [JSONService, CHMODService]
+    providers: [JSONService, CHMODService, OptionBuilderService]
 })
 
 export class AppComponent implements OnInit {
@@ -200,12 +201,12 @@ export class AppComponent implements OnInit {
 	}
 
 	setupStepThreeChmod(){
-		document.getElementById("Search-Option-Div").style.display = "block";
-		document.getElementById("Search-Option-Div-searchTag").innerHTML= "2";
+		document.getElementById("Search-CHMOD-Div").style.display = "block";
+		document.getElementById("Search-CHMOD-Div-searchTag").innerHTML= "2";
 		document.getElementById("Search-Input-Div-searchTag").innerHTML = "3";
 	}
 
-	constructor(private _jsonService: JSONService, private _chmodService: CHMODService){}
+	constructor(private _jsonService: JSONService, private _chmodService: CHMODService, private _optionBuilderService: OptionBuilderService){}
 	ngOnInit(){
 		// Construct the linuxCategories read from the json object stored
         let linuxCategoriesArr = Config.categoriesSearch.split('.');

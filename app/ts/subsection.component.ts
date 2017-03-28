@@ -7,6 +7,7 @@ import {Config} from './config.service';
 
 // Import services
 import {CHMODService} from './chmod.service';
+import {OptionBuilderService} from './optionBuilder.service';
 
 @Component({
 	selector: 'subsection',
@@ -23,6 +24,7 @@ export class SubsectionComponent{
 	searchArr = [];
 	searchText;
 	tmpSearchText;
+	optionValues;
 
 	subCategoryItemOutput = new EventEmitter();
  
@@ -246,10 +248,43 @@ export class SubsectionComponent{
 	loadOptionBuilder(){
 		alert("HERE");
 		var searchResult = document.getElementById('searchResult').innerHTML;
-		alert(searchResult);
+		document.getElementById('option-builder-search-result').innerHTML = searchResult;
+
+		this.populateOptions(searchResult);
+		// alert(searchResult);
 	}
 
-	constructor(private _chmodService: CHMODService){}
+	populateOptions(searchResult){
+
+        this.optionValues = Config.optionValues;
+        let optionResults = this.optionValues[searchResult];
+
+        var dropDown = document.getElementById('option-builder-drop-down'); 
+
+		for (var i in optionResults) {
+			var dropDownOption = '<option class="'+optionResults[i]+'" value="'+optionResults[i]+'">-'+optionResults[i]+'</option>';
+			dropDown.innerHTML += dropDownOption;
+
+		  	console.log(optionResults[i]); //"aa", bb", "cc"
+		  }
+	}
+
+	onOptionSelection(dropDownItem){
+		var searchOption = document.getElementById('searchOption');
+		//console.log("dropDownItem: " + dropDownItem);
+		//console.log("searchOption: " + searchOption.innerHTML);
+		searchOption.innerHTML = '-'+dropDownItem;
+
+		/*
+		* 1. Perform search for dropDownItem
+		*/
+		this._optionBuilderService.search(dropDownItem);
+
+		
+	}
+
+
+	constructor(private _chmodService: CHMODService, private _optionBuilderService: OptionBuilderService){}
 	ngOnInit(){
 	}
 

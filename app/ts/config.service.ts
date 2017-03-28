@@ -1,6 +1,5 @@
 export class Config{
 	static MAIN_HEADING: string = " | Linux Command Builder | "
-	//static dataObject: Object = {"linuxCategories":[{"add":[{"directory":"mkdir"},{"directory1":"mkdir"},{"directory2":"mkdir"}]},{"delete":"object"},{"modify":"object"},{"view":"object"},{"locate":"object"},{"copy":"object"}]};
 
 	static dataObject: Object = {"linuxCategories":[
 								["touch","mkdir","useradd","groupadd","ln"], //Add
@@ -13,7 +12,7 @@ export class Config{
 							    [["cat", "stat", "tail"], // View > File
 							     ["ls", "stat"], // View > Directory
 							     ["groups","?"], // View > Group
-							     ["ps -eaf", "lsof -i :", "top"] // View > Processes
+							     ["ps", "lsof", "top"] // View > Processes
 							    ], 
 							    ["ps aux","find / -name","pwd","groups","w"], //Locate
 							    ["cp"], //Copy
@@ -75,10 +74,18 @@ export class Config{
 	    "cat":"Print file contents",
 	    "stat":"Status information",
 	    "ls":"List diretory content's",
-
 	}
 
-	static mkdirTreeValues = "tmdir/{branches/sources/{includes,docs}branches,tags}";
-	// Value before first index of / is li #1
-	// after is new ul, if next char is { then 
+	static optionValues = {"ps":["e","ea","eaf"]};
+    
+    static optionDescriptions = {
+    	"e":"Description here",
+    	"a":"1 Description here",
+    	"f":"2 Description here"
+    };
+
 }
+
+
+
+

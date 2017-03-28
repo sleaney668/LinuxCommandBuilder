@@ -37,14 +37,17 @@
 
 					<div id="Code-Container-Div">
 
+						<!-- Search Result Div used to display the result of the selected options -->
 						<div id="Search-Result-Div" style="visibility:hidden">
 							<div id= "Search-Result-Div-searchTag" class="searchTag">1</div>
 							<div id="searchResult" title="Click for more info" (click)="onSearchResultClick()"></div>
 						</div>
 
-						<div id="Search-Option-Div" data-toggle="modal" data-target="#modal-1" style="display:none">
-							<div id= "Search-Option-Div-searchTag" class="searchTag"></div>
-							<div id="searchOption">777</div>
+						
+						<!-- Search Option Div used to display the option for a user to select -->
+						<div id="Search-CHMOD-Div" data-toggle="modal" data-target="#modal-1" style="display:none">
+							<div id= "Search-CHMOD-Div-searchTag" class="searchTag"></div>
+							<div id="searchChmodOption">777</div>
 						</div>
 
 						<div class="modal" id="modal-1" >
@@ -120,9 +123,10 @@
 							</div>
 						</div>
 
+
 						<div id="Search-Option-Div" data-toggle="modal" data-target="#modal-2" (click)="loadOptionBuilder()">
 							<div id= "Search-Option-Div-searchTag" class="searchTag">2</div>
-							<div id="searchOption">e</div>
+							<div id="searchOption"><i>options</i></div>
 						</div>
 
 						<div class="modal" id="modal-2">
@@ -144,11 +148,9 @@
 										<div id="option-modal-container-div-left">
 											<div class="option-builder-code" id="option-builder-search-result">ps</div>
 
-											<select class="option-builder-code" id="option-builder-drop-down" title="Click for more info">
-												<option class="e" value="e">-e</option>
-												<option class="ef" value="ef">-ef</option>
-												<option class="eaf" value="eaf">-eaf</option>
+											<select class="option-builder-code" id="option-builder-drop-down" title="Click for more info" (change)="onOptionSelection($event.target.value)">
 											</select>
+
 										</div>
 
 										<div id="option-modal-container-div-right">

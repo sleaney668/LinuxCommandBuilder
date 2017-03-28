@@ -336,12 +336,12 @@ input[type=text] {
   transition: all 0.3s ease;
 }
 
-#Search-Result-Div, #Search-Option-Div, #Search-Input-Div{
+#Search-Result-Div, #Search-CHMOD-Div, #Search-Option-Div, #Search-Input-Div{
   margin-left: 10px;
   border-radius: 2px;
   float: left;
 }
-#searchResult, #searchOption, #searchInput{
+#searchResult, #searchChmodOption, #searchOption, #searchInput{
   font-family: Monaco;
   margin-left: 19px;
   padding: 6px;
@@ -358,14 +358,23 @@ input[type=text] {
   background-color: #2c3e50;
   opacity: 0.6;
 }
-#Search-Result-Div:hover #searchResult {
+#Search-Result-Div:hover #searchResult{
   opacity: 0.8;
 }
+
+#Search-CHMOD-Div:hover .searchTag{
+  background-color: #2c3e50;
+  opacity: 0.6;
+}
+#Search-CHMOD-Div:hover #searchChmodOption{
+  opacity: 0.8;
+}
+
 #Search-Option-Div:hover .searchTag{
   background-color: #2c3e50;
   opacity: 0.6;
 }
-#Search-Option-Div:hover #searchOption {
+#Search-Option-Div:hover #searchOption{
   opacity: 0.8;
 }
 .searchResultSelected, .searchOptionSelected{
