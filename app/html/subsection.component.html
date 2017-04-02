@@ -124,9 +124,9 @@
 						</div>
 
 
-						<div id="Search-Option-Div" data-toggle="modal" data-target="#modal-2" (click)="loadOptionBuilder()">
-							<div id= "Search-Option-Div-searchTag" class="searchTag">2</div>
-							<div id="searchOption"><i>options</i></div>
+						<div id="Search-Option-Div" data-toggle="modal" data-target="#modal-2" (click)="loadOptionBuilder()" style="display:none">
+							<div id= "Search-Option-Div-searchTag" class="searchTag"></div>
+							<div id="searchOption"><i>option</i></div>
 						</div>
 
 						<div class="modal" id="modal-2">
@@ -139,46 +139,35 @@
 									</div>
 
 									<div class="modal-body" id="option-modal-container-div">
-										
-										<!--
-										1. Need to load in searchResult content 
-										2. Need to do a look up based on that command to load the options in for selection
-										3. On selection of an option there needs to be a lookup perforned to get option information
-										-->
+
 										<div id="option-modal-container-div-left">
 											<div class="option-builder-code" id="option-builder-search-result">ps</div>
 
-											<select class="option-builder-code" id="option-builder-drop-down" title="Click for more info" (change)="onOptionSelection($event.target.value)">
+											<select class="option-builder-code" id="option-builder-drop-down" title="Click for more info">
 											</select>
 
 										</div>
 
 										<div id="option-modal-container-div-right">
-											<div class="option-modal-container-div-right-title">Option -(e)</div>
+											<div class="option-modal-container-div-right-title">Options for ps</div>
 											<i>The minus (-) on a command infers the use of an option.</i>
-											<ul>
-												<li class="codeFormatLi"><span>e</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Select all processes, identical to -A</li>
-												<li class="codeFormatLi"><span>a</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Select all processes except session leaders</li>
-												<li class="codeFormatLi"><span>f</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Does full-format listing</li>
-											</ul>
+											<options id="option-data-section"></options>
 										</div>
 	
+									</div>
+
+									<div class="modal-footer">
+										<button id="Modal-Add-Button" type="button" (click)="onOptionSelection()" data-dismiss="modal">Add</button>
 									</div>
 
 								</div>
 							</div>
 						</div>
 
-						<!-- <div id="Search-Option-Div">
-							<div class="searchTag">3</div>
-							<div id="searchResult"></div>
-						</div> -->
-
-						<!-- <select id="option-drop-down" name="option">
-									<option class="e" value="e">e</option>
-									<option class="ef" value="ef">ef</option>
-									<option class="eaf" value="eaf">eaf</option>
-						</select> -->
+						<div id="Search-Grep-Div"  style="display:none">
+							<div id= "Search-Grep-Div-searchTag" class="searchTag">+</div>
+							<div id="searchGrep"><i>grep</i></div>
+						</div>
 
 						<div id="Search-Input-Div" style="visibility:hidden">
 							<div id= "Search-Input-Div-searchTag" class="searchTag">2</div>

@@ -109,9 +109,7 @@ export class AppComponent implements OnInit {
 	}
 
 	onSubCategorySelect(subCategoryData){
-		//alert("2");
 		// If non 2 step process then change to 2 step
-
 		if((this.searchString.split('.')[0] == "modify" || this.searchString.split('.')[0] == "view") && subCategoryData[subCategoryData.length-1] != '.'){
 			// Modify level 2, just append the search string
 			this.appendSearchString(subCategoryData, 2);
@@ -127,10 +125,10 @@ export class AppComponent implements OnInit {
 	}
 
 	performFullSearch(subCategoryData){	
+
+		// Method here to decide what step to show
 		this.setupStepTwo(subCategoryData);
-		if(subCategoryData == " Permissions."){
-			this.setupStepThreeChmod();
-		}
+	    this.setupStepThree(subCategoryData);
 
 		// Call to search over the JSON stored in the config based on the appended search string
 		this._jsonService.getLinuxCategories(this.searchString);
@@ -192,18 +190,61 @@ export class AppComponent implements OnInit {
 
 	setupStepTwo(subCategoryData){
 
-		document.getElementById(`container-c2-header`).innerHTML = 'Step 2 - Enter ' + subCategoryData + ' name';
+		this.renderFullSearchTerm(subCategoryData);
 
 		var subsectionTextEntry = <HTMLInputElement>document.getElementsByClassName("subsection-text-entry")[0];
 		subsectionTextEntry.placeholder='Enter text...';
 		subsectionTextEntry.style.opacity = "1";
-
 	}
 
 	setupStepThreeChmod(){
+		//alert("Setting up chmod builder...");
 		document.getElementById("Search-CHMOD-Div").style.display = "block";
 		document.getElementById("Search-CHMOD-Div-searchTag").innerHTML= "2";
 		document.getElementById("Search-Input-Div-searchTag").innerHTML = "3";
+	}
+
+	setupStepThreeOptionBuilder(){
+		//alert("Setting up option builder...");
+
+		document.getElementById("Search-Option-Div").style.display = "block";
+		document.getElementById("Search-Option-Div-searchTag").innerHTML= "+";
+		//document.getElementById("Search-Input-Div-searchTag").innerHTML = "2";
+	}
+
+	setupStepThree(subCategoryData){
+		// Here we need to decide what to do
+		// if permissions then add chmod with tag
+		// if optionCat then set up with cat, search if contains in options array in config
+
+	    if(subCategoryData.includes("Permissions")){
+			this.setupStepThreeChmod();
+		} 
+
+		if(subCategoryData.includes("All processes")){
+			this.setupStepThreeOptionBuilder();
+		}
+
+		// Do we need the grep builder button?
+	}
+
+	renderFullSearchTerm(searchTerm){
+
+		console.log("listItemName: " + this.listItemName);
+		console.log("tmplistItemData: " + this.tmplistItemData);
+		console.log("showSubsection: " + this.showSubsection);
+		console.log("searchResult: " + this.searchResult);
+		console.log("data: " + this.data);
+		console.log("searchString: " + this.searchString);
+		console.log("searchArr: " + this.searchArr);
+		console.log("command: " + this.command);
+		console.log("subSectionId: " + this.listItemName);
+		console.log("tmpSubSectionId: " + this.listItemName);
+		console.log("categoryChange: " + this.categoryChange);
+
+
+		alert(searchTerm + " - " + Config.searchTermRender[searchTerm]);
+		document.getElementById(`container-c2-header`).innerHTML = 'Step 2 - Enter ' + Config.searchTermRender[searchTerm];
 	}
 
 	constructor(private _jsonService: JSONService, private _chmodService: CHMODService, private _optionBuilderService: OptionBuilderService){}

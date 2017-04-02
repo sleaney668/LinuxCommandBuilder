@@ -5,8 +5,8 @@ import {Config} from './config.service';
 export class OptionBuilderService{
 
 	public search(dropDownItem){
-		alert('IN OPTION BUILDER SEARCH...' + dropDownItem);
+		//alert('IN OPTION BUILDER SEARCH...' + dropDownItem);
 
-		alert('HERE >> ' + Config.optionDescriptions[dropDownItem]);
+		//alert('HERE >> ' + Config.optionDescriptions[dropDownItem]);
     }
 }

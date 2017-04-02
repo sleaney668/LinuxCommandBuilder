@@ -1,6 +1,7 @@
-import {Component, EventEmitter, Input, Output} from 'angular2/core';
+import {Directive,  ElementRef, Renderer, Component, EventEmitter, Input, Output} from 'angular2/core';
 import {AppComponent} from './app.component';
 import {DataComponent} from './data.component';
+import {OptionComponent} from './data.component';
 
 // Import config
 import {Config} from './config.service';
@@ -12,7 +13,7 @@ import {OptionBuilderService} from './optionBuilder.service';
 @Component({
 	selector: 'subsection',
 	templateUrl: 'app/html/subsection.component.html',
-	directives: [DataComponent],
+	directives: [DataComponent, OptionComponent],
 	inputs: ['showSubsection','linuxCategories','subSections','searchResult'],
 	outputs:['subCategoryItemOutput']
 })
@@ -194,18 +195,14 @@ export class SubsectionComponent{
 		document.getElementById('modify-back-button').style.visibility = "hidden";
 
 		// document.getElementById("Search-Result-Div").style.visibility = "hidden";
-
 		// document.getElementById("Search-Option-Div").style.visibility = "hidden";
-
 		// document.getElementById("Search-Input-Div").style.visibility = "hidden";
-
 
 		var subsectionTextEntry = <HTMLInputElement>document.getElementsByClassName("subsection-text-entry")[0];
 		subsectionTextEntry.value = "";
 		subsectionTextEntry.placeholder='Select option...';
 		// subsectionTextEntry.disabled = true;
 		// subsectionTextEntry.style.opacity = '0.7';
-
 
 		this.modifyCount--;
 
@@ -246,16 +243,14 @@ export class SubsectionComponent{
 	}
 
 	loadOptionBuilder(){
-		alert("HERE");
+		//alert("HERE");
 		var searchResult = document.getElementById('searchResult').innerHTML;
 		document.getElementById('option-builder-search-result').innerHTML = searchResult;
 
 		this.populateOptions(searchResult);
-		// alert(searchResult);
 	}
 
 	populateOptions(searchResult){
-
         this.optionValues = Config.optionValues;
         let optionResults = this.optionValues[searchResult];
 
@@ -267,20 +262,39 @@ export class SubsectionComponent{
 
 		  	console.log(optionResults[i]); //"aa", bb", "cc"
 		  }
+
+		this.populateOptionInfo(document.getElementById('searchOption'));
 	}
 
-	onOptionSelection(dropDownItem){
+	onOptionSelection(){
+
+		var optionDropDownList = document.getElementById('option-builder-drop-down') as HTMLSelectElement;
+		var dropDownItem = optionDropDownList.options[optionDropDownList.selectedIndex].value;
+
 		var searchOption = document.getElementById('searchOption');
-		//console.log("dropDownItem: " + dropDownItem);
-		//console.log("searchOption: " + searchOption.innerHTML);
 		searchOption.innerHTML = '-'+dropDownItem;
+		document.getElementById("Search-Option-Div-searchTag").innerHTML= "2";
+
+		// Show Grep
+		document.getElementById('Search-Grep-Div').style.display = "block";
 
 		/*
 		* 1. Perform search for dropDownItem
 		*/
 		this._optionBuilderService.search(dropDownItem);
+	}
 
+
+	populateOptionInfo(searchOption){
 		
+		// option-modal-container-div-right-title
+		// option-modal-container-div-right
+		document.getElementById('ps-option-data').style.display = "block";
+
+		//document.getElementById('option-modal-container-div-right-title').innerHTML = "Options for " + searchOption;
+
+		//document.getElementById('option-modal-container-div-right').innerHTML += document.getElementById(dataDiv).innerHTML;
+
 	}
 
 

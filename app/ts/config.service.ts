@@ -78,10 +78,23 @@ export class Config{
 
 	static optionValues = {"ps":["e","ea","eaf"]};
     
-    static optionDescriptions = {
-    	"e":"Description here",
-    	"a":"1 Description here",
-    	"f":"2 Description here"
+    static searchTermRender = {
+    	"File":"file name",
+    	"Directory":"directory name",
+    	"User":"user name",
+    	"Group":"group name",
+    	"Link":"link name",
+    	" Name.":"{old name} {new name}",
+    	" Location.":"{old destination} {new destination}",
+    	" Contents.":"file name",
+    	" Accessed time.":"file/directory name",
+    	" Modified time.":"file/directory name",
+    	" Permissions.":"file/directory name",
+    	" Ownership.":"file/directory name",
+
+    	" Symbolic link.":"{target} {path to symbolic link}",
+
+    	" Status.":"file/directory name",
     };
 
 }
