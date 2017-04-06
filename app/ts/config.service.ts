@@ -86,7 +86,7 @@ export class Config{
     	"Link":"link name",
     	" Name.":"{old name} {new name}",
     	" Location.":"{old destination} {new destination}",
-    	" Contents.":"file name",
+    	" Contents.":"file/directory name",
     	" Accessed time.":"file/directory name",
     	" Modified time.":"file/directory name",
     	" Permissions.":"file/directory name",
@@ -95,6 +95,8 @@ export class Config{
     	" Symbolic link.":"{target} {path to symbolic link}",
 
     	" Status.":"file/directory name",
+
+
     };
 
 }
