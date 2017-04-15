@@ -26,9 +26,17 @@
 
 				<div class="container-c2">
 					<h5 class="container-headers" id="container-c2-header">Step 2 - Enter name</h5>
-					<form id="subsection-form">
-						<input [(ngModel)]="model" (ngModelChange)="reSearch($event)" id="subsection-{{category}}-text-entry" class="subsection-text-entry" type="text" name="enterName" placeholder="Select option..." maxlength="45" disabled>
-					</form>
+						
+						<form id="subsection-form">
+							<div class="tags-input">
+								<input [(ngModel)]="model" (ngModelChange)="reSearch($event)" id="subsection-{{category}}-text-entry" class="subsection-text-entry" type="text" name="enterName" placeholder="Select option..." maxlength="45" disabled>
+
+								<!-- Add tags here -->
+								<span class="tag" id="grep-tag" style="display:none">| grep<span class="close" (click)="onDeleteTagSelect('grep-tag')"></span></span>
+
+							</div>
+						</form>
+					
 				</div>
  
 				<div class="container-c3" id="Search-Container">
@@ -164,7 +172,7 @@
 							</div>
 						</div>
 
-						<div id="Search-Grep-Div"  style="display:none">
+						<div id="Search-Grep-Div" (click)="loadGrep()" style="display:none">
 							<div id= "Search-Grep-Div-searchTag" class="searchTag">+</div>
 							<div id="searchGrep"><i>grep</i></div>
 						</div>

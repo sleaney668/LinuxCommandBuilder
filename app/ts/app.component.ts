@@ -243,7 +243,7 @@ export class AppComponent implements OnInit {
 		console.log("categoryChange: " + this.categoryChange);
 
 
-		alert(searchTerm + " - " + Config.searchTermRender[searchTerm]);
+		// alert(searchTerm + " - " + Config.searchTermRender[searchTerm]);
 		document.getElementById(`container-c2-header`).innerHTML = 'Step 2 - Enter ' + Config.searchTermRender[searchTerm];
 	}
 

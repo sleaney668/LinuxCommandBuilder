@@ -120,15 +120,19 @@ export class SubsectionComponent{
 
 	reSearch(event: Event){	
 		this.searchArr[0] = event;
-		document.getElementById(`searchInput`).innerHTML = this.searchArr.toString();
+
+		if(document.getElementById('grep-tag').style.display == "block"){
+			document.getElementById(`searchInput`).innerHTML = document.getElementById('grep-tag').innerText + " " + this.searchArr.toString();
+		} else {
+			document.getElementById(`searchInput`).innerHTML = this.searchArr.toString();
+		}
 		document.getElementById('Search-Input-Div').style.visibility = "visible";
 
 		// id search box grows over 34 characters (combined 40 characters)
 		var combinedLength = document.getElementById(`searchResult`).innerHTML.length + document.getElementById(`searchInput`).innerHTML.length;
 		if(combinedLength >= 40){
 			// update max length to searchInput Length
-			document.getElementById(document.getElementsByClassName('subsection-text-entry')[0].id).setAttribute("maxlength", document.getElementById(`searchInput`).innerHTML.length.toString());
-			
+			document.getElementById(document.getElementsByClassName('subsection-text-entry')[0].id).setAttribute("maxlength", document.getElementById(`searchInput`).innerHTML.length.toString());	
 		}
 
 		document.getElementsByClassName('Copy-To-Clipboard')[0].classList.remove('Copy-To-Clipboard-Click');
@@ -194,15 +198,9 @@ export class SubsectionComponent{
 		document.getElementById('container-c1-header').innerHTML = "Step 1 - Select option";
 		document.getElementById('modify-back-button').style.visibility = "hidden";
 
-		// document.getElementById("Search-Result-Div").style.visibility = "hidden";
-		// document.getElementById("Search-Option-Div").style.visibility = "hidden";
-		// document.getElementById("Search-Input-Div").style.visibility = "hidden";
-
 		var subsectionTextEntry = <HTMLInputElement>document.getElementsByClassName("subsection-text-entry")[0];
 		subsectionTextEntry.value = "";
 		subsectionTextEntry.placeholder='Select option...';
-		// subsectionTextEntry.disabled = true;
-		// subsectionTextEntry.style.opacity = '0.7';
 
 		this.modifyCount--;
 
@@ -295,6 +293,24 @@ export class SubsectionComponent{
 
 		//document.getElementById('option-modal-container-div-right').innerHTML += document.getElementById(dataDiv).innerHTML;
 
+	}
+
+	loadGrep(){
+		// Load grep into input
+		document.getElementById('grep-tag').style.display = "block";
+		document.getElementsByClassName('subsection-text-entry')[0].classList.add('tags-input-grep-indent');
+		document.getElementById('Search-Grep-Div').style.display = "none";
+		// .tags-input input { text-indent: 97px;}
+	}
+
+	onDeleteTagSelect(tagId){
+		alert("ON DELETE" + tagId);
+		document.getElementById(tagId).style.display = "none";
+		document.getElementsByClassName('subsection-text-entry')[0].classList.remove('tags-input-grep-indent');
+		// Clear this text box
+		document.getElementById('subsection-form').reset();
+		document.getElementById('Search-Grep-Div').style.display = "block";
+		document.getElementById('Search-Input-Div').style.display = "none";
 	}
 
 

@@ -471,4 +471,49 @@ select { font-size:13px; }
   color: #c7264f;
 }
 
+.tags-input {
+  position: relative;
+  color: #aaa;
+  font-size: 16px;
+}
+.tags-input input {
+/*width: 250px;*/  
+  height: 34px;
 
+  background: #fcfcfc;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  box-shadow: 0 0 3px #ccc, 0 10px 15px #ebebeb inset;
+}
+.tags-input-grep-indent { text-indent: 97px;}
+.tags-input .tag { 
+    position: absolute;
+    top: 2px;
+    left: 13px;
+    padding-top: 0.08em;
+    padding-bottom: 0.21em;
+    padding-left: 0.5em;
+    padding-right: 0.7em;
+    border-radius: 5px;
+    margin-top: 0.1em;
+    margin-left: 0.1em;
+    margin-bottom: 0.1em;
+    margin: 1.21em 0.em;
+    background-color: #cfd4d5;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-family: Monaco;
+    color: #bf4040;
+}
+
+.close::after {
+    content: '×';
+    font-weight: bold;
+    /* display: inline-block; */
+    transform: scale(1.4);
+    margin-left: 0.3em;
+    margin-right: -4px;
+}
+.close:hover::after {
+    color: red;
+}
