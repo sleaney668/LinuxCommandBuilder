@@ -125,9 +125,9 @@ export class AppComponent implements OnInit {
 	}
 
 	performFullSearch(subCategoryData){	
-
 		// Method here to decide what step to show
 		this.setupStepTwo(subCategoryData);
+		this.purgeStepThree(subCategoryData);
 	    this.setupStepThree(subCategoryData);
 
 		// Call to search over the JSON stored in the config based on the appended search string
@@ -161,6 +161,7 @@ export class AppComponent implements OnInit {
 			}
 		}
 		this.tmpSubSectionId = this.subSectionId;
+		this.validateTextEntry(subCategoryData);
 	}
 
 	// Updates the search string based on user entry
@@ -189,12 +190,31 @@ export class AppComponent implements OnInit {
 	}
 
 	setupStepTwo(subCategoryData){
-
 		this.renderFullSearchTerm(subCategoryData);
+		//this.validateTextEntry(subCategoryData);
+	}
 
+	validateTextEntry(subCategoryData){
 		var subsectionTextEntry = <HTMLInputElement>document.getElementsByClassName("subsection-text-entry")[0];
-		subsectionTextEntry.placeholder='Enter text...';
-		subsectionTextEntry.style.opacity = "1";
+
+		var placeholderText = 'Enter text...';
+		var opactiy = "1";
+
+		if(subCategoryData.includes("All group")){
+			placeholderText = 'Select (sub) option...';
+			opactiy = "0.7";
+			subsectionTextEntry.disabled = true;
+		} else if(subCategoryData.includes("All processes") || subCategoryData.includes("Port processes")){
+			placeholderText = 'Add option...';
+			opactiy = "0.7";
+			subsectionTextEntry.disabled = true;
+		} else {
+			subsectionTextEntry.disabled = false;
+		}
+
+		subsectionTextEntry.placeholder = placeholderText;
+		subsectionTextEntry.style.opacity = opactiy;
+
 	}
 
 	setupStepThreeChmod(){
@@ -221,11 +241,21 @@ export class AppComponent implements OnInit {
 			this.setupStepThreeChmod();
 		} 
 
-		if(subCategoryData.includes("All processes")){
+		if(subCategoryData.includes("All processes") || subCategoryData.includes("Port processes")){
 			this.setupStepThreeOptionBuilder();
 		}
 
 		// Do we need the grep builder button?
+	}
+
+	purgeStepThree(subCategoryData){
+
+		// If CHMOD step is there, then remove it
+		if(document.getElementById("Search-CHMOD-Div").style.display == "block"){
+			document.getElementById("Search-CHMOD-Div").style.display = "none";
+		}
+
+
 	}
 
 	renderFullSearchTerm(searchTerm){

@@ -225,7 +225,6 @@ export class SubsectionComponent{
 	}
 
 	resetDataComponent(category){
-
 		// Clear this text box
 		document.getElementById('subsection-form').reset();
 
@@ -261,11 +260,10 @@ export class SubsectionComponent{
 		  	console.log(optionResults[i]); //"aa", bb", "cc"
 		  }
 
-		this.populateOptionInfo(document.getElementById('searchOption'));
+		this.populateOptionInfo();
 	}
 
 	onOptionSelection(){
-
 		var optionDropDownList = document.getElementById('option-builder-drop-down') as HTMLSelectElement;
 		var dropDownItem = optionDropDownList.options[optionDropDownList.selectedIndex].value;
 
@@ -280,14 +278,22 @@ export class SubsectionComponent{
 		* 1. Perform search for dropDownItem
 		*/
 		this._optionBuilderService.search(dropDownItem);
+
+		// Updating text entry placeholder
+		var subsectionTextEntry = <HTMLInputElement>document.getElementsByClassName("subsection-text-entry")[0];
+		subsectionTextEntry.placeholder = "Add grep...";
+
 	}
 
-
-	populateOptionInfo(searchOption){
-		
+	populateOptionInfo(){	
 		// option-modal-container-div-right-title
 		// option-modal-container-div-right
-		document.getElementById('ps-option-data').style.display = "block";
+		alert(document.getElementById('searchResult').innerHTML);
+
+		var searchOption = document.getElementById('searchResult').innerHTML;
+		document.getElementById(searchOption+'-option-data').style.display = "block";
+
+		//option-data-section
 
 		//document.getElementById('option-modal-container-div-right-title').innerHTML = "Options for " + searchOption;
 
@@ -300,6 +306,10 @@ export class SubsectionComponent{
 		document.getElementById('grep-tag').style.display = "block";
 		document.getElementsByClassName('subsection-text-entry')[0].classList.add('tags-input-grep-indent');
 		document.getElementById('Search-Grep-Div').style.display = "none";
+
+		// Enable the tag input here
+		this.validateTextEntry(false);
+
 		// .tags-input input { text-indent: 97px;}
 	}
 
@@ -311,8 +321,29 @@ export class SubsectionComponent{
 		document.getElementById('subsection-form').reset();
 		document.getElementById('Search-Grep-Div').style.display = "block";
 		document.getElementById('Search-Input-Div').style.display = "none";
+
+		var subsectionTextEntry = <HTMLInputElement>document.getElementsByClassName("subsection-text-entry")[0];
+		subsectionTextEntry.disabled = true;
+		this.validateTextEntry(true);
 	}
 
+
+	validateTextEntry(textEntryFlag){
+		var subsectionTextEntry = <HTMLInputElement>document.getElementsByClassName("subsection-text-entry")[0];
+
+		var placeholderText = 'Enter text...';
+		var opactiy = "1";
+
+		if(textEntryFlag){
+			opactiy = "0.7";
+			placeholderText = "Add grep...";
+		}
+
+		subsectionTextEntry.disabled = textEntryFlag;
+		subsectionTextEntry.placeholder = placeholderText;
+		subsectionTextEntry.style.opacity = opactiy;
+
+	}
 
 	constructor(private _chmodService: CHMODService, private _optionBuilderService: OptionBuilderService){}
 	ngOnInit(){

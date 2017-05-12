@@ -76,7 +76,9 @@ export class Config{
 	    "ls":"List diretory content's",
 	}
 
-	static optionValues = {"ps":["e","ea","eaf"]};
+	static optionValues = {"ps":["e","a","f","x","r","eaf","aux"],
+						   "lsof":["i","g","p","u"]
+						  };
     
     static searchTermRender = {
     	"File":"file name",
