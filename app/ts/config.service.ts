@@ -37,7 +37,7 @@ export class Config{
 	static viewFileSubSearch: string = ` Contents. Status. Log file`;
 	static viewDirectorySubSearch: string = ` Contents. Status`;
 	static viewGroupSubSearch: string = ` All group's. User group's`;
-	static viewProcessesSubSearch: string = ` All processes. Port processes. Top processes`;
+	static viewProcessesSubSearch: string = ` All processes. Specific processes. Top processes`;
 
 	static locateSearch: string = `File.Directory.Location.Users.Logged In`;
 	
@@ -76,8 +76,8 @@ export class Config{
 	    "ls":"List diretory content's",
 	}
 
-	static optionValues = {"ps":["e","a","f","x","r","eaf","aux"],
-						   "lsof":["i","g","p","u"]
+	static optionValues = {"ps":["-e","-a","-f","-x","-r","-eaf","-aux"],
+						   "lsof":["-i","-i:","-u","-p","+d","-t"]
 						  };
     
     static searchTermRender = {
@@ -97,10 +97,9 @@ export class Config{
     	" Symbolic link.":"{target} {path to symbolic link}",
 
     	" Status.":"file/directory name",
-
-
     };
 
+    static disabledSearchTerms: string = "Top processes.All group's";
 }
 
 

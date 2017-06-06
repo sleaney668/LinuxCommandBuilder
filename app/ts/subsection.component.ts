@@ -126,7 +126,8 @@ export class SubsectionComponent{
 		} else {
 			document.getElementById(`searchInput`).innerHTML = this.searchArr.toString();
 		}
-		document.getElementById('Search-Input-Div').style.visibility = "visible";
+		//document.getElementById('Search-Input-Div').style.visibility = "visible";
+		document.getElementById('Search-Input-Div').style.display = "block";
 
 		// id search box grows over 34 characters (combined 40 characters)
 		var combinedLength = document.getElementById(`searchResult`).innerHTML.length + document.getElementById(`searchInput`).innerHTML.length;
@@ -206,6 +207,7 @@ export class SubsectionComponent{
 
 		// Enable all other subsections
 		this.toggleListItemDisabled(false);
+		this.validateTextEntry(true, 'Select option...');
 	}
 
 	toggleListItemDisabled(diabledFlag){
@@ -229,7 +231,12 @@ export class SubsectionComponent{
 		document.getElementById('subsection-form').reset();
 
 		// Remove this from the output
-		document.getElementById('Search-Input-Div').style.visibility = "hidden";
+		// document.getElementById('Search-Input-Div').style.visibility = "hidden";
+		document.getElementById('Search-Input-Div').style.display = "none";
+		
+		if(category.includes("Top processes")){
+			this.validateTextEntry(true, "Enter text...");
+		}
 
 		// Change the information here
 		this.onSearchResultChange();
@@ -254,7 +261,7 @@ export class SubsectionComponent{
         var dropDown = document.getElementById('option-builder-drop-down'); 
 
 		for (var i in optionResults) {
-			var dropDownOption = '<option class="'+optionResults[i]+'" value="'+optionResults[i]+'">-'+optionResults[i]+'</option>';
+			var dropDownOption = '<option class="'+optionResults[i]+'" value="'+optionResults[i]+'">'+optionResults[i]+'</option>';
 			dropDown.innerHTML += dropDownOption;
 
 		  	console.log(optionResults[i]); //"aa", bb", "cc"
@@ -263,32 +270,75 @@ export class SubsectionComponent{
 		this.populateOptionInfo();
 	}
 
+	truncateOptions(){
+		document.getElementById("option-builder-drop-down").innerHTML = "";
+		document.getElementById("ps-option-data").innerHTML = "";
+	}
+
 	onOptionSelection(){
+
 		var optionDropDownList = document.getElementById('option-builder-drop-down') as HTMLSelectElement;
 		var dropDownItem = optionDropDownList.options[optionDropDownList.selectedIndex].value;
 
 		var searchOption = document.getElementById('searchOption');
-		searchOption.innerHTML = '-'+dropDownItem;
-		document.getElementById("Search-Option-Div-searchTag").innerHTML= "2";
+		searchOption.innerHTML = dropDownItem;
+		document.getElementById("Search-Option-Div-searchTag").innerHTML = "2";
 
-		// Show Grep
-		document.getElementById('Search-Grep-Div').style.display = "block";
+		// Only show grep for selected grep options 
+		// Decide what to do with viewing a log file
+		if(document.getElementById('searchResult').innerHTML == "lsof"){
 
-		/*
-		* 1. Perform search for dropDownItem
-		*/
-		this._optionBuilderService.search(dropDownItem);
+			alert('in lsof');
+			// Write a method to update option 2/Validate text entry 
+			
+			var placeholderText = "";
+			switch (dropDownItem) {
+				case "-i":
+					placeholderText = "";
+					break;
+				case "-i:":
+					placeholderText = "Enter port or port range...";
+					break;
+				case "-u":
+					placeholderText = "Enter username...";
+					break;
+				case "-p":
+					placeholderText = "Enter process ID...";
+					break;
+				case "+d":
+					placeholderText = "Enter directory path...";
+					break;
+				case "-t":
+					placeholderText = "Enter filename...";
+					break;									
+				default:
+					placeholderText = "Enter text...";
+					break;
+			}
 
-		// Updating text entry placeholder
-		var subsectionTextEntry = <HTMLInputElement>document.getElementsByClassName("subsection-text-entry")[0];
-		subsectionTextEntry.placeholder = "Add grep...";
+			this.validateTextEntry(false, placeholderText)
+
+
+		} else {
+			// Show Grep
+			document.getElementById('Search-Grep-Div').style.display = "block";
+
+			/*
+			* 1. Perform search for dropDownItem
+			*/
+			this._optionBuilderService.search(dropDownItem);
+
+			// Updating text entry placeholder
+			var subsectionTextEntry = <HTMLInputElement>document.getElementsByClassName("subsection-text-entry")[0];
+			subsectionTextEntry.placeholder = "Add grep...";
+		}
 
 	}
 
 	populateOptionInfo(){	
 		// option-modal-container-div-right-title
 		// option-modal-container-div-right
-		alert(document.getElementById('searchResult').innerHTML);
+		//alert(document.getElementById('searchResult').innerHTML);
 
 		var searchOption = document.getElementById('searchResult').innerHTML;
 		document.getElementById(searchOption+'-option-data').style.display = "block";
@@ -308,13 +358,10 @@ export class SubsectionComponent{
 		document.getElementById('Search-Grep-Div').style.display = "none";
 
 		// Enable the tag input here
-		this.validateTextEntry(false);
-
-		// .tags-input input { text-indent: 97px;}
+		this.validateTextEntry(false, "Enter text...");
 	}
 
 	onDeleteTagSelect(tagId){
-		alert("ON DELETE" + tagId);
 		document.getElementById(tagId).style.display = "none";
 		document.getElementsByClassName('subsection-text-entry')[0].classList.remove('tags-input-grep-indent');
 		// Clear this text box
@@ -322,27 +369,20 @@ export class SubsectionComponent{
 		document.getElementById('Search-Grep-Div').style.display = "block";
 		document.getElementById('Search-Input-Div').style.display = "none";
 
-		var subsectionTextEntry = <HTMLInputElement>document.getElementsByClassName("subsection-text-entry")[0];
-		subsectionTextEntry.disabled = true;
-		this.validateTextEntry(true);
+		//var subsectionTextEntry = <HTMLInputElement>document.getElementsByClassName("subsection-text-entry")[0];
+		//subsectionTextEntry.disabled = true;
+		this.validateTextEntry(true, "Add grep...");
 	}
 
-
-	validateTextEntry(textEntryFlag){
+	validateTextEntry(textEntryFlag, textEntryPlaceholder){
 		var subsectionTextEntry = <HTMLInputElement>document.getElementsByClassName("subsection-text-entry")[0];
-
-		var placeholderText = 'Enter text...';
 		var opactiy = "1";
-
 		if(textEntryFlag){
 			opactiy = "0.7";
-			placeholderText = "Add grep...";
 		}
-
 		subsectionTextEntry.disabled = textEntryFlag;
-		subsectionTextEntry.placeholder = placeholderText;
+		subsectionTextEntry.placeholder = textEntryPlaceholder;
 		subsectionTextEntry.style.opacity = opactiy;
-
 	}
 
 	constructor(private _chmodService: CHMODService, private _optionBuilderService: OptionBuilderService){}

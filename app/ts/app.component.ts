@@ -39,6 +39,7 @@ export class AppComponent implements OnInit {
 	subSections = [];
 	subSectionId = "";
 	tmpSubSectionId = "";
+	textEntryPlaceholder = "Enter text..."
 	
 	categoryChange = "";
 	categoryChangeFlag: boolean;
@@ -197,24 +198,21 @@ export class AppComponent implements OnInit {
 	validateTextEntry(subCategoryData){
 		var subsectionTextEntry = <HTMLInputElement>document.getElementsByClassName("subsection-text-entry")[0];
 
-		var placeholderText = 'Enter text...';
+		var placeholderText = this.textEntryPlaceholder;
 		var opactiy = "1";
 
-		if(subCategoryData.includes("All group")){
-			placeholderText = 'Select (sub) option...';
+		if (Config.disabledSearchTerms.includes(subCategoryData.trim())){
+			placeholderText = '';
 			opactiy = "0.7";
 			subsectionTextEntry.disabled = true;
-		} else if(subCategoryData.includes("All processes") || subCategoryData.includes("Port processes")){
+		} else if(subCategoryData.includes("All processes") || subCategoryData.includes("Specific processes")){
 			placeholderText = 'Add option...';
 			opactiy = "0.7";
 			subsectionTextEntry.disabled = true;
-		} else {
-			subsectionTextEntry.disabled = false;
-		}
+		} 
 
 		subsectionTextEntry.placeholder = placeholderText;
 		subsectionTextEntry.style.opacity = opactiy;
-
 	}
 
 	setupStepThreeChmod(){
@@ -226,7 +224,6 @@ export class AppComponent implements OnInit {
 
 	setupStepThreeOptionBuilder(){
 		//alert("Setting up option builder...");
-
 		document.getElementById("Search-Option-Div").style.display = "block";
 		document.getElementById("Search-Option-Div-searchTag").innerHTML= "+";
 		//document.getElementById("Search-Input-Div-searchTag").innerHTML = "2";
@@ -241,7 +238,9 @@ export class AppComponent implements OnInit {
 			this.setupStepThreeChmod();
 		} 
 
-		if(subCategoryData.includes("All processes") || subCategoryData.includes("Port processes")){
+		if(subCategoryData.includes("All processes") 
+			|| subCategoryData.includes("Specific processes")
+			|| subCategoryData.includes("Log file")){
 			this.setupStepThreeOptionBuilder();
 		}
 
@@ -249,13 +248,34 @@ export class AppComponent implements OnInit {
 	}
 
 	purgeStepThree(subCategoryData){
-
+		var chmodDiv = document.getElementById("Search-CHMOD-Div");
 		// If CHMOD step is there, then remove it
-		if(document.getElementById("Search-CHMOD-Div").style.display == "block"){
-			document.getElementById("Search-CHMOD-Div").style.display = "none";
+		if(chmodDiv.style.display == "block"){
+			chmodDiv.style.display = "none";
 		}
 
+		var optionDiv = document.getElementById('Search-Option-Div');
+		var grepDiv = document.getElementById('Search-Grep-Div');	
+		var grepTag = document.getElementById('grep-tag');	
 
+		if(subCategoryData.includes("All processes") || subCategoryData.includes("Specific processes")){
+			document.getElementById('searchOption').innerHTML = "option";
+			if(optionDiv.style.display == "block"){
+				document.getElementById('searchOption').innerHTML = "option";
+			} 
+		} else {
+			optionDiv.style.display = "none";
+		}
+
+		if(grepDiv.style.display = "block"){
+			grepDiv.style.display = "none";
+		}
+
+		if(grepTag.style.display == "block"){
+			document.getElementById('grep-tag').style.display = "none";
+			document.getElementsByClassName('subsection-text-entry')[0].classList.remove('tags-input-grep-indent');
+			document.getElementById('subsection-form').reset();
+		}
 	}
 
 	renderFullSearchTerm(searchTerm){
@@ -274,7 +294,12 @@ export class AppComponent implements OnInit {
 
 
 		// alert(searchTerm + " - " + Config.searchTermRender[searchTerm]);
-		document.getElementById(`container-c2-header`).innerHTML = 'Step 2 - Enter ' + Config.searchTermRender[searchTerm];
+		var stepTwoLabel = 'Enter ' + Config.searchTermRender[searchTerm];
+		document.getElementById(`container-c2-header`).innerHTML = 'Step 2 - ' + stepTwoLabel;
+		this.textEntryPlaceholder = stepTwoLabel;
+		//var subsectionTextEntry = <HTMLInputElement>document.getElementsByClassName("subsection-text-entry")[0];
+		//subsectionTextEntry.placeholder = "stepTwoLabel";
+
 	}
 
 	constructor(private _jsonService: JSONService, private _chmodService: CHMODService, private _optionBuilderService: OptionBuilderService){}

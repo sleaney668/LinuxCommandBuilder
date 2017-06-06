@@ -515,7 +515,6 @@ select { font-size:13px; }
     color: #bf4040;
 }
 
-
 .close::after {
     content: '×';
     font-weight: bold;
@@ -524,7 +523,7 @@ select { font-size:13px; }
     margin-left: 0.3em;
     margin-right: -4px;
 }
-
 .close:hover::after {
     color: red;
 }
+
