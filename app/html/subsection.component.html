@@ -52,7 +52,7 @@
 						</div>
 				
 						<!-- Search Option Div used to display the option for a user to select -->
-						<div id="Search-CHMOD-Div" data-toggle="modal" data-target="#modal-1" style="display:none">
+						<div id="Search-CHMOD-Div" data-toggle="modal" data-target="#modal-1" data-backdrop="static" style="display:none">
 							<div id= "Search-CHMOD-Div-searchTag" class="searchTag"></div>
 							<div id="searchChmodOption">777</div>
 						</div>
@@ -134,13 +134,13 @@
 							</div>
 						</div>
 
-						<div id="Search-Option-Div" data-toggle="modal" data-target="#modal-2" (click)="loadOptionBuilder()" style="display:none">
+						<div id="Search-Option-Div" data-toggle="modal" data-target="#modal-2" data-backdrop="static" (click)="loadOptionBuilder()" style="display:none">
 							<div id= "Search-Option-Div-searchTag" class="searchTag"></div>
 							<div id="searchOption"><i>option</i></div>
 						</div>
 
 						<div class="modal" id="modal-2">
-							<div class="modal-dialog">
+							<div class="modal-dialog" id="option-modal-dialog">
 								<div class="modal-content">
 
 									<div class="modal-header">
@@ -155,7 +155,6 @@
 
 											<select class="option-builder-code" id="option-builder-drop-down" title="Click for more info">
 											</select>
-
 										</div>
 
 										<div id="option-modal-container-div-right">
@@ -174,16 +173,21 @@
 							</div>
 						</div>
 
-						<div id="Search-Grep-Div" (click)="loadGrep()" style="display:none">
+<!-- 						<div id="Search-Grep-Div" (click)="loadGrep()" style="display:none">
 							<div id= "Search-Grep-Div-searchTag" class="searchTag">+</div>
 							<div id="searchGrep"><i>grep</i></div>
-						</div>
+						</div> -->
 
 						<div id="Search-Input-Div" style="display:none">
 							<div id= "Search-Input-Div-searchTag" class="searchTag">2</div>
 							<div id="searchInput"></div>
 						</div>
 
+						<div id="Search-Grep-Div" (click)="loadGrep()" style="display:none">
+							<div id= "Search-Grep-Div-searchTag" class="searchTag">+</div>
+							<div id="searchGrep"><i>grep</i></div>
+						</div>
+						
 					</div>
 
 					<div class="Copy-To-Clipboard" (click)="copyToClipboard()">Copy Command</div>

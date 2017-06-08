@@ -515,10 +515,49 @@
 	<div class="data-div" id="stat-data" style="display:none">
 		<ul>
 			<li class="commandFormatLi">The <span>stat</span> command is used to display the detailed status of a particular file or directory.</li>
+			<li>By default the stat common should be available on most distributions of Linux.</li>
 		</ul>
 	</div>
 
 <!-- END VIEW > STATUS INFORMATION SUBSECTION DATA-->
+
+<!-- VIEW > LOG FILE INFORMATION SUBSECTION DATA-->
+
+	<!-- Tail information -->
+	<div class="data-div" id="tail-data" style="display:none">
+		<ul>
+			<li class="commandFormatLi">The <span>tail</span> command is used to print the lines of files.</li>
+			<li>The following options will change the way the cat command operates, see below:</li>
+		</ul>
+
+		<div class="data-note-div">
+			<h5><b>Note</b></h5>
+			<ul>
+				<li>&nbsp;</li>
+				<li>The following options will change the way the tail command operates, see below:</li>
+				<li class="codeFormatLi"><span>tail myFile</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Outputs the last 10 lines of myFile.</li>
+				<li class="codeFormatLi"><span>tail myFile -n 100</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Outputs the last 100 lines of myFile.</li>
+				<li class="codeFormatLi"><span>tail -f myFile</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Outputs the last 10 lines of myFile and monitors for updates, tail then continues to output any new lines that are added to myFile.</li>
+				<li class="codeFormatLi"><span>tail -100f myFile</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Outputs the last 100 lines of myFile and monitors for updates, tail then continues to output any new lines that are added to myFile</li>
+				<li>&nbsp;</li>
+				<li><i>Additionally, the grep command can be added to selectively monitor a log file in real time e.g.</i></li>
+				<li class="codeFormatLi"><span>tail -f myFile | grep keyword</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This will tail a file for live updates containing the keyword.</li>
+				<li>&nbsp;</li>
+			</ul>
+		</div>
+	</div>
+
+<!-- END VIEW > LOG FILE INFORMATION SUBSECTION DATA-->
+
+<!-- * The tail command is used to print the lines of files.
+* The following options will change the way the tail command operates, see below:
+    * tail myFile                 Outputs the last 10 lines of myFile
+    * tail myFile -n 100      Outputs the last 100 lines of myFile
+    * tail -f myFile              Outputs the last 10 lines of myFile and monitors for updates, tail then continues to output any new lines that are added to myFile
+    * tail -100f myFile        Outputs the last 100 lines of myFile and monitors for updates, tail then continues to output any new lines that are added to myFile
+
+* Additionally, the grep command can be added to selectively monitor a log file in real time e.g. 
+    * tail -f myFile | grep keyword    This will tail a file for live updates containing the keyword -->
 
 <!-- VIEW > DIRECTORY CONTENTS SUBSECTION DATA-->
 

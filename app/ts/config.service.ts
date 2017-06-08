@@ -11,7 +11,8 @@ export class Config{
 							     ["ln -sf"]], // Modify > Link     
 							    [["cat", "stat", "tail"], // View > File
 							     ["ls", "stat"], // View > Directory
-							     ["groups","?"], // View > Group
+							     ["id -un","id -u", "id -F"], // View > User
+							     ["groups","group","id -G","id -g"], // View > Group
 							     ["ps", "lsof", "top"] // View > Processes
 							    ], 
 							    ["ps aux","find / -name","pwd","groups","w"], //Locate
@@ -28,16 +29,17 @@ export class Config{
 	// Added space to sub searches so as they are not euqal to their parent div
 	static modifyFileSubSearch: string = ` Name. Location. Contents. Accessed time. Modified time. Permissions. Ownership`;
 	static modifyDirectorySubSearch: string = ` Name. Accessed time. Modified time. Permissions. Ownership`;
-	static modifyUserSubSearch: string = ` Name. Password. UID`;
-	static modifyGroupSubSearch: string = ` Name. GID`;
+	static modifyUserSubSearch: string = ` Name. Password. User ID`;
+	static modifyGroupSubSearch: string = ` Name. Group ID`;
 	static modifyLinkSubSearch: string = ` Symbolic link`;
 
-	static viewSearch: string =  `File.Directory.Group.Processes`;
+	static viewSearch: string =  `File.Directory.User.Group.Processes`;
 		// Added space to sub searches so as they are not euqal to their parent div
 	static viewFileSubSearch: string = ` Contents. Status. Log file`;
 	static viewDirectorySubSearch: string = ` Contents. Status`;
-	static viewGroupSubSearch: string = ` All group's. User group's`;
-	static viewProcessesSubSearch: string = ` All processes. Specific processes. Top processes`;
+	static viewUserSubSearch: string = ` Username. User ID. Full name`;
+	static viewGroupSubSearch: string = ` All group's. User group's. Group ID's. Group ID`;
+	static viewProcessesSubSearch: string = ` Current running processes. Open file processes. Top processes`;
 
 	static locateSearch: string = `File.Directory.Location.Users.Logged In`;
 	
@@ -74,29 +76,38 @@ export class Config{
 	    "cat":"Print file contents",
 	    "stat":"Status information",
 	    "ls":"List diretory content's",
+	    "tail":"Print lines of file"
+
+	    //"usermod -":"Displays the last part of a file"
 	}
 
 	static optionValues = {"ps":["-e","-a","-f","-x","-r","-eaf","-aux"],
-						   "lsof":["-i","-i:","-u","-p","+d","-t"]
+						   "lsof":["-i","-i:","-u","-p","+d","-t"],
+						   "tail":["-","-f"]
 						  };
     
     static searchTermRender = {
-    	"File":"file name",
-    	"Directory":"directory name",
-    	"User":"user name",
-    	"Group":"group name",
-    	"Link":"link name",
+    	"File":"file name...",
+    	"Directory":"directory name...",
+    	"User":"user name...",
+    	"Group":"group name...",
+    	"Link":"link name...",
     	" Name.":"{old name} {new name}",
     	" Location.":"{old destination} {new destination}",
-    	" Contents.":"file/directory name",
-    	" Accessed time.":"file/directory name",
-    	" Modified time.":"file/directory name",
-    	" Permissions.":"file/directory name",
-    	" Ownership.":"file/directory name",
+    	" Contents.":"file/directory name...",
+    	" Accessed time.":"file/directory name...",
+    	" Modified time.":"file/directory name...",
+    	" Permissions.":"file/directory name...",
+    	" Ownership.":"file/directory name...",
+
+    	" User ID.":"{new ID} {user name}",
+    	" Password.":"user name...",
+
+    	" Group ID.":"{new ID} {group name}",
 
     	" Symbolic link.":"{target} {path to symbolic link}",
 
-    	" Status.":"file/directory name",
+    	" Status.":"file/directory name...",
     };
 
     static disabledSearchTerms: string = "Top processes.All group's";

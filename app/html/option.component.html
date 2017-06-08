@@ -1,9 +1,13 @@
 <!-- OPTION BUILDER PS DATA-->
 	<div id="ps-option-data" style="display:none">
 		<ul>
-			<li class="codeFormatLi"><span>e</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Select all processes, identical to -A</li>
-			<li class="codeFormatLi"><span>a</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Select all processes except session leaders</li>
-			<li class="codeFormatLi"><span>f</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Does full-format listing</li>
+			<li class="codeFormatLi"><span>-e</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Select every process</li>
+			<li class="codeFormatLi"><span>-a</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Select every process except session leaders</li>
+			<li class="codeFormatLi"><span>-f</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Full output format</li>
+			<li class="codeFormatLi"><span>-r</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Restrict the current running processes</li>
+			<li class="codeFormatLi"><span>-eaf</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Combination of options</li>
+			<li class="codeFormatLi"><span>-aux</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Combination of options</li>
+		
 		</ul>
 	</div>
 
@@ -11,9 +15,14 @@
 	<!-- OPTION BUILDER LSOF DATA-->
 	<div id="lsof-option-data" style="display:none">
 		<ul>
-			<li class="codeFormatLi"><span>i</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; All</li>
-			<li class="codeFormatLi"><span>g</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Group</li>
-			<li class="codeFormatLi"><span>p</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Process</li>
-			<li class="codeFormatLi"><span>u</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; User</li>
+			<li class="codeFormatLi"><span>-i</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; List IP sockets</li>
+			<li class="codeFormatLi"><span>-i:</span>  &nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; List IP sockets specifying port or port range e.g. 8080-8085</li>
+			<li class="codeFormatLi"><span>-u</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; List open files belonging to specified user</li>
+			<li class="codeFormatLi"><span>-p</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; List open files belonging to the specified process ID</li>
+			<li class="codeFormatLi"><span>+d</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; List open files belonging to the specified directory, does not descend into sub-directories</li>
+			<li class="codeFormatLi"><span>-t</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; List IDs of processes that have opened a particular file</li>
 		</ul>
 	</div>
+
+<!-- static optionValues = {"ps":["-e","-a","-f","-x","-r","-eaf","-aux"],
+						   "lsof":["-i","-i:","-u","-p","+d","-t"] -->

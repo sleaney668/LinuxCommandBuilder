@@ -450,7 +450,8 @@ select { font-size:13px; }
 
 #option-modal-container-div-left{
   float: left;
-  margin-right: 12%;
+  padding: 4px;
+  padding-right: 50px;
 }
 #option-modal-container-div-right{
   float: left;
@@ -460,6 +461,10 @@ select { font-size:13px; }
   font-family: "Raleway";
   text-decoration: underline;
   font-weight: 200;
+}
+#option-modal-dialog{
+    width: 65%;
+    margin: 30px auto;
 }
 
 #Modal-Add-Button{
@@ -526,4 +531,3 @@ select { font-size:13px; }
 .close:hover::after {
     color: red;
 }
-

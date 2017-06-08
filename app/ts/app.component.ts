@@ -125,7 +125,7 @@ export class AppComponent implements OnInit {
 		}
 	}
 
-	performFullSearch(subCategoryData){	
+	performFullSearch(subCategoryData){
 		// Method here to decide what step to show
 		this.setupStepTwo(subCategoryData);
 		this.purgeStepThree(subCategoryData);
@@ -205,25 +205,26 @@ export class AppComponent implements OnInit {
 			placeholderText = '';
 			opactiy = "0.7";
 			subsectionTextEntry.disabled = true;
-		} else if(subCategoryData.includes("All processes") || subCategoryData.includes("Specific processes")){
+		} else if (subCategoryData.includes("Current running processes") || subCategoryData.includes("Open file processes")){
 			placeholderText = 'Add option...';
 			opactiy = "0.7";
 			subsectionTextEntry.disabled = true;
-		} 
+		} else if (subCategoryData.includes("Log file")){
+			placeholderText = 'Add option or enter filename...';
+			subsectionTextEntry.disabled = false;
+		}
 
 		subsectionTextEntry.placeholder = placeholderText;
 		subsectionTextEntry.style.opacity = opactiy;
 	}
 
 	setupStepThreeChmod(){
-		//alert("Setting up chmod builder...");
 		document.getElementById("Search-CHMOD-Div").style.display = "block";
 		document.getElementById("Search-CHMOD-Div-searchTag").innerHTML= "2";
 		document.getElementById("Search-Input-Div-searchTag").innerHTML = "3";
 	}
 
 	setupStepThreeOptionBuilder(){
-		//alert("Setting up option builder...");
 		document.getElementById("Search-Option-Div").style.display = "block";
 		document.getElementById("Search-Option-Div-searchTag").innerHTML= "+";
 		//document.getElementById("Search-Input-Div-searchTag").innerHTML = "2";
@@ -238,8 +239,8 @@ export class AppComponent implements OnInit {
 			this.setupStepThreeChmod();
 		} 
 
-		if(subCategoryData.includes("All processes") 
-			|| subCategoryData.includes("Specific processes")
+		if(subCategoryData.includes("Current running processes") 
+			|| subCategoryData.includes("Open file processes")
 			|| subCategoryData.includes("Log file")){
 			this.setupStepThreeOptionBuilder();
 		}
@@ -258,7 +259,9 @@ export class AppComponent implements OnInit {
 		var grepDiv = document.getElementById('Search-Grep-Div');	
 		var grepTag = document.getElementById('grep-tag');	
 
-		if(subCategoryData.includes("All processes") || subCategoryData.includes("Specific processes")){
+		if(subCategoryData.includes("Current running processes") 
+			|| subCategoryData.includes("Open file processes") 
+			|| subCategoryData.includes("Log file")){
 			document.getElementById('searchOption').innerHTML = "option";
 			if(optionDiv.style.display == "block"){
 				document.getElementById('searchOption').innerHTML = "option";
@@ -279,27 +282,16 @@ export class AppComponent implements OnInit {
 	}
 
 	renderFullSearchTerm(searchTerm){
+		var renderedSearchTerm = Config.searchTermRender[searchTerm];
+		if(renderedSearchTerm == null){
+			renderedSearchTerm = 'text...';
+		} 
 
-		console.log("listItemName: " + this.listItemName);
-		console.log("tmplistItemData: " + this.tmplistItemData);
-		console.log("showSubsection: " + this.showSubsection);
-		console.log("searchResult: " + this.searchResult);
-		console.log("data: " + this.data);
-		console.log("searchString: " + this.searchString);
-		console.log("searchArr: " + this.searchArr);
-		console.log("command: " + this.command);
-		console.log("subSectionId: " + this.listItemName);
-		console.log("tmpSubSectionId: " + this.listItemName);
-		console.log("categoryChange: " + this.categoryChange);
-
-
-		// alert(searchTerm + " - " + Config.searchTermRender[searchTerm]);
-		var stepTwoLabel = 'Enter ' + Config.searchTermRender[searchTerm];
+		var stepTwoLabel = 'Enter ' + renderedSearchTerm;
 		document.getElementById(`container-c2-header`).innerHTML = 'Step 2 - ' + stepTwoLabel;
 		this.textEntryPlaceholder = stepTwoLabel;
 		//var subsectionTextEntry = <HTMLInputElement>document.getElementsByClassName("subsection-text-entry")[0];
 		//subsectionTextEntry.placeholder = "stepTwoLabel";
-
 	}
 
 	constructor(private _jsonService: JSONService, private _chmodService: CHMODService, private _optionBuilderService: OptionBuilderService){}
@@ -312,7 +304,6 @@ export class AppComponent implements OnInit {
 
 		this.tmplistItemData = "minimise";
 		this.searchResult = "NaN";
-
 	}
 
 }

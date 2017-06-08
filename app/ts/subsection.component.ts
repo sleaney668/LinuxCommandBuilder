@@ -47,7 +47,10 @@ export class SubsectionComponent{
 
 			// Disable all other subsections
 			this.toggleListItemDisabled(true);
-		} 
+		} else {
+			var subsectionTextEntry = <HTMLInputElement>document.getElementsByClassName("subsection-text-entry")[0];
+			subsectionTextEntry.disabled = false;
+		}
 		
 		this.subCategoryItemOutput.emit(subCategoryItemData);
 		
@@ -56,7 +59,7 @@ export class SubsectionComponent{
 		this.resetDataComponent(subCategoryItemData);
 	}
 
-		// Loads child sub section of category selected
+	// Loads child sub section of category selected
 	loadSubSection(category, subCategoryItemData){
 		var newCategory = subCategoryItemData.toLowerCase();
 		this.subSections = [];
@@ -94,6 +97,9 @@ export class SubsectionComponent{
 	            case "directory":
 	              	this.initialiseSubSection(Config.viewDirectorySubSearch.split('.'));
 	              	break;
+	            case "user":
+	              	this.initialiseSubSection(Config.viewUserSubSearch.split('.'));
+	              	break;
 	            case "group":
 	              	this.initialiseSubSection(Config.viewGroupSubSearch.split('.'));
 	              	break;
@@ -121,13 +127,16 @@ export class SubsectionComponent{
 	reSearch(event: Event){	
 		this.searchArr[0] = event;
 
+		this.searchTagIncrementationAndValidation(event);
+
 		if(document.getElementById('grep-tag').style.display == "block"){
 			document.getElementById(`searchInput`).innerHTML = document.getElementById('grep-tag').innerText + " " + this.searchArr.toString();
+			document.getElementById(`Search-Input-Div-searchTag`).innerHTML = "3";
 		} else {
 			document.getElementById(`searchInput`).innerHTML = this.searchArr.toString();
 		}
 		//document.getElementById('Search-Input-Div').style.visibility = "visible";
-		document.getElementById('Search-Input-Div').style.display = "block";
+		//document.getElementById('Search-Input-Div').style.display = "block";
 
 		// id search box grows over 34 characters (combined 40 characters)
 		var combinedLength = document.getElementById(`searchResult`).innerHTML.length + document.getElementById(`searchInput`).innerHTML.length;
@@ -137,6 +146,66 @@ export class SubsectionComponent{
 		}
 
 		document.getElementsByClassName('Copy-To-Clipboard')[0].classList.remove('Copy-To-Clipboard-Click');
+	}
+
+	searchTagIncrementationAndValidation(event){
+		
+		//var searchTagValue = "2";
+		var searchInputLength = event.length;	
+		var searchInputDiv = document.getElementById('Search-Input-Div');
+		var searchInputTag = document.getElementById('Search-Input-Div-searchTag');
+		
+
+		var optionSearchTag = document.getElementById('Search-Option-Div-searchTag');
+		var optionSearchDiv = document.getElementById('Search-Option-Div');
+
+
+		if(searchInputLength == 0){
+			console.log("searchInputLength: " + searchInputLength);
+			searchInputDiv.style.display = "none";
+
+			if(optionSearchDiv.style.display == "none" && optionSearchTag.innerHTML == "+"){
+				optionSearchDiv.style.display = "block";
+				optionSearchTag.innerHTML = "+";
+			}
+
+		} else {
+
+			// If text is entered, and options are displayed and they havent been initialised with a value
+			if(optionSearchDiv.style.display == "block" && optionSearchTag.innerHTML == "+"){
+				// Show the input div
+				searchInputDiv.style.display = "block";
+				// Hide the option div
+				optionSearchDiv.style.display = "none";
+
+				console.log("Option is overridden with text entry...");
+			}
+			// If text is entered, and options are displayed and they have been initialised with a value
+			else if(optionSearchDiv.style.display == "block" && optionSearchTag.innerHTML != "+"){
+				// Show the input div
+				searchInputDiv.style.display = "block";
+				searchInputTag.innerHTML = "3";
+
+				console.log("Option is applied, text entry shown as 3...");
+
+				// If the option is tail, then show grep as 4, write method to deal with this
+				/*
+				if(document.getElementById("searchResult").innerHTML == "tail"){
+					document.getElementById('Search-Grep-Div').style.display = "block";
+					console.log("TAIL, add grep as option 4...");
+				}
+				*/
+
+			} else {
+				// Show the input div
+				searchInputDiv.style.display = "block";
+				searchInputTag.innerHTML = "2";
+			}
+
+			// DO THE SAME STEPS FOR GREP
+
+
+		}
 	}
 
 	copyToClipboard(){
@@ -200,7 +269,7 @@ export class SubsectionComponent{
 		document.getElementById('modify-back-button').style.visibility = "hidden";
 
 		var subsectionTextEntry = <HTMLInputElement>document.getElementsByClassName("subsection-text-entry")[0];
-		subsectionTextEntry.value = "";
+		//subsectionTextEntry.value = "";
 		subsectionTextEntry.placeholder='Select option...';
 
 		this.modifyCount--;
@@ -229,6 +298,9 @@ export class SubsectionComponent{
 	resetDataComponent(category){
 		// Clear this text box
 		document.getElementById('subsection-form').reset();
+		//
+		var subsectionTextEntry = <HTMLInputElement>document.getElementsByClassName("subsection-text-entry")[0];
+		
 
 		// Remove this from the output
 		// document.getElementById('Search-Input-Div').style.visibility = "hidden";
@@ -247,10 +319,16 @@ export class SubsectionComponent{
 	}
 
 	loadOptionBuilder(){
-		//alert("HERE");
 		var searchResult = document.getElementById('searchResult').innerHTML;
 		document.getElementById('option-builder-search-result').innerHTML = searchResult;
 
+		var width = "width:65%";
+		var optionModalDialog = document.getElementById('option-modal-dialog');
+		if(searchResult == "ps"){
+			width = "width:50%";
+		} 
+
+		optionModalDialog.setAttribute("style",width);
 		this.populateOptions(searchResult);
 	}
 
@@ -263,16 +341,16 @@ export class SubsectionComponent{
 		for (var i in optionResults) {
 			var dropDownOption = '<option class="'+optionResults[i]+'" value="'+optionResults[i]+'">'+optionResults[i]+'</option>';
 			dropDown.innerHTML += dropDownOption;
-
-		  	console.log(optionResults[i]); //"aa", bb", "cc"
-		  }
+		}
 
 		this.populateOptionInfo();
 	}
 
 	truncateOptions(){
 		document.getElementById("option-builder-drop-down").innerHTML = "";
-		document.getElementById("ps-option-data").innerHTML = "";
+
+		var searchResult = document.getElementById('searchResult').innerHTML;
+		document.getElementById(searchResult+"-option-data").style.display = "none";
 	}
 
 	onOptionSelection(){
@@ -286,10 +364,8 @@ export class SubsectionComponent{
 
 		// Only show grep for selected grep options 
 		// Decide what to do with viewing a log file
-		if(document.getElementById('searchResult').innerHTML == "lsof"){
-
-			alert('in lsof');
-			// Write a method to update option 2/Validate text entry 
+		console.log(document.getElementById('searchResult').innerHTML);
+		if(document.getElementById('searchResult').innerHTML == "lsof"){			
 			
 			var placeholderText = "";
 			switch (dropDownItem) {
@@ -314,13 +390,22 @@ export class SubsectionComponent{
 				default:
 					placeholderText = "Enter text...";
 					break;
+			} 
+
+			this.validateTextEntry(false, placeholderText);
+
+		} 
+		/*else if(document.getElementById('searchResult').innerHTML== "tail"){
+
+			if(document.getElementById('Search-Input-Div').style.display == "block"){
+				document.getElementById('Search-Grep-Div').style.display = "block";
 			}
 
-			this.validateTextEntry(false, placeholderText)
+			
+		} */else {
 
-
-		} else {
 			// Show Grep
+			// If tail then wait for text entry
 			document.getElementById('Search-Grep-Div').style.display = "block";
 
 			/*
@@ -329,26 +414,25 @@ export class SubsectionComponent{
 			this._optionBuilderService.search(dropDownItem);
 
 			// Updating text entry placeholder
+			var placeholderText = "Add grep...";
 			var subsectionTextEntry = <HTMLInputElement>document.getElementsByClassName("subsection-text-entry")[0];
-			subsectionTextEntry.placeholder = "Add grep...";
+
+			if(document.getElementById('searchResult').innerHTML== "tail"){
+				placeholderText = "Add grep or enter filename...";
+				this.validateTextEntry(false, placeholderText);
+				document.getElementById('Search-Grep-Div').style.display = "none";
+			} else {
+				subsectionTextEntry.placeholder = placeholderText;
+			}
+
 		}
 
+		this.truncateOptions();
 	}
 
 	populateOptionInfo(){	
-		// option-modal-container-div-right-title
-		// option-modal-container-div-right
-		//alert(document.getElementById('searchResult').innerHTML);
-
 		var searchOption = document.getElementById('searchResult').innerHTML;
 		document.getElementById(searchOption+'-option-data').style.display = "block";
-
-		//option-data-section
-
-		//document.getElementById('option-modal-container-div-right-title').innerHTML = "Options for " + searchOption;
-
-		//document.getElementById('option-modal-container-div-right').innerHTML += document.getElementById(dataDiv).innerHTML;
-
 	}
 
 	loadGrep(){
@@ -383,6 +467,11 @@ export class SubsectionComponent{
 		subsectionTextEntry.disabled = textEntryFlag;
 		subsectionTextEntry.placeholder = textEntryPlaceholder;
 		subsectionTextEntry.style.opacity = opactiy;
+
+		console.log("textEntryFlag: " + textEntryFlag);
+		console.log("textEntryPlaceholder: " + textEntryPlaceholder);
+		console.log("opactiy: " + opactiy);
+
 	}
 
 	constructor(private _chmodService: CHMODService, private _optionBuilderService: OptionBuilderService){}

@@ -88,6 +88,8 @@ export class JSONService{
             return Config.viewFileSubSearch.toLowerCase();
           case "directory":
             return Config.viewDirectorySubSearch.toLowerCase();
+          case "user":
+            return Config.viewUserSubSearch.toLowerCase();
           case "group":
             return Config.viewGroupSubSearch.toLowerCase();
           case "processes":
