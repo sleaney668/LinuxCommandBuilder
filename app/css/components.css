@@ -425,8 +425,8 @@ select { font-size:13px; }
 
 .option-builder-code{
   font-family: Monaco;
-  margin-left: 19px;
-  padding: 6px;
+/*  margin-left: 9%;
+*/  padding: 6px;
   background-color: #f9f2f4;
   color: #c7264f;
   border-radius: 5px;
@@ -441,17 +441,18 @@ select { font-size:13px; }
 #option-builder-search-result{
   float: left;
   padding: 5px;
-  margin-right: -5%;
 }
 #option-builder-drop-down{
   height: 30px;
   padding-left: 35px;
+  margin-left: 5px;
 }
 
 #option-modal-container-div-left{
   float: left;
   padding: 4px;
   padding-right: 50px;
+  margin-left: 3%;
 }
 #option-modal-container-div-right{
   float: left;
@@ -463,8 +464,8 @@ select { font-size:13px; }
   font-weight: 200;
 }
 #option-modal-dialog{
-    width: 65%;
-    margin: 30px auto;
+  width: 65%;
+  margin: 30px auto;
 }
 
 #Modal-Add-Button{
@@ -530,4 +531,20 @@ select { font-size:13px; }
 }
 .close:hover::after {
     color: red;
+}
+
+#tail-option-text-entry{
+  margin-bottom: 2%;
+  width: 100%;
+}
+#tail-checkbox-div{
+  color: black;
+}
+#tail-checkbox-div-header{
+  float: left;
+}
+#tail-checkbox{
+  margin-left: 3%;
+  margin-top: 3%;
+  font-size: 2em;
 }

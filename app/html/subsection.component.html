@@ -29,7 +29,7 @@
 						
 						<form id="subsection-form">
 							<div class="tags-input">
-								<input [(ngModel)]="model" (ngModelChange)="reSearch($event)" id="subsection-{{category}}-text-entry" class="subsection-text-entry" type="text" name="enterName" placeholder="Select option..." maxlength="45" disabled>
+								<input [(ngModel)]="searchInputModel" (ngModelChange)="reSearch($event)" id="subsection-{{category}}-text-entry" class="subsection-text-entry" type="text" name="enterName" placeholder="Select option..." maxlength="45" disabled>
 
 								<!-- Add tags here -->
 								<span class="tag" id="grep-tag" style="display:none">| grep<span class="close" (click)="onDeleteTagSelect('grep-tag')"></span></span>
@@ -82,37 +82,37 @@
 													<tr>
 														<th scope="row" class="table-body-header">User</th>
 														<td>
-															<input [(ngModel)]="model1" (ngModelChange)="inputChanged($event)" id="checkbox-0.0" type="checkbox" checked>
+															<input [(ngModel)]="checkModel1" (ngModelChange)="inputChanged($event)" id="checkbox-0.0" type="checkbox" checked>
 														</td>
 														<td>
-															<input [(ngModel)]="model2" (ngModelChange)="inputChanged($event)" id="checkbox-0.1" type="checkbox" checked>
+															<input [(ngModel)]="checkModel2" (ngModelChange)="inputChanged($event)" id="checkbox-0.1" type="checkbox" checked>
 														</td>
 														<td>
-															<input [(ngModel)]="model3" (ngModelChange)="inputChanged($event)" id="checkbox-0.2" type="checkbox" checked>
+															<input [(ngModel)]="checkModel3" (ngModelChange)="inputChanged($event)" id="checkbox-0.2" type="checkbox" checked>
 														</td>
 													</tr>
 													<tr>
 														<th scope="row" class="table-body-header">Group</th>
 														<td>				      	
-															<input [(ngModel)]="model4" (ngModelChange)="inputChanged($event)" id="checkbox-1.0" type="checkbox" checked>
+															<input [(ngModel)]="checkModel4" (ngModelChange)="inputChanged($event)" id="checkbox-1.0" type="checkbox" checked>
 														</td>
 														<td>				      	
-															<input [(ngModel)]="model5" (ngModelChange)="inputChanged($event)" id="checkbox-1.1" type="checkbox" checked>
+															<input [(ngModel)]="checkModel5" (ngModelChange)="inputChanged($event)" id="checkbox-1.1" type="checkbox" checked>
 														</td>
 														<td>				      	
-															<input [(ngModel)]="model6" (ngModelChange)="inputChanged($event)" id="checkbox-1.2" type="checkbox" checked>
+															<input [(ngModel)]="checkModel6" (ngModelChange)="inputChanged($event)" id="checkbox-1.2" type="checkbox" checked>
 														</td>
 													</tr>
 													<tr>
 														<th scope="row" class="table-body-header">Other</th>
 														<td>				      	
-															<input [(ngModel)]="model7" (ngModelChange)="inputChanged($event)" id="checkbox-2.0" type="checkbox" checked>
+															<input [(ngModel)]="checkModel7" (ngModelChange)="inputChanged($event)" id="checkbox-2.0" type="checkbox" checked>
 														</td>
 														<td>				      	
-															<input [(ngModel)]="model8" (ngModelChange)="inputChanged($event)" id="checkbox-2.1" type="checkbox" checked>
+															<input [(ngModel)]="checkModel8" (ngModelChange)="inputChanged($event)" id="checkbox-2.1" type="checkbox" checked>
 														</td>
 														<td>				      	
-															<input [(ngModel)]="model9" (ngModelChange)="inputChanged($event)" id="checkbox-2.2" type="checkbox" checked>
+															<input [(ngModel)]="checkModel9" (ngModelChange)="inputChanged($event)" id="checkbox-2.2" type="checkbox" checked>
 														</td>
 													</tr>
 												</tbody>
@@ -152,9 +152,23 @@
 
 										<div id="option-modal-container-div-left">
 											<div class="option-builder-code" id="option-builder-search-result">ps</div>
-
-											<select class="option-builder-code" id="option-builder-drop-down" title="Click for more info">
+											
+											<select class="option-builder-code" id="option-builder-drop-down" title="Click for more info" style="display: none;">
 											</select>
+
+											<div id="option-builder-tail" style="display: none;">
+											
+												<input [(ngModel)]="tailInputModel" (ngModelChange)="updateTailInputOption($event)" 
+													id="tail-option-text-entry" class="subsection-text-entry" type="text" 
+													name="enterName" placeholder="How many lines?" maxlength="12" value="">
+
+												<div id="tail-checkbox-div">
+													<h5 id="tail-checkbox-div-header">Monitor for updates:</h5>
+													<input [(ngModel)]="tailCheckModel" (ngModelChange)="updateTailCheckedOption($event)" id="tail-checkbox" type="checkbox" checked>
+												</div>
+
+											</div>
+
 										</div>
 
 										<div id="option-modal-container-div-right">
@@ -166,17 +180,12 @@
 									</div>
 
 									<div class="modal-footer">
-										<button id="Modal-Add-Button" type="button" (click)="onOptionSelection()" data-dismiss="modal">Add</button>
+										<button id="Modal-Add-Button" type="button" (click)="onOptionAddition()" data-dismiss="modal">Add</button>
 									</div>
 
 								</div>
 							</div>
 						</div>
-
-<!-- 						<div id="Search-Grep-Div" (click)="loadGrep()" style="display:none">
-							<div id= "Search-Grep-Div-searchTag" class="searchTag">+</div>
-							<div id="searchGrep"><i>grep</i></div>
-						</div> -->
 
 						<div id="Search-Input-Div" style="display:none">
 							<div id= "Search-Input-Div-searchTag" class="searchTag">2</div>
@@ -187,7 +196,7 @@
 							<div id= "Search-Grep-Div-searchTag" class="searchTag">+</div>
 							<div id="searchGrep"><i>grep</i></div>
 						</div>
-						
+
 					</div>
 
 					<div class="Copy-To-Clipboard" (click)="copyToClipboard()">Copy Command</div>

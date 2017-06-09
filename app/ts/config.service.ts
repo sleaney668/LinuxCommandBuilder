@@ -108,6 +108,8 @@ export class Config{
     	" Symbolic link.":"{target} {path to symbolic link}",
 
     	" Status.":"file/directory name...",
+
+    	" Log file.":"Follow steps...",
     };
 
     static disabledSearchTerms: string = "Top processes.All group's";

@@ -113,7 +113,6 @@ export class SubsectionComponent{
 	              	return null;
 	        }
 	    }
-
 	}
 
 	// Initialises subsection based on category selected
@@ -186,24 +185,11 @@ export class SubsectionComponent{
 				searchInputDiv.style.display = "block";
 				searchInputTag.innerHTML = "3";
 
-				console.log("Option is applied, text entry shown as 3...");
-
-				// If the option is tail, then show grep as 4, write method to deal with this
-				/*
-				if(document.getElementById("searchResult").innerHTML == "tail"){
-					document.getElementById('Search-Grep-Div').style.display = "block";
-					console.log("TAIL, add grep as option 4...");
-				}
-				*/
-
 			} else {
 				// Show the input div
 				searchInputDiv.style.display = "block";
 				searchInputTag.innerHTML = "2";
 			}
-
-			// DO THE SAME STEPS FOR GREP
-
 
 		}
 	}
@@ -322,14 +308,37 @@ export class SubsectionComponent{
 		var searchResult = document.getElementById('searchResult').innerHTML;
 		document.getElementById('option-builder-search-result').innerHTML = searchResult;
 
-		var width = "width:65%";
+		var tailOption = document.getElementById('option-builder-tail');
+		var dropDownOption = document.getElementById('option-builder-drop-down');
+		var rightModalDiv = document.getElementById('option-modal-container-div-right');
+		var leftModalDiv = document.getElementById('option-modal-container-div-left');
 		var optionModalDialog = document.getElementById('option-modal-dialog');
-		if(searchResult == "ps"){
-			width = "width:50%";
-		} 
+		
+		var width = "width:30%";
+		if(searchResult == "tail"){
+			tailOption.style.display = "inline";
+			dropDownOption.style.display = "none";
+			rightModalDiv.style.display = "none";
+			leftModalDiv.style.paddingRight = "0px";
+			leftModalDiv.style.width = "90%";
+
+		} else {
+			tailOption.style.display = "none";
+			dropDownOption.style.display = "inline";
+			rightModalDiv.style.display = "inline";
+			leftModalDiv.style.paddingRight = "50px";
+			leftModalDiv.style.width = "";
+			//leftModalDiv.style.paddingLeft = "0%";
+			
+			width = "width:65%";
+			if(searchResult == "ps"){
+				width = "width:50%";
+			} 
+
+			this.populateOptions(searchResult);
+		}
 
 		optionModalDialog.setAttribute("style",width);
-		this.populateOptions(searchResult);
 	}
 
 	populateOptions(searchResult){
@@ -347,87 +356,98 @@ export class SubsectionComponent{
 	}
 
 	truncateOptions(){
-		document.getElementById("option-builder-drop-down").innerHTML = "";
-
 		var searchResult = document.getElementById('searchResult').innerHTML;
-		document.getElementById(searchResult+"-option-data").style.display = "none";
+		if(searchResult != "tail"){
+			document.getElementById("option-builder-drop-down").innerHTML = "";
+			document.getElementById(searchResult+"-option-data").style.display = "none";
+		}
 	}
 
-	onOptionSelection(){
-
-		var optionDropDownList = document.getElementById('option-builder-drop-down') as HTMLSelectElement;
-		var dropDownItem = optionDropDownList.options[optionDropDownList.selectedIndex].value;
+	onOptionAddition(){
 
 		var searchOption = document.getElementById('searchOption');
-		searchOption.innerHTML = dropDownItem;
 		document.getElementById("Search-Option-Div-searchTag").innerHTML = "2";
 
-		// Only show grep for selected grep options 
-		// Decide what to do with viewing a log file
-		console.log(document.getElementById('searchResult').innerHTML);
-		if(document.getElementById('searchResult').innerHTML == "lsof"){			
-			
-			var placeholderText = "";
-			switch (dropDownItem) {
-				case "-i":
-					placeholderText = "";
-					break;
-				case "-i:":
-					placeholderText = "Enter port or port range...";
-					break;
-				case "-u":
-					placeholderText = "Enter username...";
-					break;
-				case "-p":
-					placeholderText = "Enter process ID...";
-					break;
-				case "+d":
-					placeholderText = "Enter directory path...";
-					break;
-				case "-t":
-					placeholderText = "Enter filename...";
-					break;									
-				default:
-					placeholderText = "Enter text...";
-					break;
-			} 
+		console.log("searchResult: " + document.getElementById('searchResult').innerHTML );
 
-			this.validateTextEntry(false, placeholderText);
-
-		} 
-		/*else if(document.getElementById('searchResult').innerHTML== "tail"){
-
-			if(document.getElementById('Search-Input-Div').style.display == "block"){
-				document.getElementById('Search-Grep-Div').style.display = "block";
-			}
-
-			
-		} */else {
-
-			// Show Grep
-			// If tail then wait for text entry
-			document.getElementById('Search-Grep-Div').style.display = "block";
-
-			/*
-			* 1. Perform search for dropDownItem
-			*/
-			this._optionBuilderService.search(dropDownItem);
+		if(document.getElementById('searchResult').innerHTML == "tail"){
 
 			// Updating text entry placeholder
-			var placeholderText = "Add grep...";
-			var subsectionTextEntry = <HTMLInputElement>document.getElementsByClassName("subsection-text-entry")[0];
+			var placeholderText = "Enter filename...";
+			var tailTextEntryValue = (<HTMLInputElement>document.getElementById('tail-option-text-entry')).value;
+			
+			if(tailTextEntryValue == ""){
+				console.log("Set options back");	
+				//document.getElementById('Search-Option-Div').style.display = "none";
+				document.getElementById("Search-Option-Div-searchTag").innerHTML = "+";
+				searchOption.innerHTML = "option";
 
-			if(document.getElementById('searchResult').innerHTML== "tail"){
-				placeholderText = "Add grep or enter filename...";
-				this.validateTextEntry(false, placeholderText);
-				document.getElementById('Search-Grep-Div').style.display = "none";
 			} else {
+				searchOption.innerHTML = "-" + (<HTMLInputElement>document.getElementById('tail-option-text-entry')).value;
+
+				// Updating text entry placeholder
+				var placeholderText = "Enter filename...";
+				this.validateTextEntry(false, placeholderText);
+		 	}
+
+		} else {
+
+			var optionDropDownList = document.getElementById('option-builder-drop-down') as HTMLSelectElement;
+			var dropDownItem = (<HTMLInputElement>optionDropDownList.options[optionDropDownList.selectedIndex]).value;
+
+			searchOption.innerHTML = dropDownItem;
+
+			// Only show grep for selected grep options 
+			// Decide what to do with viewing a log file
+			console.log(document.getElementById('searchResult').innerHTML);
+			if(document.getElementById('searchResult').innerHTML == "lsof"){			
+				
+				var placeholderText = "";
+				switch (dropDownItem) {
+					case "-i":
+						placeholderText = "";
+						break;
+					case "-i:":
+						placeholderText = "Enter port or port range...";
+						break;
+					case "-u":
+						placeholderText = "Enter username...";
+						break;
+					case "-p":
+						placeholderText = "Enter process ID...";
+						break;
+					case "+d":
+						placeholderText = "Enter directory path...";
+						break;
+					case "-t":
+						placeholderText = "Enter filename...";
+						break;									
+					default:
+						placeholderText = "Enter text...";
+						break;
+				} 
+
+				this.validateTextEntry(false, placeholderText);
+
+			} else {
+
+				// Show Grep
+				document.getElementById('Search-Grep-Div').style.display = "block";
+
+				/*
+				* 1. Perform search for dropDownItem
+				*/
+				this._optionBuilderService.search(dropDownItem);
+
+				// Updating text entry placeholder
+				var placeholderText = "Add grep...";
+				var subsectionTextEntry = <HTMLInputElement>document.getElementsByClassName("subsection-text-entry")[0];
 				subsectionTextEntry.placeholder = placeholderText;
+
 			}
 
-		}
-
-		this.truncateOptions();
+			this.truncateOptions();
+		} 
 	}
 
 	populateOptionInfo(){	
@@ -453,8 +473,6 @@ export class SubsectionComponent{
 		document.getElementById('Search-Grep-Div').style.display = "block";
 		document.getElementById('Search-Input-Div').style.display = "none";
 
-		//var subsectionTextEntry = <HTMLInputElement>document.getElementsByClassName("subsection-text-entry")[0];
-		//subsectionTextEntry.disabled = true;
 		this.validateTextEntry(true, "Add grep...");
 	}
 
@@ -467,11 +485,27 @@ export class SubsectionComponent{
 		subsectionTextEntry.disabled = textEntryFlag;
 		subsectionTextEntry.placeholder = textEntryPlaceholder;
 		subsectionTextEntry.style.opacity = opactiy;
+	}
 
-		console.log("textEntryFlag: " + textEntryFlag);
-		console.log("textEntryPlaceholder: " + textEntryPlaceholder);
-		console.log("opactiy: " + opactiy);
+	updateTailInputOption(event: Event){
+		var searchInputValue = "tail -" + event;
+		var searchInputDiv = document.getElementById("option-builder-search-result");
+		searchInputDiv.innerHTML = searchInputValue;
+	}
 
+	updateTailCheckedOption(event: Event){	
+		var tailInputValue = (<HTMLInputElement>document.getElementById("tail-option-text-entry")).value;
+		if(event){
+			tailInputValue += "f";
+		} else {
+			console.log('in false');
+			tailInputValue = tailInputValue.replace("f","");
+		}
+
+		console.log(tailInputValue);
+		(<HTMLInputElement>document.getElementById('tail-option-text-entry')).value = tailInputValue;
+		
+		this.updateTailInputOption(tailInputValue);
 	}
 
 	constructor(private _chmodService: CHMODService, private _optionBuilderService: OptionBuilderService){}

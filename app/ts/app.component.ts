@@ -282,16 +282,18 @@ export class AppComponent implements OnInit {
 	}
 
 	renderFullSearchTerm(searchTerm){
+		var stepTwoLabel = "";
 		var renderedSearchTerm = Config.searchTermRender[searchTerm];
 		if(renderedSearchTerm == null){
 			renderedSearchTerm = 'text...';
-		} 
+		} else if (renderedSearchTerm[0] === renderedSearchTerm[0].toUpperCase()){
+			stepTwoLabel = renderedSearchTerm;
+		} else {
+			stepTwoLabel = 'Enter ' + renderedSearchTerm;
+		}
 
-		var stepTwoLabel = 'Enter ' + renderedSearchTerm;
 		document.getElementById(`container-c2-header`).innerHTML = 'Step 2 - ' + stepTwoLabel;
 		this.textEntryPlaceholder = stepTwoLabel;
-		//var subsectionTextEntry = <HTMLInputElement>document.getElementsByClassName("subsection-text-entry")[0];
-		//subsectionTextEntry.placeholder = "stepTwoLabel";
 	}
 
 	constructor(private _jsonService: JSONService, private _chmodService: CHMODService, private _optionBuilderService: OptionBuilderService){}
