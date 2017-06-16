@@ -25,7 +25,6 @@ import {Command} from './command';
 
 export class AppComponent implements OnInit {
 
-	public listItemName: string;
 	private tmplistItemData: string;
 	public showSubsection: string;
 	public searchResult: string;
@@ -200,11 +199,23 @@ export class AppComponent implements OnInit {
 
 		var placeholderText = this.textEntryPlaceholder;
 		var opactiy = "1";
+		var trimmedSubCategoryData = subCategoryData.trim();
 
-		if (Config.disabledSearchTerms.includes(subCategoryData.trim())){
-			placeholderText = '';
-			opactiy = "0.7";
-			subsectionTextEntry.disabled = true;
+		if (Config.disabledSearchTerms.includes(trimmedSubCategoryData)){
+
+			console.log("subCategoryData.trim() -" + trimmedSubCategoryData + "-");
+
+			if(trimmedSubCategoryData == "User" 
+				|| trimmedSubCategoryData == "Group" 
+				|| trimmedSubCategoryData == ("Group ID")){
+				// If applied for code to do nothing
+
+			} else {
+				placeholderText = '';
+				opactiy = "0.7";
+				subsectionTextEntry.disabled = true;
+			}
+
 		} else if (subCategoryData.includes("Current running processes") || subCategoryData.includes("Open file processes")){
 			placeholderText = 'Add option...';
 			opactiy = "0.7";
@@ -283,15 +294,14 @@ export class AppComponent implements OnInit {
 
 	renderFullSearchTerm(searchTerm){
 		var stepTwoLabel = "";
-		var renderedSearchTerm = Config.searchTermRender[searchTerm];
+		var renderedSearchTerm = Config.searchTermRender[this.categoryChange + " >" + searchTerm];
 		if(renderedSearchTerm == null){
 			renderedSearchTerm = 'text...';
-		} else if (renderedSearchTerm[0] === renderedSearchTerm[0].toUpperCase()){
+		} else if (renderedSearchTerm[0] == renderedSearchTerm[0].toUpperCase()){
 			stepTwoLabel = renderedSearchTerm;
 		} else {
 			stepTwoLabel = 'Enter ' + renderedSearchTerm;
 		}
-
 		document.getElementById(`container-c2-header`).innerHTML = 'Step 2 - ' + stepTwoLabel;
 		this.textEntryPlaceholder = stepTwoLabel;
 	}

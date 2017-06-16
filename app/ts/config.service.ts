@@ -11,8 +11,8 @@ export class Config{
 							     ["ln -sf"]], // Modify > Link     
 							    [["cat", "stat", "tail"], // View > File
 							     ["ls", "stat"], // View > Directory
-							     ["id -un","id -u", "id -F"], // View > User
-							     ["groups","group","id -G","id -g"], // View > Group
+							     ["id","id -u","id -un","id -F"], // View > User
+							     ["id -g","id -gn","id -G","id -Gn"], // View > Group
 							     ["ps", "lsof", "top"] // View > Processes
 							    ], 
 							    ["ps aux","find / -name","pwd","groups","w"], //Locate
@@ -37,8 +37,8 @@ export class Config{
 		// Added space to sub searches so as they are not euqal to their parent div
 	static viewFileSubSearch: string = ` Contents. Status. Log file`;
 	static viewDirectorySubSearch: string = ` Contents. Status`;
-	static viewUserSubSearch: string = ` Username. User ID. Full name`;
-	static viewGroupSubSearch: string = ` All group's. User group's. Group ID's. Group ID`;
+	static viewUserSubSearch: string = ` All user information. User ID. Username. Full name`;
+	static viewGroupSubSearch: string = ` Users primary group ID. Users primary group name. Users secondary group ID's. Users secondary group names`;
 	static viewProcessesSubSearch: string = ` Current running processes. Open file processes. Top processes`;
 
 	static locateSearch: string = `File.Directory.Location.Users.Logged In`;
@@ -76,9 +76,21 @@ export class Config{
 	    "cat":"Print file contents",
 	    "stat":"Status information",
 	    "ls":"List diretory content's",
-	    "tail":"Print lines of file"
+	    "tail":"Print lines of file",
 
+	    "id":"All user information",
+	    "id -un":"Display username",
+	    "id -u":"Display user ID",
+	    "id -F":"Display full name",
 	    //"usermod -":"Displays the last part of a file"
+
+	    "groups":"Display groups",
+	    "id -G":"Display group ID's",
+	    "id -g":"Display users group ID",
+
+	    "ps":"Display processes",
+	    "lsof":"List open files",
+	    "top":"Display top processes"
 	}
 
 	static optionValues = {"ps":["-e","-a","-f","-x","-r","-eaf","-aux"],
@@ -87,32 +99,49 @@ export class Config{
 						  };
     
     static searchTermRender = {
-    	"File":"file name...",
-    	"Directory":"directory name...",
-    	"User":"user name...",
-    	"Group":"group name...",
-    	"Link":"link name...",
-    	" Name.":"{old name} {new name}",
-    	" Location.":"{old destination} {new destination}",
-    	" Contents.":"file/directory name...",
-    	" Accessed time.":"file/directory name...",
-    	" Modified time.":"file/directory name...",
-    	" Permissions.":"file/directory name...",
-    	" Ownership.":"file/directory name...",
+    	"Add >File":"filename...",
+    	"Add >Directory":"directory name...",
+    	"Add >User":"username...",
+    	"Add >Group":"group name...",
+    	"Add >Link":"link name...",
 
-    	" User ID.":"{new ID} {user name}",
-    	" Password.":"user name...",
+    	"Delete >File":"filename...",
+    	"Delete >Directory":"directory name...",
+    	"Delete >User":"username...",
+    	"Delete >Group":"group name...",
+    	"Delete >Link":"link name...",
 
-    	" Group ID.":"{new ID} {group name}",
+    	"Modify > Name.":"Enter {old name} {new name}",
+    	"Modify > Location.":"Enter {old destination} {new destination}",
+    	"Modify > Contents.":"file/directory name...",
+    	"Modify > Accessed time.":"file/directory name...",
+    	"Modify > Modified time.":"file/directory name...",
+    	"Modify > Permissions.":"file/directory name...",
+    	"Modify > Ownership.":"file/directory name...",
+    	"Modify > User ID.":"Enter {new ID} {user name}",
+    	"Modify > Password.":"username...",
+    	"Modify > Group ID.":"Enter {new ID} {group name}",
+    	"Modify > Symbolic link.":"Enter {target} {path to symbolic link}",
 
-    	" Symbolic link.":"{target} {path to symbolic link}",
+		// VIEW SEARCH TERMS RENDERS
+		"View > Contents.":"file/directory name...",
+    	"View > Status.":"file/directory name...",
+    	"View > Log file.":"Follow steps...",
+    	"View > All user information.":"Run command or enter username...",
+    	"View > Username.":"Run command...",
+    	"View > User ID.":"username...",
+    	"View > Full name.":"Run command...",
+    	"View > User's primary group ID.":"Run command or enter username...",
+    	"View > User's primary group name.":"Run command or enter username...",
+		"View > User's secondary group ID's.":"Run command or enter username...",
+		"View > User's secondary group names.":"Run command or enter username...",
 
-    	" Status.":"file/directory name...",
-
-    	" Log file.":"Follow steps...",
+    	"View > Current running processes.":"Follow steps...",
+    	"View > Open file processes.":"Follow steps...",
+    	"View > Top processes.":"Run command...",
     };
 
-    static disabledSearchTerms: string = "Top processes.All group's";
+    static disabledSearchTerms: string = "Top processes - Username - Full name";
 }
 
 

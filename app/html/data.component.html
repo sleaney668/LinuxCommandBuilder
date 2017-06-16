@@ -482,8 +482,7 @@
 
 <!-- VIEW SUBSECTION DATA-->
 
-<!-- VIEW > FILE CONTENTS SUBSECTION DATA-->
-
+<!-- VIEW > FILE > CONTENTS SUBSECTION DATA-->
 	<!-- View file contents -->
 	<div class="data-div" id="cat-data" style="display:none">
 		<ul>
@@ -507,11 +506,9 @@
 			</ul>
 		</div>
 	</div>
+<!-- END VIEW > FILE > CONTENTS SUBSECTION DATA-->
 
-<!-- END VIEW > FILE CONTENTS SUBSECTION DATA-->
-
-<!-- VIEW > STATUS INFORMATION SUBSECTION DATA-->
-
+<!-- VIEW > FILE/DIRECTORY > STATUS INFORMATION SUBSECTION DATA-->
 	<!-- Status information -->
 	<div class="data-div" id="stat-data" style="display:none">
 		<ul>
@@ -519,11 +516,9 @@
 			<li>By default the stat common should be available on most distributions of Linux.</li>
 		</ul>
 	</div>
+<!-- END VIEW > FILE/DIRECTORY > STATUS INFORMATION SUBSECTION DATA-->
 
-<!-- END VIEW > STATUS INFORMATION SUBSECTION DATA-->
-
-<!-- VIEW > LOG FILE INFORMATION SUBSECTION DATA-->
-
+<!-- VIEW > FILE > LOG FILE INFORMATION SUBSECTION DATA-->
 	<!-- Tail information -->
 	<div class="data-div" id="tail-data" style="display:none">
 		<ul>
@@ -547,21 +542,9 @@
 			</ul>
 		</div>
 	</div>
+<!-- END VIEW > FILE > LOG FILE INFORMATION SUBSECTION DATA-->
 
-<!-- END VIEW > LOG FILE INFORMATION SUBSECTION DATA-->
-
-<!-- * The tail command is used to print the lines of files.
-* The following options will change the way the tail command operates, see below:
-    * tail myFile                 Outputs the last 10 lines of myFile
-    * tail myFile -n 100      Outputs the last 100 lines of myFile
-    * tail -f myFile              Outputs the last 10 lines of myFile and monitors for updates, tail then continues to output any new lines that are added to myFile
-    * tail -100f myFile        Outputs the last 100 lines of myFile and monitors for updates, tail then continues to output any new lines that are added to myFile
-
-* Additionally, the grep command can be added to selectively monitor a log file in real time e.g. 
-    * tail -f myFile | grep keyword    This will tail a file for live updates containing the keyword -->
-
-<!-- VIEW > DIRECTORY CONTENTS SUBSECTION DATA-->
-
+<!-- VIEW > DIRECTORY > CONTENTS SUBSECTION DATA-->
 	<!-- View file contents -->
 	<div class="data-div" id="ls-data" style="display:none">
 		<ul>
@@ -595,8 +578,156 @@
 			</ul>
 		</div>
 	</div>
+<!-- END VIEW > DIRECTORY > CONTENTS SUBSECTION DATA-->
 
-<!-- END VIEW > DIRECTORY CONTENTS SUBSECTION DATA-->
+<!-- VIEW > USER > ALL USER INFO SUBSECTION DATA-->
+	<!-- User ID information -->
+	<div class="data-div" id="id-data" style="display:none">
+		<ul>
+			<li class="commandFormatLi">The <span>id</span> command is used to output the user, group names or numeric IDs, of the calling process, to the standard output.</li>
+		</ul>
+
+		<div class="data-note-div">
+			<h5><b>Note</b></h5>
+			<ul>
+				<li>&nbsp;</li>
+				<li>The following options will change the way the id command operates, see below:</li>
+				<li class="codeFormatLi"><span>id -u username</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays the users ID relating to the username entered..</li>
+				<li class="codeFormatLi"><span>id -un</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays the username of the active user.</li>
+				<li class="codeFormatLi"><span>id -F</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays the full name of the active user.</li>
+				<li class="codeFormatLi"><span>id -g username</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays the group ID relating to the username entered.</li>
+				<li class="codeFormatLi"><span>id -G </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays all group IDs within a linux system.</li>
+				<li>&nbsp;</li>
+			</ul>
+		</div>
+	</div>
+<!-- END VIEW > USER > ALL USER INFO SUBSECTION DATA-->
+
+<!-- VIEW > USER > USER ID SUBSECTION DATA-->
+	<!-- User ID information -->
+	<div class="data-div" id="id -u-data" style="display:none">
+		<ul>
+			<li class="commandFormatLi">The <span>id</span> command is used to output the user, group names or numeric IDs, of the calling process, to the standard output.</li>
+		</ul>
+
+		<div class="data-note-div">
+			<h5><b>Note</b></h5>
+			<ul>
+				<li>&nbsp;</li>
+				<li>The following options will change the way the id command operates, see below:</li>
+				<li class="codeFormatLi"><span>id -u username</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays the users ID relating to the username entered..</li>
+				<li class="codeFormatLi"><span>id -un</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays the username of the active user.</li>
+				<li class="codeFormatLi"><span>id -F</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays the full name of the active user.</li>
+				<li class="codeFormatLi"><span>id -g username</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays the group ID relating to the username entered.</li>
+				<li class="codeFormatLi"><span>id -G </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays all group IDs within a linux system.</li>
+				<li>&nbsp;</li>
+			</ul>
+		</div>
+	</div>
+<!-- END VIEW > USER > USER ID SUBSECTION DATA-->
+
+<!-- VIEW > USER > USERNAME SUBSECTION DATA-->
+	<!-- Username information -->
+	<div class="data-div" id="id -un-data" style="display:none">
+		<ul>
+			<li class="commandFormatLi">The <span>id</span> command is used to output the user, group names or numeric IDs, of the calling process, to the standard output.</li>
+		</ul>
+
+		<div class="data-note-div">
+			<h5><b>Note</b></h5>
+			<ul>
+				<li>&nbsp;</li>
+				<li>The following options will change the way the id command operates, see below:</li>
+				<li class="codeFormatLi"><span>id -u username</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays the users ID relating to the username entered..</li>
+				<li class="codeFormatLi"><span>id -un</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays the username of the active user.</li>
+				<li class="codeFormatLi"><span>id -F</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays the full name of the active user.</li>
+				<li class="codeFormatLi"><span>id -g username</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays the group ID relating to the username entered.</li>
+				<li class="codeFormatLi"><span>id -G </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays all group IDs within a linux system.</li>
+				<li>&nbsp;</li>
+			</ul>
+		</div>
+	</div>
+<!-- END VIEW > USER > USERNAME SUBSECTION DATA-->
+
+<!-- VIEW > USER > FULL NAME SUBSECTION DATA-->
+	<!-- Fullname information -->
+	<div class="data-div" id="id -F-data" style="display:none">
+		<ul>
+			<li class="commandFormatLi">The <span>id</span> command is used to output the user, group names or numeric IDs, of the calling process, to the standard output.</li>
+		</ul>
+
+		<div class="data-note-div">
+			<h5><b>Note</b></h5>
+			<ul>
+				<li>&nbsp;</li>
+				<li>The following options will change the way the id command operates, see below:</li>
+				<li class="codeFormatLi"><span>id -u username</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays the users ID relating to the username entered..</li>
+				<li class="codeFormatLi"><span>id -un</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays the username of the active user.</li>
+				<li class="codeFormatLi"><span>id -F</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays the full name of the active user.</li>
+				<li class="codeFormatLi"><span>id -g username</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays the group ID relating to the username entered.</li>
+				<li class="codeFormatLi"><span>id -G </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays all group IDs within a linux system.</li>
+				<li>&nbsp;</li>
+			</ul>
+		</div>
+	</div>
+<!-- END VIEW > USER > FULL NAME SUBSECTION DATA-->
+
+<!-- VIEW > GROUP > GROUPS SUBSECTION DATA-->
+	<!-- Group ID information -->
+	<div class="data-div" id="groups-data" style="display:none">
+		<ul>
+			<li class="commandFormatLi">The <span>groups</span> command</li>
+		</ul>
+
+	</div>
+<!-- END VIEW > GROUP > GROUPS SUBSECTION DATA-->
+
+<!-- VIEW > GROUP > GROUP ID SUBSECTION DATA-->
+	<!-- Group ID information -->
+	<div class="data-div" id="id -g-data" style="display:none">
+		<ul>
+			<li class="commandFormatLi">The <span>id</span> command is used to output the user, group names or numeric IDs, of the calling process, to the standard output.</li>
+		</ul>
+
+		<div class="data-note-div">
+			<h5><b>Note</b></h5>
+			<ul>
+				<li>&nbsp;</li>
+				<li>The following options will change the way the id command operates, see below:</li>
+				<li class="codeFormatLi"><span>id -u username</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays the users ID relating to the username entered..</li>
+				<li class="codeFormatLi"><span>id -un</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays the username of the active user.</li>
+				<li class="codeFormatLi"><span>id -F</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays the full name of the active user.</li>
+				<li class="codeFormatLi"><span>id -g username</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays the group ID relating to the username entered.</li>
+				<li class="codeFormatLi"><span>id -G </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays all group IDs within a linux system.</li>
+				<li>&nbsp;</li>
+			</ul>
+		</div>
+	</div>
+<!-- END VIEW > GROUP > GROUP ID SUBSECTION DATA-->
+
+<!-- VIEW > GROUP > GROUP IDs SUBSECTION DATA-->
+	<!-- Group IDs information -->
+	<div class="data-div" id="id -G-data" style="display:none">
+		<ul>
+			<li class="commandFormatLi">The <span>id</span> command is used to output the user, group names or numeric IDs, of the calling process, to the standard output.</li>
+		</ul>
+
+		<div class="data-note-div">
+			<h5><b>Note</b></h5>
+			<ul>
+				<li>&nbsp;</li>
+				<li>The following options will change the way the id command operates, see below:</li>
+				<li class="codeFormatLi"><span>id -u username</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays the users ID relating to the username entered..</li>
+				<li class="codeFormatLi"><span>id -un</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays the username of the active user.</li>
+				<li class="codeFormatLi"><span>id -F</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays the full name of the active user.</li>
+				<li class="codeFormatLi"><span>id -g username</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays the group ID relating to the username entered.</li>
+				<li class="codeFormatLi"><span>id -G </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays all group IDs within a linux system.</li>
+				<li>&nbsp;</li>
+			</ul>
+		</div>
+	</div>
+<!-- END VIEW > GROUP > GROUP IDs SUBSECTION DATA-->
+
 
 
 

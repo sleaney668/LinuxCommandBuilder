@@ -160,7 +160,6 @@ export class SubsectionComponent{
 
 
 		if(searchInputLength == 0){
-			console.log("searchInputLength: " + searchInputLength);
 			searchInputDiv.style.display = "none";
 
 			if(optionSearchDiv.style.display == "none" && optionSearchTag.innerHTML == "+"){
@@ -176,15 +175,12 @@ export class SubsectionComponent{
 				searchInputDiv.style.display = "block";
 				// Hide the option div
 				optionSearchDiv.style.display = "none";
-
-				console.log("Option is overridden with text entry...");
 			}
 			// If text is entered, and options are displayed and they have been initialised with a value
 			else if(optionSearchDiv.style.display == "block" && optionSearchTag.innerHTML != "+"){
 				// Show the input div
 				searchInputDiv.style.display = "block";
 				searchInputTag.innerHTML = "3";
-
 			} else {
 				// Show the input div
 				searchInputDiv.style.display = "block";
@@ -269,8 +265,6 @@ export class SubsectionComponent{
 		var listGroupItem = 'list-group-item-';
 
 		var linuxCategoriesArr = Config.categoriesSearch.split('.');
-		//linuxCategoriesArr.splice(linuxCategoriesArr.indexOf(`Modify`),1);
-
 	    for(var i in linuxCategoriesArr){
 	    	var listGroupItemCategory = listGroupItem + linuxCategoriesArr[i];
 	    	if(diabledFlag){
@@ -287,14 +281,8 @@ export class SubsectionComponent{
 		//
 		var subsectionTextEntry = <HTMLInputElement>document.getElementsByClassName("subsection-text-entry")[0];
 		
-
 		// Remove this from the output
-		// document.getElementById('Search-Input-Div').style.visibility = "hidden";
 		document.getElementById('Search-Input-Div').style.display = "none";
-		
-		if(category.includes("Top processes")){
-			this.validateTextEntry(true, "Enter text...");
-		}
 
 		// Change the information here
 		this.onSearchResultChange();
@@ -368,8 +356,6 @@ export class SubsectionComponent{
 		var searchOption = document.getElementById('searchOption');
 		document.getElementById("Search-Option-Div-searchTag").innerHTML = "2";
 
-		console.log("searchResult: " + document.getElementById('searchResult').innerHTML );
-
 		if(document.getElementById('searchResult').innerHTML == "tail"){
 
 			// Updating text entry placeholder
@@ -377,8 +363,6 @@ export class SubsectionComponent{
 			var tailTextEntryValue = (<HTMLInputElement>document.getElementById('tail-option-text-entry')).value;
 			
 			if(tailTextEntryValue == ""){
-				console.log("Set options back");	
-				//document.getElementById('Search-Option-Div').style.display = "none";
 				document.getElementById("Search-Option-Div-searchTag").innerHTML = "+";
 				searchOption.innerHTML = "option";
 
@@ -399,7 +383,6 @@ export class SubsectionComponent{
 
 			// Only show grep for selected grep options 
 			// Decide what to do with viewing a log file
-			console.log(document.getElementById('searchResult').innerHTML);
 			if(document.getElementById('searchResult').innerHTML == "lsof"){			
 				
 				var placeholderText = "";
@@ -498,11 +481,9 @@ export class SubsectionComponent{
 		if(event){
 			tailInputValue += "f";
 		} else {
-			console.log('in false');
 			tailInputValue = tailInputValue.replace("f","");
 		}
 
-		console.log(tailInputValue);
 		(<HTMLInputElement>document.getElementById('tail-option-text-entry')).value = tailInputValue;
 		
 		this.updateTailInputOption(tailInputValue);
