@@ -38,7 +38,7 @@ export class Config{
 	static viewFileSubSearch: string = ` Contents. Status. Log file`;
 	static viewDirectorySubSearch: string = ` Contents. Status`;
 	static viewUserSubSearch: string = ` All user information. User ID. Username. Full name`;
-	static viewGroupSubSearch: string = ` Users primary group ID. Users primary group name. Users secondary group ID's. Users secondary group names`;
+	static viewGroupSubSearch: string = ` User's primary group ID. User's primary group name. User's secondary group ID's. User's secondary group names`;
 	static viewProcessesSubSearch: string = ` Current running processes. Open file processes. Top processes`;
 
 	static locateSearch: string = `File.Directory.Location.Users.Logged In`;
@@ -84,9 +84,10 @@ export class Config{
 	    "id -F":"Display full name",
 	    //"usermod -":"Displays the last part of a file"
 
-	    "groups":"Display groups",
-	    "id -G":"Display group ID's",
-	    "id -g":"Display users group ID",
+	    "id -G":"Display user's secondary group ID's",
+	    "id -g":"Display user's primary group ID",
+	    "id -Gn":"Display user's secondary group names",
+	    "id -gn":"Display user's primary group name",
 
 	    "ps":"Display processes",
 	    "lsof":"List open files",
@@ -131,6 +132,7 @@ export class Config{
     	"View > Username.":"Run command...",
     	"View > User ID.":"username...",
     	"View > Full name.":"Run command...",
+
     	"View > User's primary group ID.":"Run command or enter username...",
     	"View > User's primary group name.":"Run command or enter username...",
 		"View > User's secondary group ID's.":"Run command or enter username...",
