@@ -211,7 +211,6 @@ export class AppComponent implements OnInit {
 				// If applied for code to do nothing
 
 			} else {
-				placeholderText = '';
 				opactiy = "0.7";
 				subsectionTextEntry.disabled = true;
 			}

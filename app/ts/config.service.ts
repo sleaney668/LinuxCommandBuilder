@@ -15,7 +15,7 @@ export class Config{
 							     ["id -g","id -gn","id -G","id -Gn"], // View > Group
 							     ["ps", "lsof", "top"] // View > Processes
 							    ], 
-							    ["ps aux","find / -name","pwd","groups","w"], //Locate
+							    ["find","pwd"], //Locate
 							    ["cp"], //Copy
 							    ["type","bc","ls"]]}; //Misc
 
@@ -41,7 +41,7 @@ export class Config{
 	static viewGroupSubSearch: string = ` User's primary group ID. User's primary group name. User's secondary group ID's. User's secondary group names`;
 	static viewProcessesSubSearch: string = ` Current running processes. Open file processes. Top processes`;
 
-	static locateSearch: string = `File.Directory.Location.Users.Logged In`;
+	static locateSearch: string = `File.Working directory`;
 	
 	static copySearch: string = `File/Directory`;
 
@@ -91,7 +91,10 @@ export class Config{
 
 	    "ps":"Display processes",
 	    "lsof":"List open files",
-	    "top":"Display top processes"
+	    "top":"Display top processes",
+
+	    "find":"Find file",
+	    "pwd":"Print working directory"
 	}
 
 	static optionValues = {"ps":["-e","-a","-f","-x","-r","-eaf","-aux"],
@@ -141,9 +144,12 @@ export class Config{
     	"View > Current running processes.":"Follow steps...",
     	"View > Open file processes.":"Follow steps...",
     	"View > Top processes.":"Run command...",
+
+    	"Locate >File":"Run command or enter filename...",
+    	"Locate >Working directory":"Run command...",
     };
 
-    static disabledSearchTerms: string = "Top processes - Username - Full name";
+    static disabledSearchTerms: string = "Top processes - Username - Full name - Working directory";
 }
 
 
