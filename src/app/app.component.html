@@ -1,0 +1,25 @@
+<div class="Title-Div">
+	<h1 id="main-h1-title" class="title">{{ mainHeading }}</h1>
+	<img src="../assets/LinuxPenguin1.svg" style="max-width: 84px;float: right;margin-top: -112px;margin-right: 17px;">    
+</div> 
+<p id="app-desc">The developer of this web application has attempted to provide a comprehensive linux command builder. The aim of this service is to help new and exisitng linux users with any misunderstandings they may be having. Currently there is no other service like this and with your help we can make this better and better, please leave a comment.</p>
+
+<h3 id="list-group-headings">What do you want to do?</h3>
+
+<list 
+[linuxCategories]="linuxCategories" 
+(listItemOutput)="onBulletSelect($event)"> {{listItemData}} 
+</list>
+
+<subsection 
+[showSubsection]="showSubsection" 
+[linuxCategories]="linuxCategories" 
+[subSections]="subSections" 
+(subCategoryItemOutput)="onSubCategorySelect($event)"> {{subCategoryItemData}}
+[searchResult]="searchResult" 
+</subsection>
+
+<br>
+<br>
+<br>
+<br>

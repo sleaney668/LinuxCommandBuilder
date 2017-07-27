@@ -1,0 +1,4 @@
+<ul class="list-group" *ngFor="let category of linuxCategories">
+  <li id="list-group-item-{{category}}" class="list-group-item" (click)="onBulletSelect(category)"> {{category}} </li>
+  <div id="subsection-{{category}}"></div>
+</ul>

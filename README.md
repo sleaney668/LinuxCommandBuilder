@@ -1,48 +1,31 @@
-![](http://i.imgur.com/CqXcsZ9.png)
+# Angular2
 
-This is a base template for Angular 2. It contains the core files you will need when starting an Angular 2 project.
-To get started, follow the instructions below.
+This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.28.3.
 
-### Install Node.js and npm
+## Development server
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-Download the latest version of Node.js if you do not already have it installed on your machine. This download will also
-include the latest version of npm.
+## Code scaffolding
 
-https://nodejs.org/en/download/
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
 
-### Download this Repository
+## Build
 
-Clone this repo into a new project folder. You may also download it as a ZIP file.
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-https://github.com/buckyroberts/angular-2-template.git
+## Running unit tests
 
-### Install Libraries and Dependencies
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-Once you have the files downloaded, navigate into the root project directory and run the following command. This will
-install all libraries and dependencies.
+## Running end-to-end tests
 
-`npm install`
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Before running the tests make sure you are serving the app via `ng serve`.
 
-### Run the Project
+## Deploying to GitHub Pages
 
-Now you can start the TypeScript compiler in watch mode and run lite-server with automatic refreshing.
+Run `ng github-pages:deploy` to deploy to GitHub Pages.
 
-`npm start`
+## Further help
 
-***
-
-### Angular 2
-
-- [angular.io](https://angular.io/) - Official website for Angular and Angular 2.
-- [Getting Started](https://angular.io/docs/ts/latest/quickstart.html) - Quick guide on how to get up and running.
-- [Forum](https://thenewboston.com/forum/category.php?id=111) - For Angular 2 related questions, news, and discussion.
-- [Reddit](https://www.reddit.com/r/Angular2/) - Subreddit for Google's next iteration of AngularJS.
-
-### Other
-
-- [thenewboston](https://thenewboston.com/)
-- [Facebook](https://www.facebook.com/TheNewBoston-464114846956315/)
-- [Twitter](https://twitter.com/bucky_roberts)
-- [Google+](https://plus.google.com/+BuckyRoberts)
-- [reddit](https://www.reddit.com/r/thenewboston/)
-- [Donate](https://www.patreon.com/thenewboston)
+To get more help on the `angular-cli` use `ng help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
