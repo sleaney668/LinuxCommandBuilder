@@ -14,7 +14,7 @@ import {SubsectionComponent} from './subsection/subsection.component';
     templateUrl: './app.component.html'
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent {
 
 	private tmplistItemData: string;
 	public showSubsection: string;
@@ -295,6 +295,24 @@ export class AppComponent implements OnInit {
 		this.textEntryPlaceholder = stepTwoLabel;
 	}
 
+	updateCommentTextArea(){
+		var commentTextArea = (<HTMLTextAreaElement>document.getElementById("comment-text-area"));
+		var modalSendButton = document.getElementById("Modal-Send-Button");
+		if(commentTextArea.value.length > 0){
+			modalSendButton.style.display = "inline";
+		} else {
+			modalSendButton.style.display = "none";
+		}
+	}
+
+	sendComment(){
+		var commentTextArea = (<HTMLTextAreaElement>document.getElementById("comment-text-area"));
+		commentTextArea.value = "";
+
+		var modalSendButton = document.getElementById("Modal-Send-Button");
+		modalSendButton.style.display = "none";
+	}
+
 	constructor(private _jsonService: JsonService, private _chmodService: ChmodService){}
 	ngOnInit(){
 		// Construct the linuxCategories read from the json object stored
@@ -305,6 +323,7 @@ export class AppComponent implements OnInit {
 
 		this.tmplistItemData = "minimise";
 		this.searchResult = "NaN";
+		document.getElementById("comment-modal");
 	}
 
 }

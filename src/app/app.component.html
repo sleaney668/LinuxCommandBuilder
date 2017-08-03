@@ -2,7 +2,8 @@
 	<h1 id="main-h1-title" class="title">{{ mainHeading }}</h1>
 	<img src="../assets/LinuxPenguin1.svg" style="max-width: 84px;float: right;margin-top: -112px;margin-right: 17px;">    
 </div> 
-<p id="app-desc">The developer of this web application has attempted to provide a comprehensive linux command builder. The aim of this service is to help new and exisitng linux users with any misunderstandings they may be having. Currently there is no other service like this and with your help we can make this better and better, please leave a comment.</p>
+<p id="app-desc">
+Welcome to the LinuxCommandBuilder, developer of this web application has attempted to provide a comprehensive service which will aid in the progression of your linux skillz. Currently there is no other service like this and with your help we can make this better and better, so have a browse and if you feel like it you can <a data-toggle="modal" href="#emailModal">leave us a comment.</a></p>
 
 <h3 id="list-group-headings">What do you want to do?</h3>
 
@@ -23,3 +24,25 @@
 <br>
 <br>
 <br>
+
+<div class="modal" id="emailModal" >
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title">Please leave a comment.</h3>
+			</div>
+
+			<div class="modal-body">
+				<textarea id="comment-text-area" type="text" value="NaNn" rows="4" placeholder="Comment here..." 
+				[(ngModel)]="commentModal" (ngModelChange)="updateCommentTextArea()"></textarea>
+			</div>	
+
+			<div class="modal-footer">
+				<button id="Modal-Send-Button" style="display: none;" type="button" data-dismiss="modal" (click)="sendComment()">Send</button>
+				<button id="Modal-Close-Button" type="button" data-dismiss="modal">Close</button>
+			</div>
+
+		</div>
+	</div>
+</div>
+

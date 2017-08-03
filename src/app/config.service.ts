@@ -154,7 +154,7 @@ export class ConfigService {
     	"Locate >File":"Run command or enter filename...",
     	"Locate >Working directory":"Run command...",
 
-    	"Copy >File/Directory":"Run command...",
+    	"Copy >File/Directory":"Enter {source} {destination}",
     };
 
     static disabledSearchTerms: string = "Top processes - Username - Full name - Working directory";
